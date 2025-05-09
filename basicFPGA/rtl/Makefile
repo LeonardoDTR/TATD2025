@@ -82,6 +82,7 @@ svg: $(FLASH_OBJS)
 	netlistsvg ${TARGET}.json -o ${TARGET}.svg  #--skin default.svg
 	yosys -p "prep -top ${TARGET} -flatten; write_json ${TARGET}_flat.json" ${FLASH_OBJS}
 	netlistsvg ${TARGET}_flat.json -o ${TARGET}_flat.svg  #--skin default.svg
+
 	
 ########################
 #  LATTICE COLORLIGHT I5

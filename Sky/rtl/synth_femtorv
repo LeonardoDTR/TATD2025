@@ -1,0 +1,29 @@
+read_liberty -lib ./lib/sky130_fd_sc_hd__tt_025C_1v80.lib 
+read_verilog SOC_flash.v
+read_verilog cores/cpu/femtorv32_quark.v
+read_verilog cores/uart/perip_uart.v
+read_verilog cores/uart/uart.v
+read_verilog cores/mult/perip_mult.v
+read_verilog cores/mult/mult.v
+read_verilog cores/spi_flash/MappedSPIFlash_V3.v
+read_verilog cores/spi_ram/MappedSPIRAM.v
+
+hierarchy -check -top SOC_flash
+proc   # convert RTL processes into multiplexers and registers
+fsm
+opt 
+memory -nomap
+opt
+techmap
+opt -fast
+extract_fa -v
+techmap -map ~/Programs/open_pdks/sky130/openlane/sky130_fd_sc_hd/fa_map.v
+opt -fast
+abc -liberty  ./lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+opt -fast
+check
+## write synthesized design
+write_verilog  -attr2comment SOC_flash_synth_sky.v
+show -prefix . SOC_flash
+## show design stats
+stat -liberty  ./lib/sky130_fd_sc_hd__tt_025C_1v80.lib
