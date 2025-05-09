@@ -1,0 +1,35 @@
+[*]
+[*] GTKWave Analyzer v3.3.104 (w)1999-2020 BSI
+[*] Mon Apr 28 02:31:58 2025
+[*]
+[dumpfile] "/home/leodtr/Universidad/Temas Digital/basic/rtl/bench.vcd"
+[dumpfile_mtime] "Mon Apr 28 02:16:59 2025"
+[dumpfile_size] 32375716
+[savefile] "/home/leodtr/Universidad/Temas Digital/basic/rtl/ram.gtkw"
+[timestart] 173040000000000000
+[size] 1920 1052
+[pos] -51 -51
+*-53.000000 0 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] bench.
+[treeopen] bench.uut.
+[treeopen] bench.uut.per_uart.
+[sst_width] 352
+[signals_width] 333
+[sst_expanded] 1
+[sst_vpaned_height] 306
+@24
+bench.uut.CPU.PC[23:0]
+@820
+bench.uut.per_uart.uart0.tx_data[7:0]
+@28
+bench.uut.spi_ram.busy
+bench.uut.spi_ram.rbusy
+bench.uut.spi_ram.wbusy
+bench.uut.spi_ram.MISO
+bench.uut.spi_ram.MOSI
+bench.uut.spi_ram.CLK
+bench.uut.spi_ram.clk
+bench.uut.mapped_spi_flash.CLK
+bench.uut.mapped_spi_flash.clk
+[pattern_trace] 1
+[pattern_trace] 0

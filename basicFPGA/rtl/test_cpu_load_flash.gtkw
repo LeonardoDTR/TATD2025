@@ -1,0 +1,128 @@
+[*]
+[*] GTKWave Analyzer v3.3.104 (w)1999-2020 BSI
+[*] Fri Sep 13 00:16:44 2024
+[*]
+[dumpfile] "/Work/Proyects/ecb_T8_T113/femtoRV/basic/rtl/bench.vcd"
+[dumpfile_mtime] "Thu Sep 12 23:53:58 2024"
+[dumpfile_size] 41289662
+[savefile] "/Work/Proyects/ecb_T8_T113/femtoRV/basic/rtl/test_cpu_load_flash.gtkw"
+[timestart] 122000000000000000
+[size] 2560 1531
+[pos] -1 -1
+*-52.848625 158117000000000000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] bench.
+[treeopen] bench.uut.
+[sst_width] 417
+[signals_width] 315
+[sst_expanded] 1
+[sst_vpaned_height] 457
+@28
+[color] 3
+bench.uut.mapped_spi_flash.busy
+[color] 3
+bench.uut.mapped_spi_flash.CLK
+@29
+[color] 3
+bench.uut.mapped_spi_flash.CS_N
+@28
+[color] 3
+bench.uut.mapped_spi_flash.receiving
+[color] 3
+bench.uut.spi_miso
+[color] 2
+bench.uut.spi_mosi
+@22
+[color] 3
+bench.uut.mapped_spi_flash.word_address[19:0]
+[color] 3
+bench.uut.CPU.instr[31:2]
+[color] 3
+bench.uut.mapped_spi_flash.rdata[31:0]
+[color] 3
+bench.flash0.buffer[7:0]
+bench.flash0.spi_addr[23:0]
+@28
+bench.flash0.powered_up
+@420
+bench.flash0.bytecount
+bench.flash0.bitcount
+@22
+bench.flash0.mode[3:0]
+bench.flash0.spi_addr[23:0]
+bench.flash0.buffer[7:0]
+bench.flash0.spi_in[7:0]
+bench.flash0.spi_cmd[7:0]
+bench.flash0.spi_out[7:0]
+@28
+bench.flash0.io1_oe
+bench.flash0.io1
+@22
+[color] 5
+bench.uut.CPU.\registerFile[0][31:0]
+[color] 5
+bench.uut.CPU.\registerFile[1][31:0]
+[color] 5
+bench.uut.CPU.\registerFile[2][31:0]
+[color] 5
+bench.uut.CPU.\registerFile[3][31:0]
+[color] 5
+bench.uut.CPU.\registerFile[4][31:0]
+[color] 5
+bench.uut.CPU.\registerFile[5][31:0]
+[color] 5
+bench.uut.CPU.\registerFile[6][31:0]
+[color] 5
+bench.uut.CPU.\registerFile[7][31:0]
+[color] 5
+bench.uut.CPU.\registerFile[8][31:0]
+[color] 5
+bench.uut.CPU.\registerFile[9][31:0]
+[color] 5
+bench.uut.CPU.\registerFile[10][31:0]
+[color] 5
+bench.uut.CPU.\registerFile[11][31:0]
+[color] 5
+bench.uut.CPU.\registerFile[12][31:0]
+[color] 5
+bench.uut.CPU.\registerFile[13][31:0]
+[color] 5
+bench.uut.CPU.\registerFile[14][31:0]
+[color] 5
+bench.uut.CPU.\registerFile[15][31:0]
+[color] 5
+bench.uut.CPU.\registerFile[16][31:0]
+[color] 5
+bench.uut.CPU.\registerFile[17][31:0]
+[color] 5
+bench.uut.CPU.\registerFile[18][31:0]
+[color] 5
+bench.uut.CPU.\registerFile[19][31:0]
+[color] 5
+bench.uut.CPU.\registerFile[20][31:0]
+[color] 5
+bench.uut.CPU.\registerFile[21][31:0]
+[color] 5
+bench.uut.CPU.\registerFile[22][31:0]
+[color] 5
+bench.uut.CPU.\registerFile[23][31:0]
+[color] 5
+bench.uut.CPU.\registerFile[24][31:0]
+[color] 5
+bench.uut.CPU.\registerFile[25][31:0]
+[color] 5
+bench.uut.CPU.\registerFile[26][31:0]
+[color] 5
+bench.uut.CPU.\registerFile[27][31:0]
+[color] 5
+bench.uut.CPU.\registerFile[28][31:0]
+[color] 5
+bench.uut.CPU.\registerFile[29][31:0]
+[color] 5
+bench.uut.CPU.\registerFile[30][31:0]
+[color] 5
+bench.uut.CPU.\registerFile[31][31:0]
+@28
+bench.uut.RXD
+bench.uut.TXD
+[pattern_trace] 1
+[pattern_trace] 0

@@ -1,0 +1,44 @@
+[*]
+[*] GTKWave Analyzer v3.3.104 (w)1999-2020 BSI
+[*] Mon Apr 28 14:09:09 2025
+[*]
+[dumpfile] "/home/leodtr/Universidad/Temas Digital/basic/rtl/bench.vcd"
+[dumpfile_mtime] "Mon Apr 28 13:53:10 2025"
+[dumpfile_size] 32404304
+[savefile] "/home/leodtr/Universidad/Temas Digital/basic/rtl/pre.gtkw"
+[timestart] 0
+[size] 1920 1052
+[pos] -1 -1
+*-47.000000 215300000000000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] bench.
+[treeopen] bench.uut.
+[treeopen] bench.uut.per_uart.
+[sst_width] 311
+[signals_width] 216
+[sst_expanded] 1
+[sst_vpaned_height] 306
+@24
+bench.uut.CPU.PC[23:0]
+@820
+bench.uut.per_uart.uart0.tx_data[7:0]
+@28
+bench.uut.mapped_spi_flash.MISO
+bench.uut.mapped_spi_flash.MOSI
+bench.uut.mapped_spi_flash.CS_N
+bench.uut.mapped_spi_flash.clk
+bench.uut.mapped_spi_flash.rstrb
+bench.uut.mapped_spi_flash.receiving
+bench.uut.mapped_spi_flash.sending
+bench.uut.mapped_spi_flash.busy
+@22
+bench.uut.mapped_spi_flash.rdata[31:0]
+@23
+bench.uut.cs[6:0]
+@22
+bench.uut.CPU.instr[31:2]
+bench.uut.CPU.mem_addr[31:0]
+bench.uut.CPU.state[3:0]
+@28
+bench.uut.CPU.reset
+[pattern_trace] 1
+[pattern_trace] 0
