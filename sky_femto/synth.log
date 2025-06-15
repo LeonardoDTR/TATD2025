@@ -1,0 +1,2424 @@
+
+ /----------------------------------------------------------------------------\
+ |                                                                            |
+ |  yosys -- Yosys Open SYnthesis Suite                                       |
+ |                                                                            |
+ |  Copyright (C) 2012 - 2020  Claire Xenia Wolf <claire@yosyshq.com>         |
+ |                                                                            |
+ |  Permission to use, copy, modify, and/or distribute this software for any  |
+ |  purpose with or without fee is hereby granted, provided that the above    |
+ |  copyright notice and this permission notice appear in all copies.         |
+ |                                                                            |
+ |  THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES  |
+ |  WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF          |
+ |  MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR   |
+ |  ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES    |
+ |  WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN     |
+ |  ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF   |
+ |  OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.            |
+ |                                                                            |
+ \----------------------------------------------------------------------------/
+
+ Yosys 0.9+4288 (git sha1 b2e97174, x86_64-conda_cos6-linux-gnu-gcc 1.24.0.133_b0863d8_dirty -fvisibility-inlines-hidden -fmessage-length=0 -march=nocona -mtune=haswell -ftree-vectorize -fPIC -fstack-protector-strong -fno-plt -O2 -ffunction-sections -fdebug-prefix-map=/home/runner/work/conda-eda/conda-eda/workdir/conda-env/conda-bld/yosys_1630451134687/work=/usr/local/src/conda/yosys-0.9_5586_gb2e97174 -fdebug-prefix-map=/home/leodtr/Programs/miniconda3/envs/fpga=/usr/local/src/conda-prefix -fPIC -Os -fno-merge-constants)
+
+[TCL: yosys -import] Command name collision: found pre-existing command `cd' -> skip.
+[TCL: yosys -import] Command name collision: found pre-existing command `eval' -> skip.
+[TCL: yosys -import] Command name collision: found pre-existing command `exec' -> skip.
+[TCL: yosys -import] Command name collision: found pre-existing command `read' -> skip.
+[TCL: yosys -import] Command name collision: found pre-existing command `trace' -> skip.
+
+1. Executing Liberty frontend.
+Imported 428 cell types from liberty file.
+
+2. Executing Verilog-2005 frontend: SOC_flash.v
+Parsing SystemVerilog input from `SOC_flash.v' to AST representation.
+Storing AST representation for module `$abstract\SOC_flash'.
+Successfully finished Verilog frontend.
+
+3. Executing Verilog-2005 frontend: cores/cpu/femtorv32_quark.v
+Parsing SystemVerilog input from `cores/cpu/femtorv32_quark.v' to AST representation.
+Storing AST representation for module `$abstract\FemtoRV32'.
+Storing AST representation for module `$abstract\Memory'.
+Successfully finished Verilog frontend.
+
+4. Executing Verilog-2005 frontend: cores/uart/perip_uart.v
+Parsing SystemVerilog input from `cores/uart/perip_uart.v' to AST representation.
+Storing AST representation for module `$abstract\peripheral_uart'.
+Successfully finished Verilog frontend.
+
+5. Executing Verilog-2005 frontend: cores/uart/uart.v
+Parsing SystemVerilog input from `cores/uart/uart.v' to AST representation.
+Storing AST representation for module `$abstract\uart'.
+Successfully finished Verilog frontend.
+
+6. Executing Verilog-2005 frontend: cores/mult/perip_mult.v
+Parsing SystemVerilog input from `cores/mult/perip_mult.v' to AST representation.
+Storing AST representation for module `$abstract\peripheral_mult'.
+Successfully finished Verilog frontend.
+
+7. Executing Verilog-2005 frontend: cores/mult/mult.v
+Parsing SystemVerilog input from `cores/mult/mult.v' to AST representation.
+Storing AST representation for module `$abstract\mult'.
+Successfully finished Verilog frontend.
+
+8. Executing Verilog-2005 frontend: cores/spi_flash/MappedSPIFlash.v
+Parsing SystemVerilog input from `cores/spi_flash/MappedSPIFlash.v' to AST representation.
+Storing AST representation for module `$abstract\MappedSPIFlash'.
+Successfully finished Verilog frontend.
+
+9. Executing HIERARCHY pass (managing design hierarchy).
+
+10. Executing AST frontend in derive mode using pre-parsed AST for module `\SOC_flash'.
+Generating RTLIL representation for module `\SOC_flash'.
+
+10.1. Analyzing design hierarchy..
+Top module:  \SOC_flash
+
+10.2. Executing AST frontend in derive mode using pre-parsed AST for module `\peripheral_mult'.
+Generating RTLIL representation for module `\peripheral_mult'.
+Parameter \clk_freq = 25000000
+Parameter \baud = 115200
+
+10.3. Executing AST frontend in derive mode using pre-parsed AST for module `\peripheral_uart'.
+Parameter \clk_freq = 25000000
+Parameter \baud = 115200
+Generating RTLIL representation for module `$paramod$5ba1b67a19911e09c0ee8c956b41f966dbad00ae\peripheral_uart'.
+
+10.4. Executing AST frontend in derive mode using pre-parsed AST for module `\MappedSPIFlash'.
+Generating RTLIL representation for module `\MappedSPIFlash'.
+
+10.5. Executing AST frontend in derive mode using pre-parsed AST for module `\FemtoRV32'.
+Generating RTLIL representation for module `\FemtoRV32'.
+
+10.6. Analyzing design hierarchy..
+Top module:  \SOC_flash
+Used module:     \peripheral_mult
+Used module:     $paramod$5ba1b67a19911e09c0ee8c956b41f966dbad00ae\peripheral_uart
+Used module:     \MappedSPIFlash
+Used module:     \FemtoRV32
+
+10.7. Executing AST frontend in derive mode using pre-parsed AST for module `\mult'.
+Generating RTLIL representation for module `\mult'.
+Parameter \freq_hz = 25000000
+Parameter \baud = 115200
+
+10.8. Executing AST frontend in derive mode using pre-parsed AST for module `\uart'.
+Parameter \freq_hz = 25000000
+Parameter \baud = 115200
+Generating RTLIL representation for module `$paramod$df55812022425781aef872d53070d057b210643d\uart'.
+
+10.9. Analyzing design hierarchy..
+Top module:  \SOC_flash
+Used module:     \peripheral_mult
+Used module:         \mult
+Used module:     $paramod$5ba1b67a19911e09c0ee8c956b41f966dbad00ae\peripheral_uart
+Used module:         $paramod$df55812022425781aef872d53070d057b210643d\uart
+Used module:     \MappedSPIFlash
+Used module:     \FemtoRV32
+
+10.10. Analyzing design hierarchy..
+Top module:  \SOC_flash
+Used module:     \peripheral_mult
+Used module:         \mult
+Used module:     $paramod$5ba1b67a19911e09c0ee8c956b41f966dbad00ae\peripheral_uart
+Used module:         $paramod$df55812022425781aef872d53070d057b210643d\uart
+Used module:     \MappedSPIFlash
+Used module:     \FemtoRV32
+Removing unused module `$abstract\MappedSPIFlash'.
+Removing unused module `$abstract\mult'.
+Removing unused module `$abstract\peripheral_mult'.
+Removing unused module `$abstract\uart'.
+Removing unused module `$abstract\peripheral_uart'.
+Removing unused module `$abstract\Memory'.
+Removing unused module `$abstract\FemtoRV32'.
+Removing unused module `$abstract\SOC_flash'.
+Removed 8 unused modules.
+
+11. Generating Graphviz representation of design.
+Writing dot description to `./synthesis/hierarchy.dot'.
+Dumping module SOC_flash to page 1.
+Renaming module SOC_flash to SOC_flash.
+
+12. Executing TRIBUF pass.
+
+13. Executing HIERARCHY pass (managing design hierarchy).
+
+13.1. Analyzing design hierarchy..
+Top module:  \SOC_flash
+Used module:     \peripheral_mult
+Used module:         \mult
+Used module:     $paramod$5ba1b67a19911e09c0ee8c956b41f966dbad00ae\peripheral_uart
+Used module:         $paramod$df55812022425781aef872d53070d057b210643d\uart
+Used module:     \MappedSPIFlash
+Used module:     \FemtoRV32
+
+13.2. Analyzing design hierarchy..
+Top module:  \SOC_flash
+Used module:     \peripheral_mult
+Used module:         \mult
+Used module:     $paramod$5ba1b67a19911e09c0ee8c956b41f966dbad00ae\peripheral_uart
+Used module:         $paramod$df55812022425781aef872d53070d057b210643d\uart
+Used module:     \MappedSPIFlash
+Used module:     \FemtoRV32
+Removed 0 unused modules.
+
+14. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Cleaned up 0 empty switches.
+
+15. Executing PROC_RMDEAD pass (remove dead branches from decision trees).
+Marked 1 switch rules as full_case in process $proc$SOC_flash.v:140$6 in module SOC_flash.
+Marked 1 switch rules as full_case in process $proc$SOC_flash.v:127$5 in module SOC_flash.
+Marked 2 switch rules as full_case in process $proc$cores/cpu/femtorv32_quark.v:334$167 in module FemtoRV32.
+Marked 2 switch rules as full_case in process $proc$cores/cpu/femtorv32_quark.v:102$52 in module FemtoRV32.
+Marked 1 switch rules as full_case in process $proc$cores/spi_flash/MappedSPIFlash.v:35$34 in module MappedSPIFlash.
+Marked 1 switch rules as full_case in process $proc$cores/uart/perip_uart.v:50$23 in module $paramod$5ba1b67a19911e09c0ee8c956b41f966dbad00ae\peripheral_uart.
+Marked 1 switch rules as full_case in process $proc$cores/uart/perip_uart.v:37$18 in module $paramod$5ba1b67a19911e09c0ee8c956b41f966dbad00ae\peripheral_uart.
+Marked 1 switch rules as full_case in process $proc$cores/uart/perip_uart.v:29$15 in module $paramod$5ba1b67a19911e09c0ee8c956b41f966dbad00ae\peripheral_uart.
+Marked 3 switch rules as full_case in process $proc$cores/mult/perip_mult.v:56$13 in module peripheral_mult.
+Marked 2 switch rules as full_case in process $proc$cores/mult/perip_mult.v:38$8 in module peripheral_mult.
+Marked 2 switch rules as full_case in process $proc$cores/mult/perip_mult.v:20$7 in module peripheral_mult.
+Marked 5 switch rules as full_case in process $proc$cores/mult/mult.v:32$182 in module mult.
+Marked 4 switch rules as full_case in process $proc$cores/uart/uart.v:122$204 in module $paramod$df55812022425781aef872d53070d057b210643d\uart.
+Marked 5 switch rules as full_case in process $proc$cores/uart/uart.v:66$196 in module $paramod$df55812022425781aef872d53070d057b210643d\uart.
+Marked 1 switch rules as full_case in process $proc$cores/uart/uart.v:34$192 in module $paramod$df55812022425781aef872d53070d057b210643d\uart.
+Removed a total of 0 dead cases.
+
+16. Executing PROC_PRUNE pass (remove redundant assignments in processes).
+Removed 1 redundant assignment.
+Promoted 30 assignments to connections.
+
+17. Executing PROC_INIT pass (extract init attributes).
+Found init rule in `\MappedSPIFlash.$proc$cores/spi_flash/MappedSPIFlash.v:0$39'.
+  Set init value: \CS_N = 1'1
+Found init rule in `$paramod$5ba1b67a19911e09c0ee8c956b41f966dbad00ae\peripheral_uart.$proc$cores/uart/perip_uart.v:21$26'.
+  Set init value: \uart_ctrl = 8'00000000
+Found init rule in `$paramod$5ba1b67a19911e09c0ee8c956b41f966dbad00ae\peripheral_uart.$proc$cores/uart/perip_uart.v:20$25'.
+  Set init value: \d_in_uart = 8'00000000
+Found init rule in `$paramod$5ba1b67a19911e09c0ee8c956b41f966dbad00ae\peripheral_uart.$proc$cores/uart/perip_uart.v:0$24'.
+  Set init value: \ledout = 1'0
+Found init rule in `\mult.$proc$cores/mult/mult.v:0$190'.
+  Set init value: \result = 0
+  Set init value: \done = 1'0
+
+18. Executing PROC_ARST pass (detect async resets in processes).
+Found async reset \reset in `\mult.$proc$cores/mult/mult.v:32$182'.
+
+19. Executing PROC_MUX pass (convert decision trees to multiplexers).
+Creating decoders for process `\SOC_flash.$proc$SOC_flash.v:140$6'.
+     1/1: $1\mem_rdata[31:0]
+Creating decoders for process `\SOC_flash.$proc$SOC_flash.v:127$5'.
+     1/1: $1\cs[6:0]
+Creating decoders for process `\FemtoRV32.$proc$cores/cpu/femtorv32_quark.v:380$180'.
+Creating decoders for process `\FemtoRV32.$proc$cores/cpu/femtorv32_quark.v:334$167'.
+     1/5: $0\state[3:0]
+     2/5: $0\instr[29:0]
+     3/5: $0\PC[23:0]
+     4/5: $0\rs2[31:0]
+     5/5: $0\rs1[31:0]
+Creating decoders for process `\FemtoRV32.$proc$cores/cpu/femtorv32_quark.v:153$92'.
+     1/2: $0\aluShamt[4:0]
+     2/2: $0\aluReg[31:0]
+Creating decoders for process `\FemtoRV32.$proc$cores/cpu/femtorv32_quark.v:102$52'.
+     1/6: $2$memwr$\registerFile$cores/cpu/femtorv32_quark.v:105$40_EN[31:0]$62
+     2/6: $2$memwr$\registerFile$cores/cpu/femtorv32_quark.v:105$40_DATA[31:0]$61
+     3/6: $2$memwr$\registerFile$cores/cpu/femtorv32_quark.v:105$40_ADDR[4:0]$60
+     4/6: $1$memwr$\registerFile$cores/cpu/femtorv32_quark.v:105$40_EN[31:0]$58
+     5/6: $1$memwr$\registerFile$cores/cpu/femtorv32_quark.v:105$40_DATA[31:0]$57
+     6/6: $1$memwr$\registerFile$cores/cpu/femtorv32_quark.v:105$40_ADDR[4:0]$56
+Creating decoders for process `\MappedSPIFlash.$proc$cores/spi_flash/MappedSPIFlash.v:0$39'.
+Creating decoders for process `\MappedSPIFlash.$proc$cores/spi_flash/MappedSPIFlash.v:35$34'.
+     1/5: $0\rcv_data[31:0]
+     2/5: $0\rcv_bitcount[5:0]
+     3/5: $0\cmd_addr[31:0]
+     4/5: $0\snd_bitcount[5:0]
+     5/5: $0\CS_N[0:0]
+Creating decoders for process `$paramod$5ba1b67a19911e09c0ee8c956b41f966dbad00ae\peripheral_uart.$proc$cores/uart/perip_uart.v:21$26'.
+Creating decoders for process `$paramod$5ba1b67a19911e09c0ee8c956b41f966dbad00ae\peripheral_uart.$proc$cores/uart/perip_uart.v:20$25'.
+Creating decoders for process `$paramod$5ba1b67a19911e09c0ee8c956b41f966dbad00ae\peripheral_uart.$proc$cores/uart/perip_uart.v:0$24'.
+Creating decoders for process `$paramod$5ba1b67a19911e09c0ee8c956b41f966dbad00ae\peripheral_uart.$proc$cores/uart/perip_uart.v:50$23'.
+     1/1: $1\d_out[31:0]
+Creating decoders for process `$paramod$5ba1b67a19911e09c0ee8c956b41f966dbad00ae\peripheral_uart.$proc$cores/uart/perip_uart.v:37$18'.
+     1/3: $1\uart_ctrl[7:0]
+     2/3: $1\d_in_uart[7:0]
+     3/3: $1\ledout[0:0]
+Creating decoders for process `$paramod$5ba1b67a19911e09c0ee8c956b41f966dbad00ae\peripheral_uart.$proc$cores/uart/perip_uart.v:29$15'.
+     1/1: $1\s[1:0]
+Creating decoders for process `\peripheral_mult.$proc$cores/mult/perip_mult.v:56$13'.
+     1/3: $3\d_out[31:0]
+     2/3: $2\d_out[31:0]
+     3/3: $1\d_out[31:0]
+Creating decoders for process `\peripheral_mult.$proc$cores/mult/perip_mult.v:38$8'.
+     1/6: $2\init[0:0]
+     2/6: $2\B[15:0]
+     3/6: $2\A[15:0]
+     4/6: $1\B[15:0]
+     5/6: $1\A[15:0]
+     6/6: $1\init[0:0]
+Creating decoders for process `\peripheral_mult.$proc$cores/mult/perip_mult.v:20$7'.
+     1/2: $2\s[4:0]
+     2/2: $1\s[4:0]
+Creating decoders for process `\mult.$proc$cores/mult/mult.v:0$190'.
+Creating decoders for process `\mult.$proc$cores/mult/mult.v:32$182'.
+     1/15: $5\state[2:0]
+     2/15: $4\state[2:0]
+     3/15: $3\state[2:0]
+     4/15: $2\state[2:0]
+     5/15: $2\result[31:0]
+     6/15: $2\done[0:0]
+     7/15: $2\count[4:0]
+     8/15: $2\B[15:0]
+     9/15: $2\A[15:0]
+    10/15: $1\count[4:0]
+    11/15: $1\state[2:0]
+    12/15: $1\done[0:0]
+    13/15: $1\result[31:0]
+    14/15: $1\B[15:0]
+    15/15: $1\A[15:0]
+Creating decoders for process `$paramod$df55812022425781aef872d53070d057b210643d\uart.$proc$cores/uart/uart.v:122$204'.
+     1/5: $0\txd_reg[7:0]
+     2/5: $0\tx_count16[3:0]
+     3/5: $0\tx_bitcount[3:0]
+     4/5: $0\uart_txd[0:0]
+     5/5: $0\tx_busy[0:0]
+Creating decoders for process `$paramod$df55812022425781aef872d53070d057b210643d\uart.$proc$cores/uart/uart.v:66$196'.
+     1/7: $0\rxd_reg[7:0]
+     2/7: $0\rx_bitcount[3:0]
+     3/7: $0\rx_count16[3:0]
+     4/7: $0\rx_busy[0:0]
+     5/7: $0\rx_avail[0:0]
+     6/7: $0\rx_error[0:0]
+     7/7: $0\rx_data[7:0]
+Creating decoders for process `$paramod$df55812022425781aef872d53070d057b210643d\uart.$proc$cores/uart/uart.v:52$195'.
+Creating decoders for process `$paramod$df55812022425781aef872d53070d057b210643d\uart.$proc$cores/uart/uart.v:34$192'.
+     1/1: $0\enable16_counter[15:0]
+
+20. Executing PROC_DLATCH pass (convert process syncs to latches).
+Latch inferred for signal `\SOC_flash.\mem_rdata' from process `\SOC_flash.$proc$SOC_flash.v:140$6': $auto$proc_dlatch.cc:427:proc_dlatch$737
+Latch inferred for signal `\SOC_flash.\cs' from process `\SOC_flash.$proc$SOC_flash.v:127$5': $auto$proc_dlatch.cc:427:proc_dlatch$784
+Latch inferred for signal `$paramod$5ba1b67a19911e09c0ee8c956b41f966dbad00ae\peripheral_uart.\s' from process `$paramod$5ba1b67a19911e09c0ee8c956b41f966dbad00ae\peripheral_uart.$proc$cores/uart/perip_uart.v:29$15': $auto$proc_dlatch.cc:427:proc_dlatch$801
+No latch inferred for signal `\peripheral_mult.\s' from process `\peripheral_mult.$proc$cores/mult/perip_mult.v:20$7'.
+
+21. Executing PROC_DFF pass (convert process syncs to FFs).
+Creating register for signal `\FemtoRV32.\cycles' using process `\FemtoRV32.$proc$cores/cpu/femtorv32_quark.v:380$180'.
+  created $dff cell `$procdff$802' with positive edge clock.
+Creating register for signal `\FemtoRV32.\rs1' using process `\FemtoRV32.$proc$cores/cpu/femtorv32_quark.v:334$167'.
+  created $dff cell `$procdff$803' with positive edge clock.
+Creating register for signal `\FemtoRV32.\rs2' using process `\FemtoRV32.$proc$cores/cpu/femtorv32_quark.v:334$167'.
+  created $dff cell `$procdff$804' with positive edge clock.
+Creating register for signal `\FemtoRV32.\PC' using process `\FemtoRV32.$proc$cores/cpu/femtorv32_quark.v:334$167'.
+  created $dff cell `$procdff$805' with positive edge clock.
+Creating register for signal `\FemtoRV32.\instr' using process `\FemtoRV32.$proc$cores/cpu/femtorv32_quark.v:334$167'.
+  created $dff cell `$procdff$806' with positive edge clock.
+Creating register for signal `\FemtoRV32.\state' using process `\FemtoRV32.$proc$cores/cpu/femtorv32_quark.v:334$167'.
+  created $dff cell `$procdff$807' with positive edge clock.
+Creating register for signal `\FemtoRV32.\aluReg' using process `\FemtoRV32.$proc$cores/cpu/femtorv32_quark.v:153$92'.
+  created $dff cell `$procdff$808' with positive edge clock.
+Creating register for signal `\FemtoRV32.\aluShamt' using process `\FemtoRV32.$proc$cores/cpu/femtorv32_quark.v:153$92'.
+  created $dff cell `$procdff$809' with positive edge clock.
+Creating register for signal `\FemtoRV32.$memwr$\registerFile$cores/cpu/femtorv32_quark.v:105$40_ADDR' using process `\FemtoRV32.$proc$cores/cpu/femtorv32_quark.v:102$52'.
+  created $dff cell `$procdff$810' with positive edge clock.
+Creating register for signal `\FemtoRV32.$memwr$\registerFile$cores/cpu/femtorv32_quark.v:105$40_DATA' using process `\FemtoRV32.$proc$cores/cpu/femtorv32_quark.v:102$52'.
+  created $dff cell `$procdff$811' with positive edge clock.
+Creating register for signal `\FemtoRV32.$memwr$\registerFile$cores/cpu/femtorv32_quark.v:105$40_EN' using process `\FemtoRV32.$proc$cores/cpu/femtorv32_quark.v:102$52'.
+  created $dff cell `$procdff$812' with positive edge clock.
+Creating register for signal `\MappedSPIFlash.\CS_N' using process `\MappedSPIFlash.$proc$cores/spi_flash/MappedSPIFlash.v:35$34'.
+  created $dff cell `$procdff$813' with negative edge clock.
+Creating register for signal `\MappedSPIFlash.\snd_bitcount' using process `\MappedSPIFlash.$proc$cores/spi_flash/MappedSPIFlash.v:35$34'.
+  created $dff cell `$procdff$814' with negative edge clock.
+Creating register for signal `\MappedSPIFlash.\cmd_addr' using process `\MappedSPIFlash.$proc$cores/spi_flash/MappedSPIFlash.v:35$34'.
+  created $dff cell `$procdff$815' with negative edge clock.
+Creating register for signal `\MappedSPIFlash.\rcv_bitcount' using process `\MappedSPIFlash.$proc$cores/spi_flash/MappedSPIFlash.v:35$34'.
+  created $dff cell `$procdff$816' with negative edge clock.
+Creating register for signal `\MappedSPIFlash.\rcv_data' using process `\MappedSPIFlash.$proc$cores/spi_flash/MappedSPIFlash.v:35$34'.
+  created $dff cell `$procdff$817' with negative edge clock.
+Creating register for signal `$paramod$5ba1b67a19911e09c0ee8c956b41f966dbad00ae\peripheral_uart.\d_out' using process `$paramod$5ba1b67a19911e09c0ee8c956b41f966dbad00ae\peripheral_uart.$proc$cores/uart/perip_uart.v:50$23'.
+  created $dff cell `$procdff$818' with positive edge clock.
+Creating register for signal `$paramod$5ba1b67a19911e09c0ee8c956b41f966dbad00ae\peripheral_uart.\ledout' using process `$paramod$5ba1b67a19911e09c0ee8c956b41f966dbad00ae\peripheral_uart.$proc$cores/uart/perip_uart.v:37$18'.
+  created $dff cell `$procdff$819' with positive edge clock.
+Creating register for signal `$paramod$5ba1b67a19911e09c0ee8c956b41f966dbad00ae\peripheral_uart.\d_in_uart' using process `$paramod$5ba1b67a19911e09c0ee8c956b41f966dbad00ae\peripheral_uart.$proc$cores/uart/perip_uart.v:37$18'.
+  created $dff cell `$procdff$820' with positive edge clock.
+Creating register for signal `$paramod$5ba1b67a19911e09c0ee8c956b41f966dbad00ae\peripheral_uart.\uart_ctrl' using process `$paramod$5ba1b67a19911e09c0ee8c956b41f966dbad00ae\peripheral_uart.$proc$cores/uart/perip_uart.v:37$18'.
+  created $dff cell `$procdff$821' with positive edge clock.
+Creating register for signal `\peripheral_mult.\d_out' using process `\peripheral_mult.$proc$cores/mult/perip_mult.v:56$13'.
+  created $dff cell `$procdff$822' with positive edge clock.
+Creating register for signal `\peripheral_mult.\A' using process `\peripheral_mult.$proc$cores/mult/perip_mult.v:38$8'.
+  created $dff cell `$procdff$823' with positive edge clock.
+Creating register for signal `\peripheral_mult.\B' using process `\peripheral_mult.$proc$cores/mult/perip_mult.v:38$8'.
+  created $dff cell `$procdff$824' with positive edge clock.
+Creating register for signal `\peripheral_mult.\init' using process `\peripheral_mult.$proc$cores/mult/perip_mult.v:38$8'.
+  created $dff cell `$procdff$825' with positive edge clock.
+Creating register for signal `\mult.\A' using process `\mult.$proc$cores/mult/mult.v:32$182'.
+  created $dff cell `$procdff$828' with positive edge clock.
+Creating register for signal `\mult.\B' using process `\mult.$proc$cores/mult/mult.v:32$182'.
+  created $dff cell `$procdff$831' with positive edge clock.
+Creating register for signal `\mult.\result' using process `\mult.$proc$cores/mult/mult.v:32$182'.
+  created $adff cell `$procdff$832' with positive edge clock and positive level reset.
+Creating register for signal `\mult.\done' using process `\mult.$proc$cores/mult/mult.v:32$182'.
+  created $adff cell `$procdff$833' with positive edge clock and positive level reset.
+Creating register for signal `\mult.\state' using process `\mult.$proc$cores/mult/mult.v:32$182'.
+  created $adff cell `$procdff$834' with positive edge clock and positive level reset.
+Creating register for signal `\mult.\count' using process `\mult.$proc$cores/mult/mult.v:32$182'.
+  created $dff cell `$procdff$837' with positive edge clock.
+Creating register for signal `$paramod$df55812022425781aef872d53070d057b210643d\uart.\tx_busy' using process `$paramod$df55812022425781aef872d53070d057b210643d\uart.$proc$cores/uart/uart.v:122$204'.
+  created $dff cell `$procdff$838' with positive edge clock.
+Creating register for signal `$paramod$df55812022425781aef872d53070d057b210643d\uart.\uart_txd' using process `$paramod$df55812022425781aef872d53070d057b210643d\uart.$proc$cores/uart/uart.v:122$204'.
+  created $dff cell `$procdff$839' with positive edge clock.
+Creating register for signal `$paramod$df55812022425781aef872d53070d057b210643d\uart.\tx_bitcount' using process `$paramod$df55812022425781aef872d53070d057b210643d\uart.$proc$cores/uart/uart.v:122$204'.
+  created $dff cell `$procdff$840' with positive edge clock.
+Creating register for signal `$paramod$df55812022425781aef872d53070d057b210643d\uart.\tx_count16' using process `$paramod$df55812022425781aef872d53070d057b210643d\uart.$proc$cores/uart/uart.v:122$204'.
+  created $dff cell `$procdff$841' with positive edge clock.
+Creating register for signal `$paramod$df55812022425781aef872d53070d057b210643d\uart.\txd_reg' using process `$paramod$df55812022425781aef872d53070d057b210643d\uart.$proc$cores/uart/uart.v:122$204'.
+  created $dff cell `$procdff$842' with positive edge clock.
+Creating register for signal `$paramod$df55812022425781aef872d53070d057b210643d\uart.\rx_data' using process `$paramod$df55812022425781aef872d53070d057b210643d\uart.$proc$cores/uart/uart.v:66$196'.
+  created $dff cell `$procdff$843' with positive edge clock.
+Creating register for signal `$paramod$df55812022425781aef872d53070d057b210643d\uart.\rx_error' using process `$paramod$df55812022425781aef872d53070d057b210643d\uart.$proc$cores/uart/uart.v:66$196'.
+  created $dff cell `$procdff$844' with positive edge clock.
+Creating register for signal `$paramod$df55812022425781aef872d53070d057b210643d\uart.\rx_avail' using process `$paramod$df55812022425781aef872d53070d057b210643d\uart.$proc$cores/uart/uart.v:66$196'.
+  created $dff cell `$procdff$845' with positive edge clock.
+Creating register for signal `$paramod$df55812022425781aef872d53070d057b210643d\uart.\rx_busy' using process `$paramod$df55812022425781aef872d53070d057b210643d\uart.$proc$cores/uart/uart.v:66$196'.
+  created $dff cell `$procdff$846' with positive edge clock.
+Creating register for signal `$paramod$df55812022425781aef872d53070d057b210643d\uart.\rx_count16' using process `$paramod$df55812022425781aef872d53070d057b210643d\uart.$proc$cores/uart/uart.v:66$196'.
+  created $dff cell `$procdff$847' with positive edge clock.
+Creating register for signal `$paramod$df55812022425781aef872d53070d057b210643d\uart.\rx_bitcount' using process `$paramod$df55812022425781aef872d53070d057b210643d\uart.$proc$cores/uart/uart.v:66$196'.
+  created $dff cell `$procdff$848' with positive edge clock.
+Creating register for signal `$paramod$df55812022425781aef872d53070d057b210643d\uart.\rxd_reg' using process `$paramod$df55812022425781aef872d53070d057b210643d\uart.$proc$cores/uart/uart.v:66$196'.
+  created $dff cell `$procdff$849' with positive edge clock.
+Creating register for signal `$paramod$df55812022425781aef872d53070d057b210643d\uart.\uart_rxd1' using process `$paramod$df55812022425781aef872d53070d057b210643d\uart.$proc$cores/uart/uart.v:52$195'.
+  created $dff cell `$procdff$850' with positive edge clock.
+Creating register for signal `$paramod$df55812022425781aef872d53070d057b210643d\uart.\uart_rxd2' using process `$paramod$df55812022425781aef872d53070d057b210643d\uart.$proc$cores/uart/uart.v:52$195'.
+  created $dff cell `$procdff$851' with positive edge clock.
+Creating register for signal `$paramod$df55812022425781aef872d53070d057b210643d\uart.\enable16_counter' using process `$paramod$df55812022425781aef872d53070d057b210643d\uart.$proc$cores/uart/uart.v:34$192'.
+  created $dff cell `$procdff$852' with positive edge clock.
+
+22. Executing PROC_MEMWR pass (convert process memory writes to cells).
+
+23. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Found and cleaned up 1 empty switch in `\SOC_flash.$proc$SOC_flash.v:140$6'.
+Removing empty process `SOC_flash.$proc$SOC_flash.v:140$6'.
+Found and cleaned up 1 empty switch in `\SOC_flash.$proc$SOC_flash.v:127$5'.
+Removing empty process `SOC_flash.$proc$SOC_flash.v:127$5'.
+Removing empty process `FemtoRV32.$proc$cores/cpu/femtorv32_quark.v:380$180'.
+Found and cleaned up 4 empty switches in `\FemtoRV32.$proc$cores/cpu/femtorv32_quark.v:334$167'.
+Removing empty process `FemtoRV32.$proc$cores/cpu/femtorv32_quark.v:334$167'.
+Found and cleaned up 3 empty switches in `\FemtoRV32.$proc$cores/cpu/femtorv32_quark.v:153$92'.
+Removing empty process `FemtoRV32.$proc$cores/cpu/femtorv32_quark.v:153$92'.
+Found and cleaned up 2 empty switches in `\FemtoRV32.$proc$cores/cpu/femtorv32_quark.v:102$52'.
+Removing empty process `FemtoRV32.$proc$cores/cpu/femtorv32_quark.v:102$52'.
+Removing empty process `MappedSPIFlash.$proc$cores/spi_flash/MappedSPIFlash.v:0$39'.
+Found and cleaned up 5 empty switches in `\MappedSPIFlash.$proc$cores/spi_flash/MappedSPIFlash.v:35$34'.
+Removing empty process `MappedSPIFlash.$proc$cores/spi_flash/MappedSPIFlash.v:35$34'.
+Removing empty process `$paramod$5ba1b67a19911e09c0ee8c956b41f966dbad00ae\peripheral_uart.$proc$cores/uart/perip_uart.v:21$26'.
+Removing empty process `$paramod$5ba1b67a19911e09c0ee8c956b41f966dbad00ae\peripheral_uart.$proc$cores/uart/perip_uart.v:20$25'.
+Removing empty process `$paramod$5ba1b67a19911e09c0ee8c956b41f966dbad00ae\peripheral_uart.$proc$cores/uart/perip_uart.v:0$24'.
+Found and cleaned up 1 empty switch in `$paramod$5ba1b67a19911e09c0ee8c956b41f966dbad00ae\peripheral_uart.$proc$cores/uart/perip_uart.v:50$23'.
+Removing empty process `$paramod$5ba1b67a19911e09c0ee8c956b41f966dbad00ae\peripheral_uart.$proc$cores/uart/perip_uart.v:50$23'.
+Found and cleaned up 1 empty switch in `$paramod$5ba1b67a19911e09c0ee8c956b41f966dbad00ae\peripheral_uart.$proc$cores/uart/perip_uart.v:37$18'.
+Removing empty process `$paramod$5ba1b67a19911e09c0ee8c956b41f966dbad00ae\peripheral_uart.$proc$cores/uart/perip_uart.v:37$18'.
+Found and cleaned up 1 empty switch in `$paramod$5ba1b67a19911e09c0ee8c956b41f966dbad00ae\peripheral_uart.$proc$cores/uart/perip_uart.v:29$15'.
+Removing empty process `$paramod$5ba1b67a19911e09c0ee8c956b41f966dbad00ae\peripheral_uart.$proc$cores/uart/perip_uart.v:29$15'.
+Found and cleaned up 3 empty switches in `\peripheral_mult.$proc$cores/mult/perip_mult.v:56$13'.
+Removing empty process `peripheral_mult.$proc$cores/mult/perip_mult.v:56$13'.
+Found and cleaned up 2 empty switches in `\peripheral_mult.$proc$cores/mult/perip_mult.v:38$8'.
+Removing empty process `peripheral_mult.$proc$cores/mult/perip_mult.v:38$8'.
+Found and cleaned up 2 empty switches in `\peripheral_mult.$proc$cores/mult/perip_mult.v:20$7'.
+Removing empty process `peripheral_mult.$proc$cores/mult/perip_mult.v:20$7'.
+Removing empty process `mult.$proc$cores/mult/mult.v:0$190'.
+Found and cleaned up 4 empty switches in `\mult.$proc$cores/mult/mult.v:32$182'.
+Removing empty process `mult.$proc$cores/mult/mult.v:32$182'.
+Found and cleaned up 7 empty switches in `$paramod$df55812022425781aef872d53070d057b210643d\uart.$proc$cores/uart/uart.v:122$204'.
+Removing empty process `$paramod$df55812022425781aef872d53070d057b210643d\uart.$proc$cores/uart/uart.v:122$204'.
+Found and cleaned up 10 empty switches in `$paramod$df55812022425781aef872d53070d057b210643d\uart.$proc$cores/uart/uart.v:66$196'.
+Removing empty process `$paramod$df55812022425781aef872d53070d057b210643d\uart.$proc$cores/uart/uart.v:66$196'.
+Removing empty process `$paramod$df55812022425781aef872d53070d057b210643d\uart.$proc$cores/uart/uart.v:52$195'.
+Found and cleaned up 2 empty switches in `$paramod$df55812022425781aef872d53070d057b210643d\uart.$proc$cores/uart/uart.v:34$192'.
+Removing empty process `$paramod$df55812022425781aef872d53070d057b210643d\uart.$proc$cores/uart/uart.v:34$192'.
+Cleaned up 49 empty switches.
+
+24. Executing CHECK pass (checking for obvious problems).
+Checking module SOC_flash...
+Warning: Wire SOC_flash.\dpram_dout [31] is used but has no driver.
+Warning: Wire SOC_flash.\dpram_dout [30] is used but has no driver.
+Warning: Wire SOC_flash.\dpram_dout [29] is used but has no driver.
+Warning: Wire SOC_flash.\dpram_dout [28] is used but has no driver.
+Warning: Wire SOC_flash.\dpram_dout [27] is used but has no driver.
+Warning: Wire SOC_flash.\dpram_dout [26] is used but has no driver.
+Warning: Wire SOC_flash.\dpram_dout [25] is used but has no driver.
+Warning: Wire SOC_flash.\dpram_dout [24] is used but has no driver.
+Warning: Wire SOC_flash.\dpram_dout [23] is used but has no driver.
+Warning: Wire SOC_flash.\dpram_dout [22] is used but has no driver.
+Warning: Wire SOC_flash.\dpram_dout [21] is used but has no driver.
+Warning: Wire SOC_flash.\dpram_dout [20] is used but has no driver.
+Warning: Wire SOC_flash.\dpram_dout [19] is used but has no driver.
+Warning: Wire SOC_flash.\dpram_dout [18] is used but has no driver.
+Warning: Wire SOC_flash.\dpram_dout [17] is used but has no driver.
+Warning: Wire SOC_flash.\dpram_dout [16] is used but has no driver.
+Warning: Wire SOC_flash.\dpram_dout [15] is used but has no driver.
+Warning: Wire SOC_flash.\dpram_dout [14] is used but has no driver.
+Warning: Wire SOC_flash.\dpram_dout [13] is used but has no driver.
+Warning: Wire SOC_flash.\dpram_dout [12] is used but has no driver.
+Warning: Wire SOC_flash.\dpram_dout [11] is used but has no driver.
+Warning: Wire SOC_flash.\dpram_dout [10] is used but has no driver.
+Warning: Wire SOC_flash.\dpram_dout [9] is used but has no driver.
+Warning: Wire SOC_flash.\dpram_dout [8] is used but has no driver.
+Warning: Wire SOC_flash.\dpram_dout [7] is used but has no driver.
+Warning: Wire SOC_flash.\dpram_dout [6] is used but has no driver.
+Warning: Wire SOC_flash.\dpram_dout [5] is used but has no driver.
+Warning: Wire SOC_flash.\dpram_dout [4] is used but has no driver.
+Warning: Wire SOC_flash.\dpram_dout [3] is used but has no driver.
+Warning: Wire SOC_flash.\dpram_dout [2] is used but has no driver.
+Warning: Wire SOC_flash.\dpram_dout [1] is used but has no driver.
+Warning: Wire SOC_flash.\dpram_dout [0] is used but has no driver.
+Warning: Wire SOC_flash.\gpio_dout [31] is used but has no driver.
+Warning: Wire SOC_flash.\gpio_dout [30] is used but has no driver.
+Warning: Wire SOC_flash.\gpio_dout [29] is used but has no driver.
+Warning: Wire SOC_flash.\gpio_dout [28] is used but has no driver.
+Warning: Wire SOC_flash.\gpio_dout [27] is used but has no driver.
+Warning: Wire SOC_flash.\gpio_dout [26] is used but has no driver.
+Warning: Wire SOC_flash.\gpio_dout [25] is used but has no driver.
+Warning: Wire SOC_flash.\gpio_dout [24] is used but has no driver.
+Warning: Wire SOC_flash.\gpio_dout [23] is used but has no driver.
+Warning: Wire SOC_flash.\gpio_dout [22] is used but has no driver.
+Warning: Wire SOC_flash.\gpio_dout [21] is used but has no driver.
+Warning: Wire SOC_flash.\gpio_dout [20] is used but has no driver.
+Warning: Wire SOC_flash.\gpio_dout [19] is used but has no driver.
+Warning: Wire SOC_flash.\gpio_dout [18] is used but has no driver.
+Warning: Wire SOC_flash.\gpio_dout [17] is used but has no driver.
+Warning: Wire SOC_flash.\gpio_dout [16] is used but has no driver.
+Warning: Wire SOC_flash.\gpio_dout [15] is used but has no driver.
+Warning: Wire SOC_flash.\gpio_dout [14] is used but has no driver.
+Warning: Wire SOC_flash.\gpio_dout [13] is used but has no driver.
+Warning: Wire SOC_flash.\gpio_dout [12] is used but has no driver.
+Warning: Wire SOC_flash.\gpio_dout [11] is used but has no driver.
+Warning: Wire SOC_flash.\gpio_dout [10] is used but has no driver.
+Warning: Wire SOC_flash.\gpio_dout [9] is used but has no driver.
+Warning: Wire SOC_flash.\gpio_dout [8] is used but has no driver.
+Warning: Wire SOC_flash.\gpio_dout [7] is used but has no driver.
+Warning: Wire SOC_flash.\gpio_dout [6] is used but has no driver.
+Warning: Wire SOC_flash.\gpio_dout [5] is used but has no driver.
+Warning: Wire SOC_flash.\gpio_dout [4] is used but has no driver.
+Warning: Wire SOC_flash.\gpio_dout [3] is used but has no driver.
+Warning: Wire SOC_flash.\gpio_dout [2] is used but has no driver.
+Warning: Wire SOC_flash.\gpio_dout [1] is used but has no driver.
+Warning: Wire SOC_flash.\gpio_dout [0] is used but has no driver.
+Warning: Wire SOC_flash.\div_dout [31] is used but has no driver.
+Warning: Wire SOC_flash.\div_dout [30] is used but has no driver.
+Warning: Wire SOC_flash.\div_dout [29] is used but has no driver.
+Warning: Wire SOC_flash.\div_dout [28] is used but has no driver.
+Warning: Wire SOC_flash.\div_dout [27] is used but has no driver.
+Warning: Wire SOC_flash.\div_dout [26] is used but has no driver.
+Warning: Wire SOC_flash.\div_dout [25] is used but has no driver.
+Warning: Wire SOC_flash.\div_dout [24] is used but has no driver.
+Warning: Wire SOC_flash.\div_dout [23] is used but has no driver.
+Warning: Wire SOC_flash.\div_dout [22] is used but has no driver.
+Warning: Wire SOC_flash.\div_dout [21] is used but has no driver.
+Warning: Wire SOC_flash.\div_dout [20] is used but has no driver.
+Warning: Wire SOC_flash.\div_dout [19] is used but has no driver.
+Warning: Wire SOC_flash.\div_dout [18] is used but has no driver.
+Warning: Wire SOC_flash.\div_dout [17] is used but has no driver.
+Warning: Wire SOC_flash.\div_dout [16] is used but has no driver.
+Warning: Wire SOC_flash.\div_dout [15] is used but has no driver.
+Warning: Wire SOC_flash.\div_dout [14] is used but has no driver.
+Warning: Wire SOC_flash.\div_dout [13] is used but has no driver.
+Warning: Wire SOC_flash.\div_dout [12] is used but has no driver.
+Warning: Wire SOC_flash.\div_dout [11] is used but has no driver.
+Warning: Wire SOC_flash.\div_dout [10] is used but has no driver.
+Warning: Wire SOC_flash.\div_dout [9] is used but has no driver.
+Warning: Wire SOC_flash.\div_dout [8] is used but has no driver.
+Warning: Wire SOC_flash.\div_dout [7] is used but has no driver.
+Warning: Wire SOC_flash.\div_dout [6] is used but has no driver.
+Warning: Wire SOC_flash.\div_dout [5] is used but has no driver.
+Warning: Wire SOC_flash.\div_dout [4] is used but has no driver.
+Warning: Wire SOC_flash.\div_dout [3] is used but has no driver.
+Warning: Wire SOC_flash.\div_dout [2] is used but has no driver.
+Warning: Wire SOC_flash.\div_dout [1] is used but has no driver.
+Warning: Wire SOC_flash.\div_dout [0] is used but has no driver.
+Warning: Wire SOC_flash.\bin2bcd_dout [31] is used but has no driver.
+Warning: Wire SOC_flash.\bin2bcd_dout [30] is used but has no driver.
+Warning: Wire SOC_flash.\bin2bcd_dout [29] is used but has no driver.
+Warning: Wire SOC_flash.\bin2bcd_dout [28] is used but has no driver.
+Warning: Wire SOC_flash.\bin2bcd_dout [27] is used but has no driver.
+Warning: Wire SOC_flash.\bin2bcd_dout [26] is used but has no driver.
+Warning: Wire SOC_flash.\bin2bcd_dout [25] is used but has no driver.
+Warning: Wire SOC_flash.\bin2bcd_dout [24] is used but has no driver.
+Warning: Wire SOC_flash.\bin2bcd_dout [23] is used but has no driver.
+Warning: Wire SOC_flash.\bin2bcd_dout [22] is used but has no driver.
+Warning: Wire SOC_flash.\bin2bcd_dout [21] is used but has no driver.
+Warning: Wire SOC_flash.\bin2bcd_dout [20] is used but has no driver.
+Warning: Wire SOC_flash.\bin2bcd_dout [19] is used but has no driver.
+Warning: Wire SOC_flash.\bin2bcd_dout [18] is used but has no driver.
+Warning: Wire SOC_flash.\bin2bcd_dout [17] is used but has no driver.
+Warning: Wire SOC_flash.\bin2bcd_dout [16] is used but has no driver.
+Warning: Wire SOC_flash.\bin2bcd_dout [15] is used but has no driver.
+Warning: Wire SOC_flash.\bin2bcd_dout [14] is used but has no driver.
+Warning: Wire SOC_flash.\bin2bcd_dout [13] is used but has no driver.
+Warning: Wire SOC_flash.\bin2bcd_dout [12] is used but has no driver.
+Warning: Wire SOC_flash.\bin2bcd_dout [11] is used but has no driver.
+Warning: Wire SOC_flash.\bin2bcd_dout [10] is used but has no driver.
+Warning: Wire SOC_flash.\bin2bcd_dout [9] is used but has no driver.
+Warning: Wire SOC_flash.\bin2bcd_dout [8] is used but has no driver.
+Warning: Wire SOC_flash.\bin2bcd_dout [7] is used but has no driver.
+Warning: Wire SOC_flash.\bin2bcd_dout [6] is used but has no driver.
+Warning: Wire SOC_flash.\bin2bcd_dout [5] is used but has no driver.
+Warning: Wire SOC_flash.\bin2bcd_dout [4] is used but has no driver.
+Warning: Wire SOC_flash.\bin2bcd_dout [3] is used but has no driver.
+Warning: Wire SOC_flash.\bin2bcd_dout [2] is used but has no driver.
+Warning: Wire SOC_flash.\bin2bcd_dout [1] is used but has no driver.
+Warning: Wire SOC_flash.\bin2bcd_dout [0] is used but has no driver.
+Checking module FemtoRV32...
+Checking module MappedSPIFlash...
+Checking module $paramod$5ba1b67a19911e09c0ee8c956b41f966dbad00ae\peripheral_uart...
+Checking module peripheral_mult...
+Checking module mult...
+Checking module $paramod$df55812022425781aef872d53070d057b210643d\uart...
+Found and reported 128 problems.
+
+25. Executing OPT_EXPR pass (perform const folding).
+Optimizing module SOC_flash.
+Optimizing module FemtoRV32.
+Optimizing module MappedSPIFlash.
+Optimizing module $paramod$5ba1b67a19911e09c0ee8c956b41f966dbad00ae\peripheral_uart.
+Optimizing module peripheral_mult.
+Optimizing module mult.
+Optimizing module $paramod$df55812022425781aef872d53070d057b210643d\uart.
+
+26. Executing FLATTEN pass (flatten design).
+Deleting now unused module FemtoRV32.
+Deleting now unused module MappedSPIFlash.
+Deleting now unused module $paramod$5ba1b67a19911e09c0ee8c956b41f966dbad00ae\peripheral_uart.
+Deleting now unused module peripheral_mult.
+Deleting now unused module mult.
+Deleting now unused module $paramod$df55812022425781aef872d53070d057b210643d\uart.
+
+27. Executing OPT_EXPR pass (perform const folding).
+Optimizing module SOC_flash.
+
+28. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \SOC_flash..
+Removed 16 unused cells and 336 unused wires.
+
+29. Executing OPT pass (performing simple optimizations).
+
+29.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module SOC_flash.
+
+29.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\SOC_flash'.
+Removed a total of 21 cells.
+
+29.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \SOC_flash..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+      Replacing known input bits on port A of cell $flatten\CPU.$procmux$233: \CPU.state -> { 3'100 \CPU.state [0] }
+      Replacing known input bits on port A of cell $flatten\CPU.$procmux$238: \CPU.state -> { 3'001 \CPU.state [0] }
+      Replacing known input bits on port A of cell $flatten\per_uart.\uart0.$procmux$613: \per_uart.uart0.rx_busy -> 1'1
+      Replacing known input bits on port A of cell $flatten\per_uart.\uart0.$procmux$609: \per_uart.uart0.rx_busy -> 1'1
+      Replacing known input bits on port A of cell $flatten\per_uart.\uart0.$procmux$606: \per_uart.uart0.rx_busy -> 1'1
+      Replacing known input bits on port B of cell $flatten\per_uart.\uart0.$procmux$616: \per_uart.uart0.rx_busy -> 1'0
+  Analyzing evaluation results.
+    dead port 2/2 on $mux $flatten\CPU.$procmux$297.
+    dead port 2/2 on $mux $flatten\CPU.$procmux$303.
+    dead port 2/2 on $mux $flatten\CPU.$procmux$309.
+    dead port 2/2 on $mux $flatten\mult1.$procmux$371.
+    dead port 2/2 on $mux $flatten\mult1.$procmux$374.
+    dead port 2/2 on $mux $flatten\mult1.$procmux$380.
+    dead port 2/2 on $mux $flatten\mult1.$procmux$389.
+    dead port 2/2 on $mux $flatten\mult1.$procmux$395.
+    dead port 2/2 on $mux $flatten\mult1.$procmux$401.
+    dead port 2/2 on $mux $flatten\mult1.$procmux$420.
+    dead port 2/2 on $mux $flatten\mult1.\mult1.$procmux$431.
+    dead port 2/2 on $mux $flatten\mult1.\mult1.$procmux$440.
+    dead port 2/2 on $mux $flatten\mult1.\mult1.$procmux$451.
+Removed 13 multiplexer ports.
+
+29.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \SOC_flash.
+    Consolidated identical input bits for $mux cell $flatten\CPU.$procmux$295:
+      Old ports: A=0, B=32'11111111111111111111111111111111, Y=$flatten\CPU.$procmux$295_Y
+      New ports: A=1'0, B=1'1, Y=$flatten\CPU.$procmux$295_Y [0]
+      New connections: $flatten\CPU.$procmux$295_Y [31:1] = { $flatten\CPU.$procmux$295_Y [0] $flatten\CPU.$procmux$295_Y [0] $flatten\CPU.$procmux$295_Y [0] $flatten\CPU.$procmux$295_Y [0] $flatten\CPU.$procmux$295_Y [0] $flatten\CPU.$procmux$295_Y [0] $flatten\CPU.$procmux$295_Y [0] $flatten\CPU.$procmux$295_Y [0] $flatten\CPU.$procmux$295_Y [0] $flatten\CPU.$procmux$295_Y [0] $flatten\CPU.$procmux$295_Y [0] $flatten\CPU.$procmux$295_Y [0] $flatten\CPU.$procmux$295_Y [0] $flatten\CPU.$procmux$295_Y [0] $flatten\CPU.$procmux$295_Y [0] $flatten\CPU.$procmux$295_Y [0] $flatten\CPU.$procmux$295_Y [0] $flatten\CPU.$procmux$295_Y [0] $flatten\CPU.$procmux$295_Y [0] $flatten\CPU.$procmux$295_Y [0] $flatten\CPU.$procmux$295_Y [0] $flatten\CPU.$procmux$295_Y [0] $flatten\CPU.$procmux$295_Y [0] $flatten\CPU.$procmux$295_Y [0] $flatten\CPU.$procmux$295_Y [0] $flatten\CPU.$procmux$295_Y [0] $flatten\CPU.$procmux$295_Y [0] $flatten\CPU.$procmux$295_Y [0] $flatten\CPU.$procmux$295_Y [0] $flatten\CPU.$procmux$295_Y [0] $flatten\CPU.$procmux$295_Y [0] }
+    New ctrl vector for $pmux cell $flatten\mult1.\mult1.$procmux$463: { $auto$opt_reduce.cc:134:opt_mux$855 $flatten\mult1.\mult1.$procmux$456_CMP }
+    New ctrl vector for $pmux cell $flatten\mult1.\mult1.$procmux$468: { $auto$opt_reduce.cc:134:opt_mux$857 $flatten\mult1.\mult1.$procmux$455_CMP }
+    New ctrl vector for $pmux cell $flatten\per_uart.$procmux$363: $flatten\mult1.$procmux$416_CMP
+    New ctrl vector for $pmux cell $procmux$215: { $procmux$221_CMP $procmux$220_CMP $procmux$219_CMP $procmux$218_CMP $procmux$217_CMP $procmux$216_CMP }
+    New ctrl vector for $pmux cell $procmux$224: { $procmux$230_CMP $procmux$229_CMP $procmux$228_CMP $procmux$227_CMP $procmux$226_CMP $procmux$225_CMP }
+  Optimizing cells in module \SOC_flash.
+    Consolidated identical input bits for $mux cell $flatten\CPU.$procmux$312:
+      Old ports: A=0, B=$flatten\CPU.$procmux$295_Y, Y=$flatten\CPU.$0$memwr$\registerFile$cores/cpu/femtorv32_quark.v:105$40_EN[31:0]$55
+      New ports: A=1'0, B=$flatten\CPU.$procmux$295_Y [0], Y=$flatten\CPU.$0$memwr$\registerFile$cores/cpu/femtorv32_quark.v:105$40_EN[31:0]$55 [0]
+      New connections: $flatten\CPU.$0$memwr$\registerFile$cores/cpu/femtorv32_quark.v:105$40_EN[31:0]$55 [31:1] = { $flatten\CPU.$0$memwr$\registerFile$cores/cpu/femtorv32_quark.v:105$40_EN[31:0]$55 [0] $flatten\CPU.$0$memwr$\registerFile$cores/cpu/femtorv32_quark.v:105$40_EN[31:0]$55 [0] $flatten\CPU.$0$memwr$\registerFile$cores/cpu/femtorv32_quark.v:105$40_EN[31:0]$55 [0] $flatten\CPU.$0$memwr$\registerFile$cores/cpu/femtorv32_quark.v:105$40_EN[31:0]$55 [0] $flatten\CPU.$0$memwr$\registerFile$cores/cpu/femtorv32_quark.v:105$40_EN[31:0]$55 [0] $flatten\CPU.$0$memwr$\registerFile$cores/cpu/femtorv32_quark.v:105$40_EN[31:0]$55 [0] $flatten\CPU.$0$memwr$\registerFile$cores/cpu/femtorv32_quark.v:105$40_EN[31:0]$55 [0] $flatten\CPU.$0$memwr$\registerFile$cores/cpu/femtorv32_quark.v:105$40_EN[31:0]$55 [0] $flatten\CPU.$0$memwr$\registerFile$cores/cpu/femtorv32_quark.v:105$40_EN[31:0]$55 [0] $flatten\CPU.$0$memwr$\registerFile$cores/cpu/femtorv32_quark.v:105$40_EN[31:0]$55 [0] $flatten\CPU.$0$memwr$\registerFile$cores/cpu/femtorv32_quark.v:105$40_EN[31:0]$55 [0] $flatten\CPU.$0$memwr$\registerFile$cores/cpu/femtorv32_quark.v:105$40_EN[31:0]$55 [0] $flatten\CPU.$0$memwr$\registerFile$cores/cpu/femtorv32_quark.v:105$40_EN[31:0]$55 [0] $flatten\CPU.$0$memwr$\registerFile$cores/cpu/femtorv32_quark.v:105$40_EN[31:0]$55 [0] $flatten\CPU.$0$memwr$\registerFile$cores/cpu/femtorv32_quark.v:105$40_EN[31:0]$55 [0] $flatten\CPU.$0$memwr$\registerFile$cores/cpu/femtorv32_quark.v:105$40_EN[31:0]$55 [0] $flatten\CPU.$0$memwr$\registerFile$cores/cpu/femtorv32_quark.v:105$40_EN[31:0]$55 [0] $flatten\CPU.$0$memwr$\registerFile$cores/cpu/femtorv32_quark.v:105$40_EN[31:0]$55 [0] $flatten\CPU.$0$memwr$\registerFile$cores/cpu/femtorv32_quark.v:105$40_EN[31:0]$55 [0] $flatten\CPU.$0$memwr$\registerFile$cores/cpu/femtorv32_quark.v:105$40_EN[31:0]$55 [0] $flatten\CPU.$0$memwr$\registerFile$cores/cpu/femtorv32_quark.v:105$40_EN[31:0]$55 [0] $flatten\CPU.$0$memwr$\registerFile$cores/cpu/femtorv32_quark.v:105$40_EN[31:0]$55 [0] $flatten\CPU.$0$memwr$\registerFile$cores/cpu/femtorv32_quark.v:105$40_EN[31:0]$55 [0] $flatten\CPU.$0$memwr$\registerFile$cores/cpu/femtorv32_quark.v:105$40_EN[31:0]$55 [0] $flatten\CPU.$0$memwr$\registerFile$cores/cpu/femtorv32_quark.v:105$40_EN[31:0]$55 [0] $flatten\CPU.$0$memwr$\registerFile$cores/cpu/femtorv32_quark.v:105$40_EN[31:0]$55 [0] $flatten\CPU.$0$memwr$\registerFile$cores/cpu/femtorv32_quark.v:105$40_EN[31:0]$55 [0] $flatten\CPU.$0$memwr$\registerFile$cores/cpu/femtorv32_quark.v:105$40_EN[31:0]$55 [0] $flatten\CPU.$0$memwr$\registerFile$cores/cpu/femtorv32_quark.v:105$40_EN[31:0]$55 [0] $flatten\CPU.$0$memwr$\registerFile$cores/cpu/femtorv32_quark.v:105$40_EN[31:0]$55 [0] $flatten\CPU.$0$memwr$\registerFile$cores/cpu/femtorv32_quark.v:105$40_EN[31:0]$55 [0] }
+  Optimizing cells in module \SOC_flash.
+Performed a total of 7 changes.
+
+29.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\SOC_flash'.
+Removed a total of 2 cells.
+
+29.6. Executing OPT_DFF pass (perform DFF optimizations).
+
+29.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \SOC_flash..
+Removed 0 unused cells and 39 unused wires.
+
+29.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module SOC_flash.
+
+29.9. Rerunning OPT passes. (Maybe there is more to do..)
+
+29.10. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \SOC_flash..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+
+29.11. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \SOC_flash.
+Performed a total of 0 changes.
+
+29.12. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\SOC_flash'.
+Removed a total of 0 cells.
+
+29.13. Executing OPT_DFF pass (perform DFF optimizations).
+
+29.14. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \SOC_flash..
+
+29.15. Executing OPT_EXPR pass (perform const folding).
+Optimizing module SOC_flash.
+
+29.16. Finished OPT passes. (There is nothing left to do.)
+
+30. Executing FSM pass (extract and optimize FSM).
+
+30.1. Executing FSM_DETECT pass (finding FSMs in design).
+Not marking SOC_flash.mult1.mult1.state as FSM state register:
+    Circuit seems to be self-resetting.
+
+30.2. Executing FSM_EXTRACT pass (extracting FSM from design).
+
+30.3. Executing FSM_OPT pass (simple optimizations of FSMs).
+
+30.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \SOC_flash..
+
+30.5. Executing FSM_OPT pass (simple optimizations of FSMs).
+
+30.6. Executing FSM_RECODE pass (re-assigning FSM state encoding).
+
+30.7. Executing FSM_INFO pass (dumping all available information on FSM cells).
+
+30.8. Executing FSM_MAP pass (mapping FSMs to basic logic).
+
+31. Executing OPT pass (performing simple optimizations).
+
+31.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module SOC_flash.
+
+31.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\SOC_flash'.
+Removed a total of 0 cells.
+
+31.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \SOC_flash..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+
+31.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \SOC_flash.
+Performed a total of 0 changes.
+
+31.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\SOC_flash'.
+Removed a total of 0 cells.
+
+31.6. Executing OPT_DFF pass (perform DFF optimizations).
+Adding SRST signal on $flatten\per_uart.\uart0.$procdff$852 ($dff) from module SOC_flash (D = $flatten\per_uart.\uart0.$sub$cores/uart/uart.v:39$193_Y [15:0], Q = \per_uart.uart0.enable16_counter, rval = 16'0000000000001100).
+Adding EN signal on $flatten\per_uart.\uart0.$procdff$849 ($dff) from module SOC_flash (D = { \per_uart.uart0.uart_rxd2 \per_uart.uart0.rxd_reg [7:1] }, Q = \per_uart.uart0.rxd_reg).
+Adding SRST signal on $flatten\per_uart.\uart0.$procdff$848 ($dff) from module SOC_flash (D = $flatten\per_uart.\uart0.$procmux$590_Y, Q = \per_uart.uart0.rx_bitcount, rval = 4'0000).
+Adding EN signal on $auto$opt_dff.cc:682:run$870 ($sdff) from module SOC_flash (D = $flatten\per_uart.\uart0.$procmux$588_Y, Q = \per_uart.uart0.rx_bitcount).
+Adding SRST signal on $flatten\per_uart.\uart0.$procdff$847 ($dff) from module SOC_flash (D = $flatten\per_uart.\uart0.$procmux$600_Y, Q = \per_uart.uart0.rx_count16, rval = 4'0000).
+Adding EN signal on $auto$opt_dff.cc:682:run$878 ($sdff) from module SOC_flash (D = $flatten\per_uart.\uart0.$procmux$598_Y, Q = \per_uart.uart0.rx_count16).
+Adding SRST signal on $flatten\per_uart.\uart0.$procdff$846 ($dff) from module SOC_flash (D = $flatten\per_uart.\uart0.$procmux$620_Y, Q = \per_uart.uart0.rx_busy, rval = 1'0).
+Adding EN signal on $auto$opt_dff.cc:682:run$884 ($sdff) from module SOC_flash (D = $flatten\per_uart.\uart0.$procmux$618_Y, Q = \per_uart.uart0.rx_busy).
+Adding SRST signal on $flatten\per_uart.\uart0.$procdff$845 ($dff) from module SOC_flash (D = $flatten\per_uart.\uart0.$procmux$641_Y, Q = \per_uart.uart0.rx_avail, rval = 1'0).
+Adding SRST signal on $flatten\per_uart.\uart0.$procdff$844 ($dff) from module SOC_flash (D = $flatten\per_uart.\uart0.$procmux$662_Y, Q = \per_uart.uart0.rx_error, rval = 1'0).
+Adding EN signal on $flatten\per_uart.\uart0.$procdff$843 ($dff) from module SOC_flash (D = \per_uart.uart0.rxd_reg, Q = \per_uart.uart0.rx_data).
+Adding EN signal on $flatten\per_uart.\uart0.$procdff$842 ($dff) from module SOC_flash (D = $flatten\per_uart.\uart0.$procmux$503_Y, Q = \per_uart.uart0.txd_reg).
+Adding SRST signal on $flatten\per_uart.\uart0.$procdff$841 ($dff) from module SOC_flash (D = $flatten\per_uart.\uart0.$procmux$510_Y, Q = \per_uart.uart0.tx_count16, rval = 4'0000).
+Adding EN signal on $auto$opt_dff.cc:682:run$894 ($sdff) from module SOC_flash (D = $flatten\per_uart.\uart0.$procmux$510_Y, Q = \per_uart.uart0.tx_count16).
+Adding EN signal on $flatten\per_uart.\uart0.$procdff$840 ($dff) from module SOC_flash (D = $flatten\per_uart.\uart0.$procmux$528_Y, Q = \per_uart.uart0.tx_bitcount).
+Adding SRST signal on $flatten\per_uart.\uart0.$procdff$839 ($dff) from module SOC_flash (D = $flatten\per_uart.\uart0.$procmux$544_Y, Q = \per_uart.uart0.uart_txd, rval = 1'1).
+Adding EN signal on $auto$opt_dff.cc:682:run$899 ($sdff) from module SOC_flash (D = $flatten\per_uart.\uart0.$procmux$540_Y, Q = \per_uart.uart0.uart_txd).
+Adding SRST signal on $flatten\per_uart.\uart0.$procdff$838 ($dff) from module SOC_flash (D = $flatten\per_uart.\uart0.$procmux$562_Y, Q = \per_uart.uart0.tx_busy, rval = 1'0).
+Adding SRST signal on $flatten\per_uart.$procdff$821 ($dff) from module SOC_flash (D = $flatten\per_uart.$ternary$cores/uart/perip_uart.v:44$22_Y, Q = \per_uart.uart_ctrl, rval = 8'00000000).
+Adding EN signal on $auto$opt_dff.cc:682:run$906 ($sdff) from module SOC_flash (D = { \CPU.rs2 [7:3] \CPU.rs2 [1:0] }, Q = { \per_uart.uart_ctrl [7:3] \per_uart.uart_ctrl [1:0] }).
+Adding SRST signal on $flatten\per_uart.$procdff$820 ($dff) from module SOC_flash (D = $flatten\per_uart.$ternary$cores/uart/perip_uart.v:43$20_Y, Q = \per_uart.d_in_uart, rval = 8'00000000).
+Adding EN signal on $auto$opt_dff.cc:682:run$908 ($sdff) from module SOC_flash (D = \CPU.rs2 [7:0], Q = \per_uart.d_in_uart).
+Adding EN signal on $flatten\per_uart.$procdff$819 ($dff) from module SOC_flash (D = $flatten\per_uart.$ternary$cores/uart/perip_uart.v:44$22_Y [2], Q = \per_uart.ledout).
+Adding EN signal on $flatten\per_uart.$procdff$818 ($dff) from module SOC_flash (D = $flatten\per_uart.$0\d_out[31:0], Q = \per_uart.d_out).
+Adding EN signal on $flatten\mult1.\mult1.$procdff$837 ($dff) from module SOC_flash (D = $flatten\mult1.\mult1.$0\count[4:0], Q = \mult1.mult1.count).
+Adding EN signal on $flatten\mult1.\mult1.$procdff$833 ($adff) from module SOC_flash (D = $flatten\mult1.\mult1.$0\done[0:0], Q = \mult1.mult1.done).
+Adding EN signal on $flatten\mult1.\mult1.$procdff$832 ($adff) from module SOC_flash (D = $flatten\mult1.\mult1.$0\result[31:0], Q = \mult1.mult1.result).
+Adding EN signal on $flatten\mult1.\mult1.$procdff$831 ($dff) from module SOC_flash (D = $flatten\mult1.\mult1.$0\B[15:0], Q = \mult1.mult1.B).
+Adding EN signal on $flatten\mult1.\mult1.$procdff$828 ($dff) from module SOC_flash (D = $flatten\mult1.\mult1.$0\A[15:0], Q = \mult1.mult1.A).
+Adding SRST signal on $flatten\mult1.$procdff$825 ($dff) from module SOC_flash (D = $flatten\mult1.$2\init[0:0], Q = \mult1.init, rval = 1'0).
+Adding EN signal on $auto$opt_dff.cc:682:run$935 ($sdff) from module SOC_flash (D = \CPU.rs2 [0], Q = \mult1.init).
+Adding SRST signal on $flatten\mult1.$procdff$824 ($dff) from module SOC_flash (D = $flatten\mult1.$2\B[15:0], Q = \mult1.B, rval = 16'0000000000000000).
+Adding EN signal on $auto$opt_dff.cc:682:run$939 ($sdff) from module SOC_flash (D = { \mult1.d_in [15:8] \CPU.rs2 [7:0] }, Q = \mult1.B).
+Adding SRST signal on $flatten\mult1.$procdff$823 ($dff) from module SOC_flash (D = $flatten\mult1.$2\A[15:0], Q = \mult1.A, rval = 16'0000000000000000).
+Adding EN signal on $auto$opt_dff.cc:682:run$943 ($sdff) from module SOC_flash (D = { \mult1.d_in [15:8] \CPU.rs2 [7:0] }, Q = \mult1.A).
+Adding SRST signal on $flatten\mult1.$procdff$822 ($dff) from module SOC_flash (D = $flatten\mult1.$2\d_out[31:0], Q = \mult1.d_out, rval = 0).
+Adding EN signal on $auto$opt_dff.cc:682:run$947 ($sdff) from module SOC_flash (D = $flatten\mult1.$3\d_out[31:0], Q = \mult1.d_out).
+Adding EN signal on $flatten\mapped_spi_flash.$procdff$817 ($dff) from module SOC_flash (D = { \mapped_spi_flash.rcv_data [30:0] \spi_miso }, Q = \mapped_spi_flash.rcv_data).
+Adding EN signal on $flatten\mapped_spi_flash.$procdff$816 ($dff) from module SOC_flash (D = $flatten\mapped_spi_flash.$procmux$329_Y, Q = \mapped_spi_flash.rcv_bitcount).
+Adding SRST signal on $flatten\mapped_spi_flash.$procdff$815 ($dff) from module SOC_flash (D = { $flatten\mapped_spi_flash.$procmux$334_Y [31:22] $flatten\mapped_spi_flash.$procmux$334_Y [1:0] }, Q = { \mapped_spi_flash.cmd_addr [31:22] \mapped_spi_flash.cmd_addr [1:0] }, rval = 12'000000110000).
+Adding EN signal on $flatten\mapped_spi_flash.$procdff$815 ($dff) from module SOC_flash (D = $flatten\mapped_spi_flash.$0\cmd_addr[31:0] [21:2], Q = \mapped_spi_flash.cmd_addr [21:2]).
+Adding EN signal on $auto$opt_dff.cc:682:run$967 ($sdff) from module SOC_flash (D = { \mapped_spi_flash.cmd_addr [30:21] \mapped_spi_flash.cmd_addr [0] 1'1 }, Q = { \mapped_spi_flash.cmd_addr [31:22] \mapped_spi_flash.cmd_addr [1:0] }).
+Adding SRST signal on $flatten\mapped_spi_flash.$procdff$814 ($dff) from module SOC_flash (D = $flatten\mapped_spi_flash.$procmux$339_Y, Q = \mapped_spi_flash.snd_bitcount, rval = 6'100000).
+Adding EN signal on $auto$opt_dff.cc:682:run$972 ($sdff) from module SOC_flash (D = $flatten\mapped_spi_flash.$sub$cores/spi_flash/MappedSPIFlash.v:45$36_Y, Q = \mapped_spi_flash.snd_bitcount).
+Adding SRST signal on $flatten\mapped_spi_flash.$procdff$813 ($dff) from module SOC_flash (D = $flatten\mapped_spi_flash.$procmux$344_Y, Q = \mapped_spi_flash.CS_N, rval = 1'0).
+Adding EN signal on $auto$opt_dff.cc:682:run$974 ($sdff) from module SOC_flash (D = 1'1, Q = \mapped_spi_flash.CS_N).
+Adding EN signal on $flatten\CPU.$procdff$809 ($dff) from module SOC_flash (D = $flatten\CPU.$0\aluShamt[4:0], Q = \CPU.aluShamt).
+Adding EN signal on $flatten\CPU.$procdff$808 ($dff) from module SOC_flash (D = $flatten\CPU.$0\aluReg[31:0], Q = \CPU.aluReg).
+Adding SRST signal on $flatten\CPU.$procdff$807 ($dff) from module SOC_flash (D = $flatten\CPU.$procmux$235_Y, Q = \CPU.state, rval = 4'1000).
+Adding EN signal on $auto$opt_dff.cc:682:run$990 ($sdff) from module SOC_flash (D = $flatten\CPU.$procmux$235_Y [0], Q = \CPU.state [0]).
+Adding EN signal on $flatten\CPU.$procdff$806 ($dff) from module SOC_flash (D = \mem_rdata [31:2], Q = \CPU.instr).
+Adding SRST signal on $flatten\CPU.$procdff$805 ($dff) from module SOC_flash (D = $flatten\CPU.$procmux$256_Y, Q = \CPU.PC, rval = 24'000000000000000000000000).
+Adding EN signal on $auto$opt_dff.cc:682:run$1001 ($sdff) from module SOC_flash (D = $flatten\CPU.$ternary$cores/cpu/femtorv32_quark.v:354$173_Y, Q = \CPU.PC).
+Adding EN signal on $flatten\CPU.$procdff$804 ($dff) from module SOC_flash (D = $flatten\CPU.$memrd$\registerFile$cores/cpu/femtorv32_quark.v:347$171_DATA, Q = \CPU.rs2).
+Adding EN signal on $flatten\CPU.$procdff$803 ($dff) from module SOC_flash (D = $flatten\CPU.$memrd$\registerFile$cores/cpu/femtorv32_quark.v:346$170_DATA, Q = \CPU.rs1).
+
+31.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \SOC_flash..
+Removed 67 unused cells and 67 unused wires.
+
+31.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module SOC_flash.
+
+31.9. Rerunning OPT passes. (Maybe there is more to do..)
+
+31.10. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \SOC_flash..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+
+31.11. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \SOC_flash.
+Performed a total of 0 changes.
+
+31.12. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\SOC_flash'.
+Removed a total of 10 cells.
+
+31.13. Executing OPT_DFF pass (perform DFF optimizations).
+
+31.14. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \SOC_flash..
+Removed 0 unused cells and 10 unused wires.
+
+31.15. Executing OPT_EXPR pass (perform const folding).
+Optimizing module SOC_flash.
+
+31.16. Rerunning OPT passes. (Maybe there is more to do..)
+
+31.17. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \SOC_flash..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+
+31.18. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \SOC_flash.
+Performed a total of 0 changes.
+
+31.19. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\SOC_flash'.
+Removed a total of 0 cells.
+
+31.20. Executing OPT_DFF pass (perform DFF optimizations).
+
+31.21. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \SOC_flash..
+
+31.22. Executing OPT_EXPR pass (perform const folding).
+Optimizing module SOC_flash.
+
+31.23. Finished OPT passes. (There is nothing left to do.)
+
+32. Executing WREDUCE pass (reducing word size of cells).
+Removed top 6 bits (of 7) from port B of cell SOC_flash.$procmux$216_CMP0 ($eq).
+Removed top 5 bits (of 7) from port B of cell SOC_flash.$procmux$217_CMP0 ($eq).
+Removed top 4 bits (of 7) from port B of cell SOC_flash.$procmux$218_CMP0 ($eq).
+Removed top 3 bits (of 7) from port B of cell SOC_flash.$procmux$219_CMP0 ($eq).
+Removed top 2 bits (of 7) from port B of cell SOC_flash.$procmux$220_CMP0 ($eq).
+Removed top 1 bits (of 7) from port B of cell SOC_flash.$procmux$221_CMP0 ($eq).
+Removed top 1 bits (of 8) from port B of cell SOC_flash.$procmux$225_CMP0 ($eq).
+Removed top 1 bits (of 8) from port B of cell SOC_flash.$procmux$226_CMP0 ($eq).
+Removed top 1 bits (of 8) from port B of cell SOC_flash.$procmux$227_CMP0 ($eq).
+Removed top 1 bits (of 8) from port B of cell SOC_flash.$procmux$228_CMP0 ($eq).
+Removed top 1 bits (of 8) from port B of cell SOC_flash.$procmux$229_CMP0 ($eq).
+Removed top 1 bits (of 8) from port B of cell SOC_flash.$procmux$230_CMP0 ($eq).
+Removed cell SOC_flash.$flatten\CPU.$procmux$318 ($mux).
+Removed cell SOC_flash.$flatten\CPU.$procmux$315 ($mux).
+Removed cell SOC_flash.$flatten\CPU.$procmux$307 ($mux).
+Removed cell SOC_flash.$flatten\CPU.$procmux$301 ($mux).
+Removed cell SOC_flash.$flatten\CPU.$procmux$289 ($mux).
+Removed cell SOC_flash.$flatten\CPU.$procmux$287 ($mux).
+Removed cell SOC_flash.$flatten\CPU.$procmux$283 ($mux).
+Removed cell SOC_flash.$flatten\CPU.$procmux$281 ($mux).
+Removed top 1 bits (of 4) from mux cell SOC_flash.$flatten\CPU.$procmux$238 ($mux).
+Removed top 31 bits (of 32) from port B of cell SOC_flash.$flatten\CPU.$add$cores/cpu/femtorv32_quark.v:380$181 ($add).
+Removed top 28 bits (of 32) from mux cell SOC_flash.$flatten\CPU.$ternary$cores/cpu/femtorv32_quark.v:357$174 ($mux).
+Removed top 2 bits (of 4) from mux cell SOC_flash.$flatten\CPU.$ternary$cores/cpu/femtorv32_quark.v:285$148 ($mux).
+Removed top 1 bits (of 2) from port B of cell SOC_flash.$flatten\CPU.$eq$cores/cpu/femtorv32_quark.v:247$135 ($eq).
+Removed top 8 bits (of 32) from mux cell SOC_flash.$flatten\CPU.$ternary$cores/cpu/femtorv32_quark.v:230$130 ($mux).
+Removed top 8 bits (of 32) from mux cell SOC_flash.$flatten\CPU.$ternary$cores/cpu/femtorv32_quark.v:229$126 ($mux).
+Removed top 19 bits (of 24) from mux cell SOC_flash.$flatten\CPU.$ternary$cores/cpu/femtorv32_quark.v:212$116 ($mux).
+Removed top 29 bits (of 32) from port B of cell SOC_flash.$flatten\CPU.$add$cores/cpu/femtorv32_quark.v:200$112 ($add).
+Removed top 8 bits (of 32) from port Y of cell SOC_flash.$flatten\CPU.$add$cores/cpu/femtorv32_quark.v:200$112 ($add).
+Removed top 31 bits (of 32) from port B of cell SOC_flash.$flatten\CPU.$sub$cores/cpu/femtorv32_quark.v:174$94 ($sub).
+Removed top 27 bits (of 32) from port Y of cell SOC_flash.$flatten\CPU.$sub$cores/cpu/femtorv32_quark.v:174$94 ($sub).
+Removed top 31 bits (of 32) from mux cell SOC_flash.$flatten\CPU.$ternary$cores/cpu/femtorv32_quark.v:145$78 ($mux).
+Removed top 31 bits (of 32) from mux cell SOC_flash.$flatten\CPU.$ternary$cores/cpu/femtorv32_quark.v:144$76 ($mux).
+Removed top 32 bits (of 33) from port B of cell SOC_flash.$flatten\CPU.$add$cores/cpu/femtorv32_quark.v:131$69 ($add).
+Removed top 1 bits (of 33) from port B of cell SOC_flash.$flatten\CPU.$add$cores/cpu/femtorv32_quark.v:131$68 ($add).
+Removed top 2 bits (of 5) from port B of cell SOC_flash.$flatten\CPU.$eq$cores/cpu/femtorv32_quark.v:88$49 ($eq).
+Removed top 1 bits (of 5) from port B of cell SOC_flash.$flatten\CPU.$eq$cores/cpu/femtorv32_quark.v:87$48 ($eq).
+Removed top 1 bits (of 5) from port B of cell SOC_flash.$flatten\CPU.$eq$cores/cpu/femtorv32_quark.v:83$45 ($eq).
+Removed top 1 bits (of 5) from port B of cell SOC_flash.$flatten\CPU.$eq$cores/cpu/femtorv32_quark.v:82$44 ($eq).
+Removed top 2 bits (of 5) from port B of cell SOC_flash.$flatten\CPU.$eq$cores/cpu/femtorv32_quark.v:81$43 ($eq).
+Removed top 7 bits (of 8) from port A of cell SOC_flash.$flatten\CPU.$shl$cores/cpu/femtorv32_quark.v:68$41 ($shl).
+Removed top 10 bits (of 32) from mux cell SOC_flash.$flatten\mapped_spi_flash.$procmux$337 ($mux).
+Removed top 30 bits (of 32) from mux cell SOC_flash.$flatten\mapped_spi_flash.$procmux$334 ($mux).
+Removed cell SOC_flash.$flatten\mapped_spi_flash.$procmux$327 ($mux).
+Removed cell SOC_flash.$flatten\mapped_spi_flash.$procmux$325 ($mux).
+Removed top 5 bits (of 6) from port B of cell SOC_flash.$flatten\mapped_spi_flash.$sub$cores/spi_flash/MappedSPIFlash.v:49$37 ($sub).
+Removed top 5 bits (of 6) from port B of cell SOC_flash.$flatten\mapped_spi_flash.$sub$cores/spi_flash/MappedSPIFlash.v:45$36 ($sub).
+Removed top 5 bits (of 6) from port B of cell SOC_flash.$flatten\mapped_spi_flash.$eq$cores/spi_flash/MappedSPIFlash.v:42$35 ($eq).
+Removed top 31 bits (of 32) from port B of cell SOC_flash.$flatten\per_uart.\uart0.$sub$cores/uart/uart.v:39$193 ($sub).
+Removed top 16 bits (of 32) from port Y of cell SOC_flash.$flatten\per_uart.\uart0.$sub$cores/uart/uart.v:39$193 ($sub).
+Removed top 31 bits (of 32) from port B of cell SOC_flash.$flatten\per_uart.\uart0.$add$cores/uart/uart.v:88$199 ($add).
+Removed top 28 bits (of 32) from port Y of cell SOC_flash.$flatten\per_uart.\uart0.$add$cores/uart/uart.v:88$199 ($add).
+Removed top 31 bits (of 32) from port B of cell SOC_flash.$flatten\per_uart.\uart0.$add$cores/uart/uart.v:91$201 ($add).
+Removed top 28 bits (of 32) from port Y of cell SOC_flash.$flatten\per_uart.\uart0.$add$cores/uart/uart.v:91$201 ($add).
+Removed top 31 bits (of 32) from port B of cell SOC_flash.$flatten\per_uart.\uart0.$add$cores/uart/uart.v:137$207 ($add).
+Removed top 28 bits (of 32) from port Y of cell SOC_flash.$flatten\per_uart.\uart0.$add$cores/uart/uart.v:137$207 ($add).
+Removed top 31 bits (of 32) from port B of cell SOC_flash.$flatten\per_uart.\uart0.$add$cores/uart/uart.v:140$210 ($add).
+Removed top 28 bits (of 32) from port Y of cell SOC_flash.$flatten\per_uart.\uart0.$add$cores/uart/uart.v:140$210 ($add).
+Removed cell SOC_flash.$flatten\per_uart.\uart0.$procmux$508 ($mux).
+Removed cell SOC_flash.$flatten\per_uart.\uart0.$procmux$534 ($mux).
+Removed cell SOC_flash.$flatten\per_uart.\uart0.$procmux$583 ($mux).
+Removed cell SOC_flash.$flatten\per_uart.\uart0.$procmux$586 ($mux).
+Removed cell SOC_flash.$flatten\per_uart.\uart0.$procmux$596 ($mux).
+Removed top 1 bits (of 2) from port B of cell SOC_flash.$flatten\per_uart.$procmux$352_CMP0 ($eq).
+Removed top 22 bits (of 32) from mux cell SOC_flash.$flatten\per_uart.$procmux$350 ($pmux).
+Removed top 5 bits (of 8) from mux cell SOC_flash.$flatten\per_uart.$ternary$cores/uart/perip_uart.v:44$22 ($mux).
+Removed top 1 bits (of 2) from mux cell SOC_flash.$flatten\per_uart.$ternary$cores/uart/perip_uart.v:31$16 ($mux).
+Removed top 1 bits (of 2) from port B of cell SOC_flash.$auto$opt_dff.cc:198:make_patterns_logic$874 ($ne).
+Removed top 1 bits (of 2) from port B of cell SOC_flash.$auto$opt_dff.cc:198:make_patterns_logic$872 ($ne).
+Removed top 1 bits (of 2) from port B of cell SOC_flash.$auto$opt_dff.cc:198:make_patterns_logic$994 ($ne).
+Removed top 1 bits (of 3) from port B of cell SOC_flash.$auto$opt_dff.cc:198:make_patterns_logic$977 ($ne).
+Removed top 31 bits (of 32) from port B of cell SOC_flash.$flatten\mult1.\mult1.$add$cores/mult/mult.v:83$187 ($add).
+Removed top 27 bits (of 32) from port Y of cell SOC_flash.$flatten\mult1.\mult1.$add$cores/mult/mult.v:83$187 ($add).
+Removed top 27 bits (of 32) from port B of cell SOC_flash.$flatten\mult1.\mult1.$gt$cores/mult/mult.v:84$188 ($gt).
+Removed top 1 bits (of 3) from port B of cell SOC_flash.$flatten\mult1.\mult1.$procmux$432_CMP0 ($eq).
+Removed top 2 bits (of 3) from mux cell SOC_flash.$flatten\mult1.\mult1.$procmux$438 ($mux).
+Removed top 2 bits (of 3) from port B of cell SOC_flash.$flatten\mult1.\mult1.$procmux$441_CMP0 ($eq).
+Removed top 1 bits (of 3) from port B of cell SOC_flash.$flatten\mult1.\mult1.$procmux$456_CMP0 ($eq).
+Removed top 2 bits (of 5) from port B of cell SOC_flash.$flatten\mult1.$procmux$419_CMP0 ($eq).
+Removed top 1 bits (of 5) from port B of cell SOC_flash.$flatten\mult1.$procmux$418_CMP0 ($eq).
+Removed top 1 bits (of 5) from port B of cell SOC_flash.$flatten\mult1.$procmux$417_CMP0 ($eq).
+Removed top 1 bits (of 5) from port B of cell SOC_flash.$flatten\mult1.$procmux$370_CMP0 ($eq).
+Removed top 5 bits (of 7) from FF cell SOC_flash.$auto$opt_dff.cc:744:run$907 ($sdffe).
+Removed top 1 bits (of 4) from wire SOC_flash.$flatten\CPU.$procmux$238_Y.
+Removed top 27 bits (of 32) from wire SOC_flash.$flatten\CPU.$sub$cores/cpu/femtorv32_quark.v:174$94_Y.
+Removed top 31 bits (of 32) from wire SOC_flash.$flatten\CPU.$ternary$cores/cpu/femtorv32_quark.v:144$76_Y.
+Removed top 31 bits (of 32) from wire SOC_flash.$flatten\CPU.$ternary$cores/cpu/femtorv32_quark.v:145$78_Y.
+Removed top 8 bits (of 32) from wire SOC_flash.$flatten\CPU.$ternary$cores/cpu/femtorv32_quark.v:229$126_Y.
+Removed top 8 bits (of 32) from wire SOC_flash.$flatten\CPU.$ternary$cores/cpu/femtorv32_quark.v:230$130_Y.
+Removed top 2 bits (of 4) from wire SOC_flash.$flatten\CPU.$ternary$cores/cpu/femtorv32_quark.v:285$148_Y.
+Removed top 28 bits (of 32) from wire SOC_flash.$flatten\CPU.$ternary$cores/cpu/femtorv32_quark.v:357$174_Y.
+Removed top 10 bits (of 32) from wire SOC_flash.$flatten\mapped_spi_flash.$0\cmd_addr[31:0].
+Removed top 10 bits (of 32) from wire SOC_flash.$flatten\mapped_spi_flash.$procmux$334_Y.
+Removed top 2 bits (of 3) from wire SOC_flash.$flatten\mult1.\mult1.$4\state[2:0].
+Removed top 27 bits (of 32) from wire SOC_flash.$flatten\mult1.\mult1.$add$cores/mult/mult.v:83$187_Y.
+Removed top 22 bits (of 32) from wire SOC_flash.$flatten\per_uart.$0\d_out[31:0].
+Removed top 1 bits (of 2) from wire SOC_flash.$flatten\per_uart.$ternary$cores/uart/perip_uart.v:31$16_Y.
+Removed top 5 bits (of 8) from wire SOC_flash.$flatten\per_uart.$ternary$cores/uart/perip_uart.v:44$22_Y.
+Removed top 28 bits (of 32) from wire SOC_flash.$flatten\per_uart.\uart0.$add$cores/uart/uart.v:137$207_Y.
+Removed top 28 bits (of 32) from wire SOC_flash.$flatten\per_uart.\uart0.$add$cores/uart/uart.v:88$199_Y.
+Removed top 16 bits (of 32) from wire SOC_flash.$flatten\per_uart.\uart0.$sub$cores/uart/uart.v:39$193_Y.
+Removed top 8 bits (of 32) from wire SOC_flash.mem_addr.
+
+33. Executing PEEPOPT pass (run peephole optimizers).
+
+34. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \SOC_flash..
+Removed 0 unused cells and 35 unused wires.
+
+35. Executing ALUMACC pass (create $alu and $macc cells).
+Extracting $alu and $macc cells in module SOC_flash:
+  creating $macc model for $flatten\CPU.$add$cores/cpu/femtorv32_quark.v:127$66 ($add).
+  creating $macc model for $flatten\CPU.$add$cores/cpu/femtorv32_quark.v:131$68 ($add).
+  creating $macc model for $flatten\CPU.$add$cores/cpu/femtorv32_quark.v:131$69 ($add).
+  creating $macc model for $flatten\CPU.$add$cores/cpu/femtorv32_quark.v:200$112 ($add).
+  creating $macc model for $flatten\CPU.$add$cores/cpu/femtorv32_quark.v:205$115 ($add).
+  creating $macc model for $flatten\CPU.$add$cores/cpu/femtorv32_quark.v:211$117 ($add).
+  creating $macc model for $flatten\CPU.$add$cores/cpu/femtorv32_quark.v:380$181 ($add).
+  creating $macc model for $flatten\CPU.$sub$cores/cpu/femtorv32_quark.v:174$94 ($sub).
+  creating $macc model for $flatten\mapped_spi_flash.$sub$cores/spi_flash/MappedSPIFlash.v:45$36 ($sub).
+  creating $macc model for $flatten\mapped_spi_flash.$sub$cores/spi_flash/MappedSPIFlash.v:49$37 ($sub).
+  creating $macc model for $flatten\mult1.\mult1.$add$cores/mult/mult.v:76$186 ($add).
+  creating $macc model for $flatten\mult1.\mult1.$add$cores/mult/mult.v:83$187 ($add).
+  creating $macc model for $flatten\per_uart.\uart0.$add$cores/uart/uart.v:137$207 ($add).
+  creating $macc model for $flatten\per_uart.\uart0.$add$cores/uart/uart.v:140$210 ($add).
+  creating $macc model for $flatten\per_uart.\uart0.$add$cores/uart/uart.v:88$199 ($add).
+  creating $macc model for $flatten\per_uart.\uart0.$add$cores/uart/uart.v:91$201 ($add).
+  creating $macc model for $flatten\per_uart.\uart0.$sub$cores/uart/uart.v:39$193 ($sub).
+  merging $macc model for $flatten\CPU.$add$cores/cpu/femtorv32_quark.v:131$68 into $flatten\CPU.$add$cores/cpu/femtorv32_quark.v:131$69.
+  creating $alu model for $macc $flatten\per_uart.\uart0.$add$cores/uart/uart.v:91$201.
+  creating $alu model for $macc $flatten\per_uart.\uart0.$add$cores/uart/uart.v:88$199.
+  creating $alu model for $macc $flatten\per_uart.\uart0.$add$cores/uart/uart.v:140$210.
+  creating $alu model for $macc $flatten\per_uart.\uart0.$add$cores/uart/uart.v:137$207.
+  creating $alu model for $macc $flatten\mult1.\mult1.$add$cores/mult/mult.v:83$187.
+  creating $alu model for $macc $flatten\mult1.\mult1.$add$cores/mult/mult.v:76$186.
+  creating $alu model for $macc $flatten\mapped_spi_flash.$sub$cores/spi_flash/MappedSPIFlash.v:49$37.
+  creating $alu model for $macc $flatten\mapped_spi_flash.$sub$cores/spi_flash/MappedSPIFlash.v:45$36.
+  creating $alu model for $macc $flatten\CPU.$sub$cores/cpu/femtorv32_quark.v:174$94.
+  creating $alu model for $macc $flatten\CPU.$add$cores/cpu/femtorv32_quark.v:380$181.
+  creating $alu model for $macc $flatten\CPU.$add$cores/cpu/femtorv32_quark.v:211$117.
+  creating $alu model for $macc $flatten\CPU.$add$cores/cpu/femtorv32_quark.v:205$115.
+  creating $alu model for $macc $flatten\CPU.$add$cores/cpu/femtorv32_quark.v:200$112.
+  creating $alu model for $macc $flatten\CPU.$add$cores/cpu/femtorv32_quark.v:131$69.
+  creating $alu model for $macc $flatten\per_uart.\uart0.$sub$cores/uart/uart.v:39$193.
+  creating $alu model for $macc $flatten\CPU.$add$cores/cpu/femtorv32_quark.v:127$66.
+  creating $alu model for $flatten\mult1.\mult1.$gt$cores/mult/mult.v:84$188 ($gt): new $alu
+  creating $alu cell for $flatten\mult1.\mult1.$gt$cores/mult/mult.v:84$188: $auto$alumacc.cc:485:replace_alu$1029
+  creating $alu cell for $flatten\CPU.$add$cores/cpu/femtorv32_quark.v:127$66: $auto$alumacc.cc:485:replace_alu$1034
+  creating $alu cell for $flatten\per_uart.\uart0.$sub$cores/uart/uart.v:39$193: $auto$alumacc.cc:485:replace_alu$1037
+  creating $alu cell for $flatten\CPU.$add$cores/cpu/femtorv32_quark.v:131$69: $auto$alumacc.cc:485:replace_alu$1040
+  creating $alu cell for $flatten\CPU.$add$cores/cpu/femtorv32_quark.v:200$112: $auto$alumacc.cc:485:replace_alu$1043
+  creating $alu cell for $flatten\CPU.$add$cores/cpu/femtorv32_quark.v:205$115: $auto$alumacc.cc:485:replace_alu$1046
+  creating $alu cell for $flatten\CPU.$add$cores/cpu/femtorv32_quark.v:211$117: $auto$alumacc.cc:485:replace_alu$1049
+  creating $alu cell for $flatten\CPU.$add$cores/cpu/femtorv32_quark.v:380$181: $auto$alumacc.cc:485:replace_alu$1052
+  creating $alu cell for $flatten\CPU.$sub$cores/cpu/femtorv32_quark.v:174$94: $auto$alumacc.cc:485:replace_alu$1055
+  creating $alu cell for $flatten\mapped_spi_flash.$sub$cores/spi_flash/MappedSPIFlash.v:45$36: $auto$alumacc.cc:485:replace_alu$1058
+  creating $alu cell for $flatten\mapped_spi_flash.$sub$cores/spi_flash/MappedSPIFlash.v:49$37: $auto$alumacc.cc:485:replace_alu$1061
+  creating $alu cell for $flatten\mult1.\mult1.$add$cores/mult/mult.v:76$186: $auto$alumacc.cc:485:replace_alu$1064
+  creating $alu cell for $flatten\mult1.\mult1.$add$cores/mult/mult.v:83$187: $auto$alumacc.cc:485:replace_alu$1067
+  creating $alu cell for $flatten\per_uart.\uart0.$add$cores/uart/uart.v:137$207: $auto$alumacc.cc:485:replace_alu$1070
+  creating $alu cell for $flatten\per_uart.\uart0.$add$cores/uart/uart.v:140$210: $auto$alumacc.cc:485:replace_alu$1073
+  creating $alu cell for $flatten\per_uart.\uart0.$add$cores/uart/uart.v:88$199: $auto$alumacc.cc:485:replace_alu$1076
+  creating $alu cell for $flatten\per_uart.\uart0.$add$cores/uart/uart.v:91$201: $auto$alumacc.cc:485:replace_alu$1079
+  created 17 $alu and 0 $macc cells.
+
+36. Executing SHARE pass (SAT-based resource sharing).
+
+37. Executing OPT pass (performing simple optimizations).
+
+37.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module SOC_flash.
+
+37.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\SOC_flash'.
+Removed a total of 0 cells.
+
+37.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \SOC_flash..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+
+37.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \SOC_flash.
+Performed a total of 0 changes.
+
+37.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\SOC_flash'.
+Removed a total of 0 cells.
+
+37.6. Executing OPT_DFF pass (perform DFF optimizations).
+Adding SRST signal on $auto$opt_dff.cc:744:run$966 ($dffe) from module SOC_flash (D = $flatten\mapped_spi_flash.$sub$cores/spi_flash/MappedSPIFlash.v:49$37_Y, Q = \mapped_spi_flash.rcv_bitcount, rval = 6'100000).
+Setting constant 0-bit at position 10 on $auto$opt_dff.cc:744:run$913 ($dffe) from module SOC_flash.
+Setting constant 0-bit at position 11 on $auto$opt_dff.cc:744:run$913 ($dffe) from module SOC_flash.
+Setting constant 0-bit at position 12 on $auto$opt_dff.cc:744:run$913 ($dffe) from module SOC_flash.
+Setting constant 0-bit at position 13 on $auto$opt_dff.cc:744:run$913 ($dffe) from module SOC_flash.
+Setting constant 0-bit at position 14 on $auto$opt_dff.cc:744:run$913 ($dffe) from module SOC_flash.
+Setting constant 0-bit at position 15 on $auto$opt_dff.cc:744:run$913 ($dffe) from module SOC_flash.
+Setting constant 0-bit at position 16 on $auto$opt_dff.cc:744:run$913 ($dffe) from module SOC_flash.
+Setting constant 0-bit at position 17 on $auto$opt_dff.cc:744:run$913 ($dffe) from module SOC_flash.
+Setting constant 0-bit at position 18 on $auto$opt_dff.cc:744:run$913 ($dffe) from module SOC_flash.
+Setting constant 0-bit at position 19 on $auto$opt_dff.cc:744:run$913 ($dffe) from module SOC_flash.
+Setting constant 0-bit at position 20 on $auto$opt_dff.cc:744:run$913 ($dffe) from module SOC_flash.
+Setting constant 0-bit at position 21 on $auto$opt_dff.cc:744:run$913 ($dffe) from module SOC_flash.
+Setting constant 0-bit at position 22 on $auto$opt_dff.cc:744:run$913 ($dffe) from module SOC_flash.
+Setting constant 0-bit at position 23 on $auto$opt_dff.cc:744:run$913 ($dffe) from module SOC_flash.
+Setting constant 0-bit at position 24 on $auto$opt_dff.cc:744:run$913 ($dffe) from module SOC_flash.
+Setting constant 0-bit at position 25 on $auto$opt_dff.cc:744:run$913 ($dffe) from module SOC_flash.
+Setting constant 0-bit at position 26 on $auto$opt_dff.cc:744:run$913 ($dffe) from module SOC_flash.
+Setting constant 0-bit at position 27 on $auto$opt_dff.cc:744:run$913 ($dffe) from module SOC_flash.
+Setting constant 0-bit at position 28 on $auto$opt_dff.cc:744:run$913 ($dffe) from module SOC_flash.
+Setting constant 0-bit at position 29 on $auto$opt_dff.cc:744:run$913 ($dffe) from module SOC_flash.
+Setting constant 0-bit at position 30 on $auto$opt_dff.cc:744:run$913 ($dffe) from module SOC_flash.
+Setting constant 0-bit at position 31 on $auto$opt_dff.cc:744:run$913 ($dffe) from module SOC_flash.
+
+37.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \SOC_flash..
+Removed 3 unused cells and 4 unused wires.
+
+37.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module SOC_flash.
+
+37.9. Rerunning OPT passes. (Maybe there is more to do..)
+
+37.10. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \SOC_flash..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+
+37.11. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \SOC_flash.
+Performed a total of 0 changes.
+
+37.12. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\SOC_flash'.
+Removed a total of 0 cells.
+
+37.13. Executing OPT_DFF pass (perform DFF optimizations).
+
+37.14. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \SOC_flash..
+
+37.15. Executing OPT_EXPR pass (perform const folding).
+Optimizing module SOC_flash.
+
+37.16. Finished OPT passes. (There is nothing left to do.)
+
+38. Executing MEMORY pass.
+
+38.1. Executing OPT_MEM pass (optimize memories).
+Performed a total of 0 transformations.
+
+38.2. Executing OPT_MEM_PRIORITY pass (removing unnecessary memory write priority relations).
+Performed a total of 0 transformations.
+
+38.3. Executing OPT_MEM_FEEDBACK pass (finding memory read-to-write feedback paths).
+  Analyzing SOC_flash.CPU.registerFile write port 0.
+
+38.4. Executing MEMORY_DFF pass (merging $dff cells to $memrd).
+Checking read port `\CPU.registerFile'[0] in module `\SOC_flash': merging output FF to cell.
+    Write port 0: don't care on collision.
+Checking read port `\CPU.registerFile'[1] in module `\SOC_flash': merging output FF to cell.
+    Write port 0: don't care on collision.
+
+38.5. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \SOC_flash..
+Removed 2 unused cells and 66 unused wires.
+
+38.6. Executing MEMORY_SHARE pass (consolidating $memrd/$memwr cells).
+Consolidating read ports of memory SOC_flash.CPU.registerFile by address:
+
+38.7. Executing OPT_MEM_WIDEN pass (optimize memories where all ports are wide).
+Performed a total of 0 transformations.
+
+38.8. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \SOC_flash..
+
+38.9. Executing MEMORY_COLLECT pass (generating $mem cells).
+
+39. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \SOC_flash..
+
+40. Executing OPT pass (performing simple optimizations).
+
+40.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module SOC_flash.
+
+40.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\SOC_flash'.
+Removed a total of 1 cells.
+
+40.3. Executing OPT_DFF pass (perform DFF optimizations).
+Adding SRST signal on $auto$opt_dff.cc:744:run$934 ($dffe) from module SOC_flash (D = \mult1.A [0], Q = \mult1.mult1.A [0], rval = 1'0).
+Adding SRST signal on $auto$opt_dff.cc:744:run$929 ($dffe) from module SOC_flash (D = \mult1.B [15], Q = \mult1.mult1.B [15], rval = 1'0).
+Adding SRST signal on $auto$opt_dff.cc:744:run$918 ($dffe) from module SOC_flash (D = $auto$wreduce.cc:454:run$1020 [4:0], Q = \mult1.mult1.count, rval = 5'00000).
+Adding SRST signal on $auto$opt_dff.cc:744:run$913 ($dffe) from module SOC_flash (D = { \per_uart.uart0.tx_busy \per_uart.uart0.rx_avail }, Q = \per_uart.d_out [9:8], rval = 2'00).
+Adding SRST signal on $auto$opt_dff.cc:744:run$913 ($dffe) from module SOC_flash (D = \per_uart.uart0.rx_data [6:0], Q = \per_uart.d_out [6:0], rval = 7'0000000).
+Adding EN signal on $auto$opt_dff.cc:744:run$1002 ($sdffe) from module SOC_flash (D = $flatten\CPU.$ternary$cores/cpu/femtorv32_quark.v:354$173_Y [1:0], Q = \CPU.PC [1:0]).
+
+40.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \SOC_flash..
+Removed 2 unused cells and 13 unused wires.
+
+40.5. Rerunning OPT passes. (Removed registers in this run.)
+
+40.6. Executing OPT_EXPR pass (perform const folding).
+Optimizing module SOC_flash.
+
+40.7. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\SOC_flash'.
+Removed a total of 0 cells.
+
+40.8. Executing OPT_DFF pass (perform DFF optimizations).
+
+40.9. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \SOC_flash..
+
+40.10. Finished fast OPT passes.
+
+41. Executing MEMORY_MAP pass (converting memories to logic and flip-flops).
+Mapping memory \CPU.registerFile in module \SOC_flash:
+  created 32 $dff cells and 0 static cells of width 32.
+Extracted data FF from read port 0 of SOC_flash.CPU.registerFile: $\CPU.registerFile$rdreg[0]
+Extracted data FF from read port 1 of SOC_flash.CPU.registerFile: $\CPU.registerFile$rdreg[1]
+  read interface: 2 $dff and 62 $mux cells.
+  write interface: 32 write mux blocks.
+
+42. Executing OPT pass (performing simple optimizations).
+
+42.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module SOC_flash.
+
+42.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\SOC_flash'.
+Removed a total of 0 cells.
+
+42.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \SOC_flash..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+
+42.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \SOC_flash.
+    Consolidated identical input bits for $mux cell $flatten\CPU.$procmux$233:
+      Old ports: A=4'100x, B=4'0001, Y=$flatten\CPU.$procmux$233_Y
+      New ports: A=2'1x, B=2'01, Y={ $flatten\CPU.$procmux$233_Y [3] $flatten\CPU.$procmux$233_Y [0] }
+      New connections: $flatten\CPU.$procmux$233_Y [2:1] = 2'00
+    Consolidated identical input bits for $mux cell $flatten\CPU.$ternary$cores/cpu/femtorv32_quark.v:206$113:
+      Old ports: A={ \CPU.instr [29] \CPU.instr [29] \CPU.instr [29] \CPU.instr [29] \CPU.instr [29] \CPU.instr [29] \CPU.instr [29] \CPU.instr [29] \CPU.instr [29] \CPU.instr [29] \CPU.instr [29] \CPU.instr [29] \CPU.instr [5] \CPU.instr [28:23] \CPU.instr [9:6] 1'0 }, B={ \CPU.instr [21:10] 12'000000000000 }, Y=$flatten\CPU.$ternary$cores/cpu/femtorv32_quark.v:206$113_Y
+      New ports: A={ \CPU.instr [29] \CPU.instr [29] \CPU.instr [29] \CPU.instr [29] \CPU.instr [29] \CPU.instr [29] \CPU.instr [29] \CPU.instr [29] \CPU.instr [29] \CPU.instr [29] \CPU.instr [29] \CPU.instr [29] \CPU.instr [5] \CPU.instr [28:23] \CPU.instr [9:6] }, B={ \CPU.instr [21:10] 11'00000000000 }, Y=$flatten\CPU.$ternary$cores/cpu/femtorv32_quark.v:206$113_Y [23:1]
+      New connections: $flatten\CPU.$ternary$cores/cpu/femtorv32_quark.v:206$113_Y [0] = 1'0
+    Consolidated identical input bits for $mux cell $flatten\CPU.$ternary$cores/cpu/femtorv32_quark.v:227$121:
+      Old ports: A=0, B={ \CPU.instr [29:10] 12'000000000000 }, Y=$flatten\CPU.$ternary$cores/cpu/femtorv32_quark.v:227$121_Y
+      New ports: A=20'00000000000000000000, B=\CPU.instr [29:10], Y=$flatten\CPU.$ternary$cores/cpu/femtorv32_quark.v:227$121_Y [31:12]
+      New connections: $flatten\CPU.$ternary$cores/cpu/femtorv32_quark.v:227$121_Y [11:0] = 12'000000000000
+    Consolidated identical input bits for $mux cell $flatten\CPU.$ternary$cores/cpu/femtorv32_quark.v:284$147:
+      Old ports: A=4'0100, B=4'1000, Y=$flatten\CPU.$ternary$cores/cpu/femtorv32_quark.v:284$147_Y
+      New ports: A=2'01, B=2'10, Y=$flatten\CPU.$ternary$cores/cpu/femtorv32_quark.v:284$147_Y [3:2]
+      New connections: $flatten\CPU.$ternary$cores/cpu/femtorv32_quark.v:284$147_Y [1:0] = 2'00
+    Consolidated identical input bits for $mux cell $flatten\CPU.$ternary$cores/cpu/femtorv32_quark.v:288$150:
+      Old ports: A=4'0011, B=4'1100, Y=$flatten\CPU.$ternary$cores/cpu/femtorv32_quark.v:288$150_Y
+      New ports: A=2'01, B=2'10, Y={ $flatten\CPU.$ternary$cores/cpu/femtorv32_quark.v:288$150_Y [2] $flatten\CPU.$ternary$cores/cpu/femtorv32_quark.v:288$150_Y [0] }
+      New connections: { $flatten\CPU.$ternary$cores/cpu/femtorv32_quark.v:288$150_Y [3] $flatten\CPU.$ternary$cores/cpu/femtorv32_quark.v:288$150_Y [1] } = { $flatten\CPU.$ternary$cores/cpu/femtorv32_quark.v:288$150_Y [2] $flatten\CPU.$ternary$cores/cpu/femtorv32_quark.v:288$150_Y [0] }
+    Consolidated identical input bits for $mux cell $flatten\CPU.$ternary$cores/cpu/femtorv32_quark.v:357$174:
+      Old ports: A=4'0001, B=4'1000, Y=$auto$wreduce.cc:454:run$1016 [3:0]
+      New ports: A=2'01, B=2'10, Y={ $auto$wreduce.cc:454:run$1016 [3] $auto$wreduce.cc:454:run$1016 [0] }
+      New connections: $auto$wreduce.cc:454:run$1016 [2:1] = 2'00
+    Consolidated identical input bits for $mux cell $flatten\mult1.\mult1.$procmux$429:
+      Old ports: A=3'001, B=3'100, Y=$flatten\mult1.\mult1.$5\state[2:0]
+      New ports: A=2'01, B=2'10, Y={ $flatten\mult1.\mult1.$5\state[2:0] [2] $flatten\mult1.\mult1.$5\state[2:0] [0] }
+      New connections: $flatten\mult1.\mult1.$5\state[2:0] [1] = 1'0
+    Consolidated identical input bits for $mux cell $flatten\mult1.\mult1.$procmux$449:
+      Old ports: A=3'000, B=3'101, Y=$flatten\mult1.\mult1.$3\state[2:0]
+      New ports: A=1'0, B=1'1, Y=$flatten\mult1.\mult1.$3\state[2:0] [0]
+      New connections: $flatten\mult1.\mult1.$3\state[2:0] [2:1] = { $flatten\mult1.\mult1.$3\state[2:0] [0] 1'0 }
+    Consolidated identical input bits for $mux cell $flatten\mult1.\mult1.$ternary$cores/mult/mult.v:84$189:
+      Old ports: A=3'000, B=3'100, Y=$flatten\mult1.\mult1.$ternary$cores/mult/mult.v:84$189_Y
+      New ports: A=1'0, B=1'1, Y=$flatten\mult1.\mult1.$ternary$cores/mult/mult.v:84$189_Y [2]
+      New connections: $flatten\mult1.\mult1.$ternary$cores/mult/mult.v:84$189_Y [1:0] = 2'00
+    Consolidated identical input bits for $mux cell $flatten\per_uart.$ternary$cores/uart/perip_uart.v:32$17:
+      Old ports: A=2'00, B=2'10, Y=$flatten\per_uart.$ternary$cores/uart/perip_uart.v:32$17_Y
+      New ports: A=1'0, B=1'1, Y=$flatten\per_uart.$ternary$cores/uart/perip_uart.v:32$17_Y [1]
+      New connections: $flatten\per_uart.$ternary$cores/uart/perip_uart.v:32$17_Y [0] = 1'0
+  Optimizing cells in module \SOC_flash.
+    Consolidated identical input bits for $mux cell $flatten\CPU.$ternary$cores/cpu/femtorv32_quark.v:205$114:
+      Old ports: A=$flatten\CPU.$ternary$cores/cpu/femtorv32_quark.v:206$113_Y, B={ \CPU.instr [29] \CPU.instr [29] \CPU.instr [29] \CPU.instr [29] \CPU.instr [17:10] \CPU.instr [18] \CPU.instr [28:19] 1'0 }, Y=$flatten\CPU.$ternary$cores/cpu/femtorv32_quark.v:205$114_Y
+      New ports: A=$flatten\CPU.$ternary$cores/cpu/femtorv32_quark.v:206$113_Y [23:1], B={ \CPU.instr [29] \CPU.instr [29] \CPU.instr [29] \CPU.instr [29] \CPU.instr [17:10] \CPU.instr [18] \CPU.instr [28:19] }, Y=$flatten\CPU.$ternary$cores/cpu/femtorv32_quark.v:205$114_Y [23:1]
+      New connections: $flatten\CPU.$ternary$cores/cpu/femtorv32_quark.v:205$114_Y [0] = 1'0
+    Consolidated identical input bits for $mux cell $flatten\CPU.$ternary$cores/cpu/femtorv32_quark.v:287$151:
+      Old ports: A=4'1111, B=$flatten\CPU.$ternary$cores/cpu/femtorv32_quark.v:288$150_Y, Y=$flatten\CPU.$ternary$cores/cpu/femtorv32_quark.v:287$151_Y
+      New ports: A=2'11, B={ $flatten\CPU.$ternary$cores/cpu/femtorv32_quark.v:288$150_Y [2] $flatten\CPU.$ternary$cores/cpu/femtorv32_quark.v:288$150_Y [0] }, Y={ $flatten\CPU.$ternary$cores/cpu/femtorv32_quark.v:287$151_Y [2] $flatten\CPU.$ternary$cores/cpu/femtorv32_quark.v:287$151_Y [0] }
+      New connections: { $flatten\CPU.$ternary$cores/cpu/femtorv32_quark.v:287$151_Y [3] $flatten\CPU.$ternary$cores/cpu/femtorv32_quark.v:287$151_Y [1] } = { $flatten\CPU.$ternary$cores/cpu/femtorv32_quark.v:287$151_Y [2] $flatten\CPU.$ternary$cores/cpu/femtorv32_quark.v:287$151_Y [0] }
+  Optimizing cells in module \SOC_flash.
+Performed a total of 12 changes.
+
+42.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\SOC_flash'.
+Removed a total of 1 cells.
+
+42.6. Executing OPT_SHARE pass.
+
+42.7. Executing OPT_DFF pass (perform DFF optimizations).
+
+42.8. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \SOC_flash..
+Removed 4 unused cells and 108 unused wires.
+
+42.9. Executing OPT_EXPR pass (perform const folding).
+Optimizing module SOC_flash.
+
+42.10. Rerunning OPT passes. (Maybe there is more to do..)
+
+42.11. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \SOC_flash..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+
+42.12. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \SOC_flash.
+Performed a total of 0 changes.
+
+42.13. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\SOC_flash'.
+Removed a total of 0 cells.
+
+42.14. Executing OPT_SHARE pass.
+
+42.15. Executing OPT_DFF pass (perform DFF optimizations).
+Adding EN signal on $memory\CPU.registerFile[9]$1189 ($dff) from module SOC_flash (D = \CPU.writeBackData, Q = \CPU.registerFile[9]).
+Adding EN signal on $memory\CPU.registerFile[8]$1187 ($dff) from module SOC_flash (D = \CPU.writeBackData, Q = \CPU.registerFile[8]).
+Adding EN signal on $memory\CPU.registerFile[7]$1185 ($dff) from module SOC_flash (D = \CPU.writeBackData, Q = \CPU.registerFile[7]).
+Adding EN signal on $memory\CPU.registerFile[6]$1183 ($dff) from module SOC_flash (D = \CPU.writeBackData, Q = \CPU.registerFile[6]).
+Adding EN signal on $memory\CPU.registerFile[5]$1181 ($dff) from module SOC_flash (D = \CPU.writeBackData, Q = \CPU.registerFile[5]).
+Adding EN signal on $memory\CPU.registerFile[4]$1179 ($dff) from module SOC_flash (D = \CPU.writeBackData, Q = \CPU.registerFile[4]).
+Adding EN signal on $memory\CPU.registerFile[3]$1177 ($dff) from module SOC_flash (D = \CPU.writeBackData, Q = \CPU.registerFile[3]).
+Adding EN signal on $memory\CPU.registerFile[31]$1233 ($dff) from module SOC_flash (D = \CPU.writeBackData, Q = \CPU.registerFile[31]).
+Adding EN signal on $memory\CPU.registerFile[30]$1231 ($dff) from module SOC_flash (D = \CPU.writeBackData, Q = \CPU.registerFile[30]).
+Adding EN signal on $memory\CPU.registerFile[2]$1175 ($dff) from module SOC_flash (D = \CPU.writeBackData, Q = \CPU.registerFile[2]).
+Adding EN signal on $memory\CPU.registerFile[29]$1229 ($dff) from module SOC_flash (D = \CPU.writeBackData, Q = \CPU.registerFile[29]).
+Adding EN signal on $memory\CPU.registerFile[28]$1227 ($dff) from module SOC_flash (D = \CPU.writeBackData, Q = \CPU.registerFile[28]).
+Adding EN signal on $memory\CPU.registerFile[27]$1225 ($dff) from module SOC_flash (D = \CPU.writeBackData, Q = \CPU.registerFile[27]).
+Adding EN signal on $memory\CPU.registerFile[26]$1223 ($dff) from module SOC_flash (D = \CPU.writeBackData, Q = \CPU.registerFile[26]).
+Adding EN signal on $memory\CPU.registerFile[25]$1221 ($dff) from module SOC_flash (D = \CPU.writeBackData, Q = \CPU.registerFile[25]).
+Adding EN signal on $memory\CPU.registerFile[24]$1219 ($dff) from module SOC_flash (D = \CPU.writeBackData, Q = \CPU.registerFile[24]).
+Adding EN signal on $memory\CPU.registerFile[23]$1217 ($dff) from module SOC_flash (D = \CPU.writeBackData, Q = \CPU.registerFile[23]).
+Adding EN signal on $memory\CPU.registerFile[22]$1215 ($dff) from module SOC_flash (D = \CPU.writeBackData, Q = \CPU.registerFile[22]).
+Adding EN signal on $memory\CPU.registerFile[21]$1213 ($dff) from module SOC_flash (D = \CPU.writeBackData, Q = \CPU.registerFile[21]).
+Adding EN signal on $memory\CPU.registerFile[20]$1211 ($dff) from module SOC_flash (D = \CPU.writeBackData, Q = \CPU.registerFile[20]).
+Adding EN signal on $memory\CPU.registerFile[1]$1173 ($dff) from module SOC_flash (D = \CPU.writeBackData, Q = \CPU.registerFile[1]).
+Adding EN signal on $memory\CPU.registerFile[19]$1209 ($dff) from module SOC_flash (D = \CPU.writeBackData, Q = \CPU.registerFile[19]).
+Adding EN signal on $memory\CPU.registerFile[18]$1207 ($dff) from module SOC_flash (D = \CPU.writeBackData, Q = \CPU.registerFile[18]).
+Adding EN signal on $memory\CPU.registerFile[17]$1205 ($dff) from module SOC_flash (D = \CPU.writeBackData, Q = \CPU.registerFile[17]).
+Adding EN signal on $memory\CPU.registerFile[16]$1203 ($dff) from module SOC_flash (D = \CPU.writeBackData, Q = \CPU.registerFile[16]).
+Adding EN signal on $memory\CPU.registerFile[15]$1201 ($dff) from module SOC_flash (D = \CPU.writeBackData, Q = \CPU.registerFile[15]).
+Adding EN signal on $memory\CPU.registerFile[14]$1199 ($dff) from module SOC_flash (D = \CPU.writeBackData, Q = \CPU.registerFile[14]).
+Adding EN signal on $memory\CPU.registerFile[13]$1197 ($dff) from module SOC_flash (D = \CPU.writeBackData, Q = \CPU.registerFile[13]).
+Adding EN signal on $memory\CPU.registerFile[12]$1195 ($dff) from module SOC_flash (D = \CPU.writeBackData, Q = \CPU.registerFile[12]).
+Adding EN signal on $memory\CPU.registerFile[11]$1193 ($dff) from module SOC_flash (D = \CPU.writeBackData, Q = \CPU.registerFile[11]).
+Adding EN signal on $memory\CPU.registerFile[10]$1191 ($dff) from module SOC_flash (D = \CPU.writeBackData, Q = \CPU.registerFile[10]).
+Adding EN signal on $memory\CPU.registerFile[0]$1171 ($dff) from module SOC_flash (D = \CPU.writeBackData, Q = \CPU.registerFile[0]).
+Adding EN signal on $auto$opt_dff.cc:744:run$1170 ($sdffe) from module SOC_flash (D = $flatten\CPU.$ternary$cores/cpu/femtorv32_quark.v:354$173_Y [0], Q = \CPU.PC [0]).
+
+42.16. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \SOC_flash..
+Removed 32 unused cells and 36 unused wires.
+
+42.17. Executing OPT_EXPR pass (perform const folding).
+Optimizing module SOC_flash.
+
+42.18. Rerunning OPT passes. (Maybe there is more to do..)
+
+42.19. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \SOC_flash..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+
+42.20. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \SOC_flash.
+    New input vector for $reduce_and cell $auto$opt_dff.cc:223:make_patterns_logic$1709: { $auto$opt_dff.cc:197:make_patterns_logic$1706 $auto$opt_dff.cc:197:make_patterns_logic$1166 \CPU.state [2] }
+    Consolidated identical input bits for $mux cell $flatten\CPU.$ternary$cores/cpu/femtorv32_quark.v:355$172:
+      Old ports: A={ \CPU.PCplus4 [23:2] 2'xx }, B={ \CPU.PCplusImm [23:1] 1'x }, Y=$flatten\CPU.$ternary$cores/cpu/femtorv32_quark.v:355$172_Y
+      New ports: A={ \CPU.PCplus4 [23:2] 1'x }, B=\CPU.PCplusImm [23:1], Y=$flatten\CPU.$ternary$cores/cpu/femtorv32_quark.v:355$172_Y [23:1]
+      New connections: $flatten\CPU.$ternary$cores/cpu/femtorv32_quark.v:355$172_Y [0] = 1'x
+  Optimizing cells in module \SOC_flash.
+Performed a total of 2 changes.
+
+42.21. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\SOC_flash'.
+Removed a total of 0 cells.
+
+42.22. Executing OPT_SHARE pass.
+
+42.23. Executing OPT_DFF pass (perform DFF optimizations).
+
+42.24. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \SOC_flash..
+
+42.25. Executing OPT_EXPR pass (perform const folding).
+Optimizing module SOC_flash.
+
+42.26. Rerunning OPT passes. (Maybe there is more to do..)
+
+42.27. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \SOC_flash..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+
+42.28. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \SOC_flash.
+Performed a total of 0 changes.
+
+42.29. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\SOC_flash'.
+Removed a total of 0 cells.
+
+42.30. Executing OPT_SHARE pass.
+
+42.31. Executing OPT_DFF pass (perform DFF optimizations).
+
+42.32. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \SOC_flash..
+
+42.33. Executing OPT_EXPR pass (perform const folding).
+Optimizing module SOC_flash.
+
+42.34. Finished OPT passes. (There is nothing left to do.)
+
+43. Executing TECHMAP pass (map to technology primitives).
+
+43.1. Executing Verilog-2005 frontend: /home/leodtr/Programs/miniconda3/envs/fpga/bin/../share/yosys/techmap.v
+Parsing Verilog input from `/home/leodtr/Programs/miniconda3/envs/fpga/bin/../share/yosys/techmap.v' to AST representation.
+Generating RTLIL representation for module `\_90_simplemap_bool_ops'.
+Generating RTLIL representation for module `\_90_simplemap_reduce_ops'.
+Generating RTLIL representation for module `\_90_simplemap_logic_ops'.
+Generating RTLIL representation for module `\_90_simplemap_compare_ops'.
+Generating RTLIL representation for module `\_90_simplemap_various'.
+Generating RTLIL representation for module `\_90_simplemap_registers'.
+Generating RTLIL representation for module `\_90_shift_ops_shr_shl_sshl_sshr'.
+Generating RTLIL representation for module `\_90_shift_shiftx'.
+Generating RTLIL representation for module `\_90_fa'.
+Generating RTLIL representation for module `\_90_lcu'.
+Generating RTLIL representation for module `\_90_alu'.
+Generating RTLIL representation for module `\_90_macc'.
+Generating RTLIL representation for module `\_90_alumacc'.
+Generating RTLIL representation for module `\$__div_mod_u'.
+Generating RTLIL representation for module `\$__div_mod_trunc'.
+Generating RTLIL representation for module `\_90_div'.
+Generating RTLIL representation for module `\_90_mod'.
+Generating RTLIL representation for module `\$__div_mod_floor'.
+Generating RTLIL representation for module `\_90_divfloor'.
+Generating RTLIL representation for module `\_90_modfloor'.
+Generating RTLIL representation for module `\_90_pow'.
+Generating RTLIL representation for module `\_90_pmux'.
+Generating RTLIL representation for module `\_90_lut'.
+Successfully finished Verilog frontend.
+
+43.2. Continuing TECHMAP pass.
+Using extmapper simplemap for cells of type $eq.
+Using template $paramod$8fabc56b80a569262acfc42757a02ca0b8e91278\_90_pmux for cells of type $pmux.
+Using extmapper simplemap for cells of type $and.
+Using extmapper simplemap for cells of type $reduce_or.
+Using template $paramod$0063cc74cb9d92ba0fcb27304a45144f31b8a510\_90_pmux for cells of type $pmux.
+Using extmapper simplemap for cells of type $logic_not.
+Using extmapper simplemap for cells of type $not.
+Using extmapper simplemap for cells of type $dlatch.
+Using extmapper simplemap for cells of type $reduce_bool.
+Using extmapper simplemap for cells of type $dffe.
+Using extmapper simplemap for cells of type $sdff.
+Using extmapper simplemap for cells of type $or.
+Using template $paramod$672a140277c71df8314410f22acc08d55222c3c7\_90_alu for cells of type $alu.
+Using template $paramod$740b056ede97228d3eae64ea2fdc81f0a33e0fe7\_90_alu for cells of type $alu.
+Using extmapper simplemap for cells of type $sdffe.
+Using extmapper simplemap for cells of type $dff.
+Using extmapper simplemap for cells of type $mux.
+Using template $paramod$c2e415ef15bc3ccd2723772353a6b450d3d76206\_90_pmux for cells of type $pmux.
+Using template $paramod$dc04b7d98e503a7bab16fce2df70e6e2c5ca34d6\_90_alu for cells of type $alu.
+Using extmapper simplemap for cells of type $reduce_and.
+Using template $paramod$6a42b6fefed750f8a1c58eab59479d960557103c\_90_alu for cells of type $alu.
+Using template $paramod$e82d3fc1811c5751348a3964470632b35a435fc7\_90_alu for cells of type $alu.
+Using template $paramod$448756c9a9dfaa49080ce4b90c6cc182883e181f\_90_alu for cells of type $alu.
+Using template $paramod$a04dd9d4d8b430140c4ff94b50470fb380fda2a0\_90_alu for cells of type $alu.
+Using extmapper simplemap for cells of type $xor.
+Using template $paramod$080e6a70eb8bfa1ccf22d9718e795074645029a4\_90_alu for cells of type $alu.
+Using template $paramod$a1665ef28c749ebcdbe9aecd466e644647b56463\_90_alu for cells of type $alu.
+Using template $paramod$constmap:1b6115d36d46c0296d0024e3e3623593810ba834$paramod$3b3a66a7766bf28794ddcd35314b025da1fe57c8\_90_shift_ops_shr_shl_sshl_sshr for cells of type $shl.
+Using template $paramod$2bd81f420048247ff6903399c560fe0f8bd48ccc\_90_alu for cells of type $alu.
+Using extmapper simplemap for cells of type $logic_and.
+Using extmapper simplemap for cells of type $sdffce.
+Using template $paramod$789c344356a154d2afc7b832b41d1067dbc946ba\_90_alu for cells of type $alu.
+Using template $paramod$32a7b7b86c07519b7537abc18e96f0331f97914d\_90_alu for cells of type $alu.
+Using extmapper simplemap for cells of type $adffe.
+Using extmapper simplemap for cells of type $ne.
+Using template $paramod$fbc7873bff55778c0b3173955b7e4bce1d9d6834\_90_alu for cells of type $alu.
+Using template $paramod$57f63e8a3282e053be0430389b09fa050ac7dca0\_90_pmux for cells of type $pmux.
+Using extmapper simplemap for cells of type $adff.
+Using template $paramod$77db613179eb70c5e4e5c5aca72d602a7c6017b6\_90_pmux for cells of type $pmux.
+Using extmapper simplemap for cells of type $pos.
+Using template $paramod\_90_lcu\WIDTH=32'00000000000000000000000000000100 for cells of type $lcu.
+Using template $paramod\_90_lcu\WIDTH=32'00000000000000000000000000000101 for cells of type $lcu.
+Using template $paramod\_90_lcu\WIDTH=32'00000000000000000000000000100000 for cells of type $lcu.
+Using template $paramod\_90_lcu\WIDTH=32'00000000000000000000000000011000 for cells of type $lcu.
+Using template $paramod\_90_lcu\WIDTH=32'00000000000000000000000000010111 for cells of type $lcu.
+Using template $paramod\_90_lcu\WIDTH=32'00000000000000000000000000000110 for cells of type $lcu.
+Using template $paramod\_90_lcu\WIDTH=32'00000000000000000000000000010110 for cells of type $lcu.
+Using template $paramod\_90_lcu\WIDTH=32'00000000000000000000000000010000 for cells of type $lcu.
+Using template $paramod\_90_lcu\WIDTH=32'00000000000000000000000000100001 for cells of type $lcu.
+No more expansions possible.
+
+44. Executing OPT pass (performing simple optimizations).
+
+44.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module SOC_flash.
+
+44.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\SOC_flash'.
+Removed a total of 222 cells.
+
+44.3. Executing OPT_DFF pass (perform DFF optimizations).
+
+44.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \SOC_flash..
+Removed 250 unused cells and 1240 unused wires.
+
+44.5. Finished fast OPT passes.
+
+45. Executing ABC pass (technology mapping using ABC).
+
+45.1. Extracting gate netlist of module `\SOC_flash' to `<abc-temp-dir>/input.blif'..
+Extracted 5176 gates and 6705 wires to a netlist network with 1526 inputs and 494 outputs.
+
+45.1.1. Executing ABC.
+Running ABC command: <yosys-exe-dir>/yosys-abc -s -f <abc-temp-dir>/abc.script 2>&1
+ABC: ABC command line: "source <abc-temp-dir>/abc.script".
+ABC: 
+ABC: + read_blif <abc-temp-dir>/input.blif 
+ABC: + read_library <abc-temp-dir>/stdcells.genlib 
+ABC: Entered genlib library with 13 gates from file "<abc-temp-dir>/stdcells.genlib".
+ABC: + strash 
+ABC: + dretime 
+ABC: + map 
+ABC: + write_blif <abc-temp-dir>/output.blif 
+
+45.1.2. Re-integrating ABC results.
+ABC RESULTS:               AND cells:       67
+ABC RESULTS:            ANDNOT cells:     1109
+ABC RESULTS:               MUX cells:     2477
+ABC RESULTS:              NAND cells:      146
+ABC RESULTS:               NOR cells:      224
+ABC RESULTS:               NOT cells:      196
+ABC RESULTS:                OR cells:      460
+ABC RESULTS:             ORNOT cells:      129
+ABC RESULTS:              XNOR cells:       84
+ABC RESULTS:               XOR cells:      248
+ABC RESULTS:              ZERO cells:        1
+ABC RESULTS:        internal signals:     4685
+ABC RESULTS:           input signals:     1526
+ABC RESULTS:          output signals:      494
+Removing temp directory.
+
+46. Executing OPT pass (performing simple optimizations).
+
+46.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module SOC_flash.
+
+46.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\SOC_flash'.
+Removed a total of 16 cells.
+
+46.3. Executing OPT_DFF pass (perform DFF optimizations).
+Setting constant 0-bit at position 0 on $auto$simplemap.cc:559:simplemap_adffe_sdffe_sdffce$4324 ($_SDFFE_PN0P_) from module SOC_flash.
+
+46.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \SOC_flash..
+Removed 7 unused cells and 2888 unused wires.
+
+46.5. Rerunning OPT passes. (Removed registers in this run.)
+
+46.6. Executing OPT_EXPR pass (perform const folding).
+Optimizing module SOC_flash.
+
+46.7. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\SOC_flash'.
+Removed a total of 0 cells.
+
+46.8. Executing OPT_DFF pass (perform DFF optimizations).
+
+46.9. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \SOC_flash..
+
+46.10. Finished fast OPT passes.
+
+47. Executing HIERARCHY pass (managing design hierarchy).
+
+47.1. Analyzing design hierarchy..
+Top module:  \SOC_flash
+
+47.2. Analyzing design hierarchy..
+Top module:  \SOC_flash
+Removed 0 unused modules.
+
+48. Printing statistics.
+
+=== SOC_flash ===
+
+   Number of wires:               5057
+   Number of wire bits:           7576
+   Number of public wires:         147
+   Number of public wire bits:    2463
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:               6672
+     $_ANDNOT_                    1107
+     $_AND_                         67
+     $_DFFE_NP_                     52
+     $_DFFE_PN0P_                   33
+     $_DFFE_PP_                   1215
+     $_DFF_PN0_                      3
+     $_DFF_P_                       34
+     $_DLATCH_N_                    41
+     $_MUX_                       2477
+     $_NAND_                       146
+     $_NOR_                        210
+     $_NOT_                        191
+     $_ORNOT_                      129
+     $_OR_                         460
+     $_SDFFCE_NN0P_                  5
+     $_SDFFCE_NN1P_                  1
+     $_SDFFCE_PN0P_                  7
+     $_SDFFCE_PP0P_                  9
+     $_SDFFE_NP0N_                   1
+     $_SDFFE_NP0P_                  15
+     $_SDFFE_NP1P_                   3
+     $_SDFFE_PN0P_                 112
+     $_SDFFE_PN1P_                   1
+     $_SDFF_PN0_                     6
+     $_SDFF_PN1_                     1
+     $_SDFF_PP0_                    14
+     $_SDFF_PP1_                     2
+     $_XNOR_                        84
+     $_XOR_                        246
+
+49. Executing CHECK pass (checking for obvious problems).
+Checking module SOC_flash...
+Found and reported 0 problems.
+
+50. Generating Graphviz representation of design.
+Writing dot description to `./synthesis/post_techmap.dot'.
+Dumping module SOC_flash to page 1.
+
+51. Executing SHARE pass (SAT-based resource sharing).
+
+52. Executing OPT pass (performing simple optimizations).
+
+52.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module SOC_flash.
+
+52.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\SOC_flash'.
+Removed a total of 0 cells.
+
+52.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \SOC_flash..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Removed 0 multiplexer ports.
+
+52.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \SOC_flash.
+Performed a total of 0 changes.
+
+52.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\SOC_flash'.
+Removed a total of 0 cells.
+
+52.6. Executing OPT_DFF pass (perform DFF optimizations).
+
+52.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \SOC_flash..
+
+52.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module SOC_flash.
+
+52.9. Finished OPT passes. (There is nothing left to do.)
+
+53. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \SOC_flash..
+Removed 0 unused cells and 50 unused wires.
+
+54. Printing statistics.
+
+=== SOC_flash ===
+
+   Number of wires:               5007
+   Number of wire bits:           6871
+   Number of public wires:          97
+   Number of public wire bits:    1758
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:               6672
+     $_ANDNOT_                    1107
+     $_AND_                         67
+     $_DFFE_NP_                     52
+     $_DFFE_PN0P_                   33
+     $_DFFE_PP_                   1215
+     $_DFF_PN0_                      3
+     $_DFF_P_                       34
+     $_DLATCH_N_                    41
+     $_MUX_                       2477
+     $_NAND_                       146
+     $_NOR_                        210
+     $_NOT_                        191
+     $_ORNOT_                      129
+     $_OR_                         460
+     $_SDFFCE_NN0P_                  5
+     $_SDFFCE_NN1P_                  1
+     $_SDFFCE_PN0P_                  7
+     $_SDFFCE_PP0P_                  9
+     $_SDFFE_NP0N_                   1
+     $_SDFFE_NP0P_                  15
+     $_SDFFE_NP1P_                   3
+     $_SDFFE_PN0P_                 112
+     $_SDFFE_PN1P_                   1
+     $_SDFF_PN0_                     6
+     $_SDFF_PN1_                     1
+     $_SDFF_PP0_                    14
+     $_SDFF_PP1_                     2
+     $_XNOR_                        84
+     $_XOR_                        246
+
+mapping tbuf
+
+55. Executing TECHMAP pass (map to technology primitives).
+
+55.1. Executing Verilog-2005 frontend: /home/leodtr/.volare/sky130A/libs.tech/openlane/sky130_fd_sc_hd/tribuff_map.v
+Parsing Verilog input from `/home/leodtr/.volare/sky130A/libs.tech/openlane/sky130_fd_sc_hd/tribuff_map.v' to AST representation.
+Generating RTLIL representation for module `\$_TBUF_'.
+Successfully finished Verilog frontend.
+
+55.2. Continuing TECHMAP pass.
+No more expansions possible.
+
+56. Executing SIMPLEMAP pass (map simple cells to gate primitives).
+
+57. Executing TECHMAP pass (map to technology primitives).
+
+57.1. Executing Verilog-2005 frontend: /home/leodtr/.volare/sky130A/libs.tech/openlane/sky130_fd_sc_hd/latch_map.v
+Parsing Verilog input from `/home/leodtr/.volare/sky130A/libs.tech/openlane/sky130_fd_sc_hd/latch_map.v' to AST representation.
+Generating RTLIL representation for module `\$_DLATCH_P_'.
+Generating RTLIL representation for module `\$_DLATCH_N_'.
+Successfully finished Verilog frontend.
+
+57.2. Continuing TECHMAP pass.
+Using template \$_DLATCH_N_ for cells of type $_DLATCH_N_.
+No more expansions possible.
+
+58. Executing SIMPLEMAP pass (map simple cells to gate primitives).
+
+59. Executing DFFLIBMAP pass (mapping DFF cells to sequential cells from liberty file).
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfbbn_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfbbn_2' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfrtn_1' - skipping.
+Warning: Found unsupported expression 'D&DE|IQ&!DE' in pin attribute of cell 'sky130_fd_sc_hd__edfxbp_1' - skipping.
+Warning: Found unsupported expression 'D&DE|IQ&!DE' in pin attribute of cell 'sky130_fd_sc_hd__edfxtp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfbbp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfrbp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfrbp_2' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfrtp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfrtp_2' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfrtp_4' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfsbp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfsbp_2' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfstp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfstp_2' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfstp_4' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfxbp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfxbp_2' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfxtp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfxtp_2' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfxtp_4' - skipping.
+Warning: Found unsupported expression 'D&DE&!SCE|IQ&!DE&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sedfxbp_1' - skipping.
+Warning: Found unsupported expression 'D&DE&!SCE|IQ&!DE&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sedfxbp_2' - skipping.
+Warning: Found unsupported expression 'D&DE&!SCE|IQ&!DE&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sedfxtp_1' - skipping.
+Warning: Found unsupported expression 'D&DE&!SCE|IQ&!DE&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sedfxtp_2' - skipping.
+Warning: Found unsupported expression 'D&DE&!SCE|IQ&!DE&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sedfxtp_4' - skipping.
+  cell sky130_fd_sc_hd__dfxtp_1 (noninv, pins=3, area=20.02) is a direct match for cell type $_DFF_P_.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfbbn_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfbbn_2' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfrtn_1' - skipping.
+  cell sky130_fd_sc_hd__dfrtn_1 (noninv, pins=4, area=25.02) is a direct match for cell type $_DFF_NN0_.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfbbn_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfbbn_2' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfrtn_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfbbn_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfbbn_2' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfrtn_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfbbn_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfbbn_2' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfrtn_1' - skipping.
+Warning: Found unsupported expression 'D&DE|IQ&!DE' in pin attribute of cell 'sky130_fd_sc_hd__edfxbp_1' - skipping.
+Warning: Found unsupported expression 'D&DE|IQ&!DE' in pin attribute of cell 'sky130_fd_sc_hd__edfxtp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfbbp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfrbp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfrbp_2' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfrtp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfrtp_2' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfrtp_4' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfsbp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfsbp_2' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfstp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfstp_2' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfstp_4' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfxbp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfxbp_2' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfxtp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfxtp_2' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfxtp_4' - skipping.
+Warning: Found unsupported expression 'D&DE&!SCE|IQ&!DE&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sedfxbp_1' - skipping.
+Warning: Found unsupported expression 'D&DE&!SCE|IQ&!DE&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sedfxbp_2' - skipping.
+Warning: Found unsupported expression 'D&DE&!SCE|IQ&!DE&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sedfxtp_1' - skipping.
+Warning: Found unsupported expression 'D&DE&!SCE|IQ&!DE&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sedfxtp_2' - skipping.
+Warning: Found unsupported expression 'D&DE&!SCE|IQ&!DE&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sedfxtp_4' - skipping.
+  cell sky130_fd_sc_hd__dfrtp_1 (noninv, pins=4, area=25.02) is a direct match for cell type $_DFF_PN0_.
+Warning: Found unsupported expression 'D&DE|IQ&!DE' in pin attribute of cell 'sky130_fd_sc_hd__edfxbp_1' - skipping.
+Warning: Found unsupported expression 'D&DE|IQ&!DE' in pin attribute of cell 'sky130_fd_sc_hd__edfxtp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfbbp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfrbp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfrbp_2' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfrtp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfrtp_2' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfrtp_4' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfsbp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfsbp_2' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfstp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfstp_2' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfstp_4' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfxbp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfxbp_2' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfxtp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfxtp_2' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfxtp_4' - skipping.
+Warning: Found unsupported expression 'D&DE&!SCE|IQ&!DE&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sedfxbp_1' - skipping.
+Warning: Found unsupported expression 'D&DE&!SCE|IQ&!DE&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sedfxbp_2' - skipping.
+Warning: Found unsupported expression 'D&DE&!SCE|IQ&!DE&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sedfxtp_1' - skipping.
+Warning: Found unsupported expression 'D&DE&!SCE|IQ&!DE&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sedfxtp_2' - skipping.
+Warning: Found unsupported expression 'D&DE&!SCE|IQ&!DE&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sedfxtp_4' - skipping.
+  cell sky130_fd_sc_hd__dfstp_2 (noninv, pins=4, area=26.28) is a direct match for cell type $_DFF_PN1_.
+Warning: Found unsupported expression 'D&DE|IQ&!DE' in pin attribute of cell 'sky130_fd_sc_hd__edfxbp_1' - skipping.
+Warning: Found unsupported expression 'D&DE|IQ&!DE' in pin attribute of cell 'sky130_fd_sc_hd__edfxtp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfbbp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfrbp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfrbp_2' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfrtp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfrtp_2' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfrtp_4' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfsbp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfsbp_2' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfstp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfstp_2' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfstp_4' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfxbp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfxbp_2' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfxtp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfxtp_2' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfxtp_4' - skipping.
+Warning: Found unsupported expression 'D&DE&!SCE|IQ&!DE&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sedfxbp_1' - skipping.
+Warning: Found unsupported expression 'D&DE&!SCE|IQ&!DE&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sedfxbp_2' - skipping.
+Warning: Found unsupported expression 'D&DE&!SCE|IQ&!DE&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sedfxtp_1' - skipping.
+Warning: Found unsupported expression 'D&DE&!SCE|IQ&!DE&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sedfxtp_2' - skipping.
+Warning: Found unsupported expression 'D&DE&!SCE|IQ&!DE&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sedfxtp_4' - skipping.
+Warning: Found unsupported expression 'D&DE|IQ&!DE' in pin attribute of cell 'sky130_fd_sc_hd__edfxbp_1' - skipping.
+Warning: Found unsupported expression 'D&DE|IQ&!DE' in pin attribute of cell 'sky130_fd_sc_hd__edfxtp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfbbp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfrbp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfrbp_2' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfrtp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfrtp_2' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfrtp_4' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfsbp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfsbp_2' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfstp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfstp_2' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfstp_4' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfxbp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfxbp_2' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfxtp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfxtp_2' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfxtp_4' - skipping.
+Warning: Found unsupported expression 'D&DE&!SCE|IQ&!DE&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sedfxbp_1' - skipping.
+Warning: Found unsupported expression 'D&DE&!SCE|IQ&!DE&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sedfxbp_2' - skipping.
+Warning: Found unsupported expression 'D&DE&!SCE|IQ&!DE&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sedfxtp_1' - skipping.
+Warning: Found unsupported expression 'D&DE&!SCE|IQ&!DE&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sedfxtp_2' - skipping.
+Warning: Found unsupported expression 'D&DE&!SCE|IQ&!DE&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sedfxtp_4' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfbbn_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfbbn_2' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfrtn_1' - skipping.
+  cell sky130_fd_sc_hd__dfbbn_1 (noninv, pins=6, area=32.53) is a direct match for cell type $_DFFSR_NNN_.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfbbn_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfbbn_2' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfrtn_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfbbn_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfbbn_2' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfrtn_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfbbn_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfbbn_2' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfrtn_1' - skipping.
+Warning: Found unsupported expression 'D&DE|IQ&!DE' in pin attribute of cell 'sky130_fd_sc_hd__edfxbp_1' - skipping.
+Warning: Found unsupported expression 'D&DE|IQ&!DE' in pin attribute of cell 'sky130_fd_sc_hd__edfxtp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfbbp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfrbp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfrbp_2' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfrtp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfrtp_2' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfrtp_4' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfsbp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfsbp_2' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfstp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfstp_2' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfstp_4' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfxbp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfxbp_2' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfxtp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfxtp_2' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfxtp_4' - skipping.
+Warning: Found unsupported expression 'D&DE&!SCE|IQ&!DE&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sedfxbp_1' - skipping.
+Warning: Found unsupported expression 'D&DE&!SCE|IQ&!DE&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sedfxbp_2' - skipping.
+Warning: Found unsupported expression 'D&DE&!SCE|IQ&!DE&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sedfxtp_1' - skipping.
+Warning: Found unsupported expression 'D&DE&!SCE|IQ&!DE&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sedfxtp_2' - skipping.
+Warning: Found unsupported expression 'D&DE&!SCE|IQ&!DE&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sedfxtp_4' - skipping.
+  cell sky130_fd_sc_hd__dfbbp_1 (noninv, pins=6, area=32.53) is a direct match for cell type $_DFFSR_PNN_.
+Warning: Found unsupported expression 'D&DE|IQ&!DE' in pin attribute of cell 'sky130_fd_sc_hd__edfxbp_1' - skipping.
+Warning: Found unsupported expression 'D&DE|IQ&!DE' in pin attribute of cell 'sky130_fd_sc_hd__edfxtp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfbbp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfrbp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfrbp_2' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfrtp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfrtp_2' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfrtp_4' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfsbp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfsbp_2' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfstp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfstp_2' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfstp_4' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfxbp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfxbp_2' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfxtp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfxtp_2' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfxtp_4' - skipping.
+Warning: Found unsupported expression 'D&DE&!SCE|IQ&!DE&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sedfxbp_1' - skipping.
+Warning: Found unsupported expression 'D&DE&!SCE|IQ&!DE&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sedfxbp_2' - skipping.
+Warning: Found unsupported expression 'D&DE&!SCE|IQ&!DE&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sedfxtp_1' - skipping.
+Warning: Found unsupported expression 'D&DE&!SCE|IQ&!DE&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sedfxtp_2' - skipping.
+Warning: Found unsupported expression 'D&DE&!SCE|IQ&!DE&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sedfxtp_4' - skipping.
+Warning: Found unsupported expression 'D&DE|IQ&!DE' in pin attribute of cell 'sky130_fd_sc_hd__edfxbp_1' - skipping.
+Warning: Found unsupported expression 'D&DE|IQ&!DE' in pin attribute of cell 'sky130_fd_sc_hd__edfxtp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfbbp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfrbp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfrbp_2' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfrtp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfrtp_2' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfrtp_4' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfsbp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfsbp_2' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfstp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfstp_2' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfstp_4' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfxbp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfxbp_2' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfxtp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfxtp_2' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfxtp_4' - skipping.
+Warning: Found unsupported expression 'D&DE&!SCE|IQ&!DE&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sedfxbp_1' - skipping.
+Warning: Found unsupported expression 'D&DE&!SCE|IQ&!DE&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sedfxbp_2' - skipping.
+Warning: Found unsupported expression 'D&DE&!SCE|IQ&!DE&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sedfxtp_1' - skipping.
+Warning: Found unsupported expression 'D&DE&!SCE|IQ&!DE&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sedfxtp_2' - skipping.
+Warning: Found unsupported expression 'D&DE&!SCE|IQ&!DE&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sedfxtp_4' - skipping.
+Warning: Found unsupported expression 'D&DE|IQ&!DE' in pin attribute of cell 'sky130_fd_sc_hd__edfxbp_1' - skipping.
+Warning: Found unsupported expression 'D&DE|IQ&!DE' in pin attribute of cell 'sky130_fd_sc_hd__edfxtp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfbbp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfrbp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfrbp_2' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfrtp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfrtp_2' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfrtp_4' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfsbp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfsbp_2' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfstp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfstp_2' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfstp_4' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfxbp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfxbp_2' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfxtp_1' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfxtp_2' - skipping.
+Warning: Found unsupported expression 'D&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sdfxtp_4' - skipping.
+Warning: Found unsupported expression 'D&DE&!SCE|IQ&!DE&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sedfxbp_1' - skipping.
+Warning: Found unsupported expression 'D&DE&!SCE|IQ&!DE&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sedfxbp_2' - skipping.
+Warning: Found unsupported expression 'D&DE&!SCE|IQ&!DE&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sedfxtp_1' - skipping.
+Warning: Found unsupported expression 'D&DE&!SCE|IQ&!DE&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sedfxtp_2' - skipping.
+Warning: Found unsupported expression 'D&DE&!SCE|IQ&!DE&!SCE|SCD&SCE' in pin attribute of cell 'sky130_fd_sc_hd__sedfxtp_4' - skipping.
+  final dff cell mappings:
+    unmapped dff cell: $_DFF_N_
+    \sky130_fd_sc_hd__dfxtp_1 _DFF_P_ (.CLK( C), .D( D), .Q( Q));
+    \sky130_fd_sc_hd__dfrtn_1 _DFF_NN0_ (.CLK_N( C), .D( D), .Q( Q), .RESET_B( R));
+    unmapped dff cell: $_DFF_NN1_
+    unmapped dff cell: $_DFF_NP0_
+    unmapped dff cell: $_DFF_NP1_
+    \sky130_fd_sc_hd__dfrtp_1 _DFF_PN0_ (.CLK( C), .D( D), .Q( Q), .RESET_B( R));
+    \sky130_fd_sc_hd__dfstp_2 _DFF_PN1_ (.CLK( C), .D( D), .Q( Q), .SET_B( R));
+    unmapped dff cell: $_DFF_PP0_
+    unmapped dff cell: $_DFF_PP1_
+    \sky130_fd_sc_hd__dfbbn_1 _DFFSR_NNN_ (.CLK_N( C), .D( D), .Q( Q), .Q_N(~Q), .RESET_B( R), .SET_B( S));
+    unmapped dff cell: $_DFFSR_NNP_
+    unmapped dff cell: $_DFFSR_NPN_
+    unmapped dff cell: $_DFFSR_NPP_
+    \sky130_fd_sc_hd__dfbbp_1 _DFFSR_PNN_ (.CLK( C), .D( D), .Q( Q), .Q_N(~Q), .RESET_B( R), .SET_B( S));
+    unmapped dff cell: $_DFFSR_PNP_
+    unmapped dff cell: $_DFFSR_PPN_
+    unmapped dff cell: $_DFFSR_PPP_
+
+59.1. Executing DFFLEGALIZE pass (convert FFs to types supported by the target).
+Mapping DFF cells in module `\SOC_flash':
+  mapped 36 $_DFF_PN0_ cells to \sky130_fd_sc_hd__dfrtp_1 cells.
+  mapped 1478 $_DFF_P_ cells to \sky130_fd_sc_hd__dfxtp_1 cells.
+
+60. Printing statistics.
+
+=== SOC_flash ===
+
+   Number of wires:               6838
+   Number of wire bits:           8702
+   Number of public wires:          97
+   Number of public wire bits:    1758
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:               8380
+     $_ANDNOT_                    1107
+     $_AND_                         67
+     $_MUX_                       4108
+     $_NAND_                       146
+     $_NOR_                        210
+     $_NOT_                        268
+     $_ORNOT_                      129
+     $_OR_                         460
+     $_XNOR_                        84
+     $_XOR_                        246
+     sky130_fd_sc_hd__dfrtp_1       36
+     sky130_fd_sc_hd__dfxtp_1     1478
+     sky130_fd_sc_hd__dlxtn_1       41
+
+[INFO]: USING STRATEGY AREA 0
+
+61. Executing ABC pass (technology mapping using ABC).
+
+61.1. Extracting gate netlist of module `\SOC_flash' to `/tmp/yosys-abc-km4XRB/input.blif'..
+Extracted 6825 gates and 8384 wires to a netlist network with 1557 inputs and 1634 outputs.
+
+61.1.1. Executing ABC.
+Running ABC command: /home/leodtr/Programs/miniconda3/envs/fpga/bin/yosys-abc -s -f /tmp/yosys-abc-km4XRB/abc.script 2>&1
+ABC: ABC command line: "source /tmp/yosys-abc-km4XRB/abc.script".
+ABC: 
+ABC: + read_blif /tmp/yosys-abc-km4XRB/input.blif 
+ABC: + read_lib -w /home/leodtr/.volare/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib 
+ABC: Parsing finished successfully.  Parsing time =     0.07 sec
+ABC: Scl_LibertyReadGenlib() skipped cell "sky130_fd_sc_hd__decap_12" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "sky130_fd_sc_hd__decap_3" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "sky130_fd_sc_hd__decap_4" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "sky130_fd_sc_hd__decap_6" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "sky130_fd_sc_hd__decap_8" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfbbn_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfbbn_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfbbp_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfrbp_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfrbp_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfrtn_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfrtp_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfrtp_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfrtp_4".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfsbp_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfsbp_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfstp_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfstp_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfstp_4".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfxbp_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfxbp_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfxtp_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfxtp_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfxtp_4".
+ABC: Scl_LibertyReadGenlib() skipped cell "sky130_fd_sc_hd__diode_2" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "sky130_fd_sc_hd__dlclkp_1" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "sky130_fd_sc_hd__dlclkp_2" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "sky130_fd_sc_hd__dlclkp_4" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dlrbn_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dlrbn_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dlrbp_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dlrbp_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dlrtn_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dlrtn_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dlrtn_4".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dlrtp_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dlrtp_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dlrtp_4".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dlxbn_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dlxbn_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dlxbp_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dlxtn_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dlxtn_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dlxtn_4".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dlxtp_1".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "sky130_fd_sc_hd__ebufn_1".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "sky130_fd_sc_hd__ebufn_2".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "sky130_fd_sc_hd__ebufn_4".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "sky130_fd_sc_hd__ebufn_8".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__edfxbp_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__edfxtp_1".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "sky130_fd_sc_hd__einvn_0".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "sky130_fd_sc_hd__einvn_1".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "sky130_fd_sc_hd__einvn_2".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "sky130_fd_sc_hd__einvn_4".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "sky130_fd_sc_hd__einvn_8".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "sky130_fd_sc_hd__einvp_1".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "sky130_fd_sc_hd__einvp_2".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "sky130_fd_sc_hd__einvp_4".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "sky130_fd_sc_hd__einvp_8".
+ABC: Scl_LibertyReadGenlib() skipped cell "sky130_fd_sc_hd__lpflow_bleeder_1" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "sky130_fd_sc_hd__lpflow_decapkapwr_12" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "sky130_fd_sc_hd__lpflow_decapkapwr_3" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "sky130_fd_sc_hd__lpflow_decapkapwr_4" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "sky130_fd_sc_hd__lpflow_decapkapwr_6" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "sky130_fd_sc_hd__lpflow_decapkapwr_8" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__lpflow_inputisolatch_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__sdfbbn_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__sdfbbn_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__sdfbbp_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__sdfrbp_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__sdfrbp_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__sdfrtn_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__sdfrtp_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__sdfrtp_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__sdfrtp_4".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__sdfsbp_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__sdfsbp_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__sdfstp_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__sdfstp_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__sdfstp_4".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__sdfxbp_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__sdfxbp_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__sdfxtp_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__sdfxtp_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__sdfxtp_4".
+ABC: Scl_LibertyReadGenlib() skipped cell "sky130_fd_sc_hd__sdlclkp_1" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "sky130_fd_sc_hd__sdlclkp_2" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped cell "sky130_fd_sc_hd__sdlclkp_4" without logic function.
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__sedfxbp_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__sedfxbp_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__sedfxtp_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__sedfxtp_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__sedfxtp_4".
+ABC: Library "sky130_fd_sc_hd__tt_025C_1v80" from "/home/leodtr/.volare/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib" has 334 cells (94 skipped: 63 seq; 13 tri-state; 18 no func; 0 dont_use).  Time =     0.11 sec
+ABC: Memory =   16.05 MB. Time =     0.11 sec
+ABC: Warning: Detected 9 multi-output gates (for example, "sky130_fd_sc_hd__fa_1").
+ABC: + read_constr -v /home/leodtr/Universidad/Temas_Digital/sky_femto/./synthesis/synthesis.sdc 
+ABC: Setting driving cell to be "sky130_fd_sc_hd__inv_2".
+ABC: Setting output load to be 33.442001.
+ABC: + read_constr ./synthesis/synthesis.sdc 
+ABC: + fx 
+ABC: + mfs 
+ABC: + strash 
+ABC: + drf -l 
+ABC: + balance 
+ABC: + drw -l 
+ABC: + drf -l 
+ABC: + balance 
+ABC: + drw -l 
+ABC: + drw -l -z 
+ABC: + balance 
+ABC: + drf -l -z 
+ABC: + drw -l -z 
+ABC: + balance 
+ABC: + retime -D -D 10000.0 -M 5 
+ABC: + scleanup 
+ABC: Error: The network is combinational.
+ABC: + fraig_store 
+ABC: + balance 
+ABC: + fraig_store 
+ABC: + balance 
+ABC: + drw -l 
+ABC: + drf -l 
+ABC: + balance 
+ABC: + drw -l 
+ABC: + drw -l -z 
+ABC: + balance 
+ABC: + drf -l -z 
+ABC: + drw -l -z 
+ABC: + balance 
+ABC: + fraig_store 
+ABC: + balance 
+ABC: + drw -l 
+ABC: + drf -l 
+ABC: + balance 
+ABC: + drw -l 
+ABC: + drw -l -z 
+ABC: + balance 
+ABC: + drf -l -z 
+ABC: + drw -l -z 
+ABC: + balance 
+ABC: + fraig_store 
+ABC: + balance 
+ABC: + drw -l 
+ABC: + drf -l 
+ABC: + balance 
+ABC: + drw -l 
+ABC: + drw -l -z 
+ABC: + balance 
+ABC: + drf -l -z 
+ABC: + drw -l -z 
+ABC: + balance 
+ABC: + fraig_store 
+ABC: + fraig_restore 
+ABC: + amap -m -Q 0.1 -F 20 -A 20 -C 5000 
+ABC: + retime -D -D 10000.0 
+ABC: + &get -n 
+ABC: + &st 
+ABC: + &dch 
+ABC: + &nf 
+ABC: + &put 
+ABC: + buffer -N 10 -S 750.0 
+ABC: + upsize -D 10000.0 
+ABC: Current delay (6047.97 ps) does not exceed the target delay (10000.00 ps). Upsizing is not performed.
+ABC: + dnsize -D 10000.0 
+ABC: + stime -p 
+ABC: WireLoad = "none"  Gates =   6825 ( 14.8 %)   Cap = 11.7 ff ( 10.8 %)   Area =    43125.11 ( 67.6 %)   Delay =  6157.35 ps  (  1.0 %)               
+ABC: Path  0 --     589 : 0    8 pi                                    A =   0.00  Df =  90.3  -48.9 ps  S = 133.0 ps  Cin =  0.0 ff  Cout =  27.9 ff  Cmax =   0.0 ff  G =    0  
+ABC: Path  1 --    3415 : 3    2 sky130_fd_sc_hd__or3b_2               A =   8.76  Df = 547.2 -312.0 ps  S =  80.8 ps  Cin =  1.5 ff  Cout =   4.0 ff  Cmax = 269.2 ff  G =  255  
+ABC: Path  2 --    3416 : 1   10 sky130_fd_sc_hd__clkbuf_1             A =   3.75  Df = 734.8 -243.4 ps  S = 302.9 ps  Cin =  2.1 ff  Cout =  25.3 ff  Cmax = 130.0 ff  G = 1131  
+ABC: Path  3 --    3742 : 3    2 sky130_fd_sc_hd__nor3_1               A =   5.00  Df = 972.8 -378.3 ps  S = 211.0 ps  Cin =  2.4 ff  Cout =   5.1 ff  Cmax =  52.2 ff  G =  199  
+ABC: Path  4 --    3743 : 3    3 sky130_fd_sc_hd__a21oi_1              A =   5.00  Df =1075.2 -106.4 ps  S = 237.1 ps  Cin =  2.3 ff  Cout =   9.5 ff  Cmax =  74.2 ff  G =  395  
+ABC: Path  5 --    3744 : 2    6 sky130_fd_sc_hd__xnor2_1              A =   8.76  Df =1457.7 -215.9 ps  S = 437.5 ps  Cin =  4.5 ff  Cout =  18.5 ff  Cmax =  69.6 ff  G =  391  
+ABC: Path  6 --    3753 : 4    2 sky130_fd_sc_hd__o211ai_1             A =   7.51  Df =1667.3  -34.7 ps  S = 185.0 ps  Cin =  2.3 ff  Cout =   4.9 ff  Cmax =  74.2 ff  G =  198  
+ABC: Path  7 --    3757 : 4    3 sky130_fd_sc_hd__a31oi_1              A =   6.26  Df =1909.2  -93.4 ps  S = 259.0 ps  Cin =  2.3 ff  Cout =   9.1 ff  Cmax =  65.9 ff  G =  374  
+ABC: Path  8 --    3761 : 4    3 sky130_fd_sc_hd__o31ai_1              A =   7.51  Df =2150.8 -103.5 ps  S = 358.5 ps  Cin =  2.4 ff  Cout =   8.6 ff  Cmax =  47.6 ff  G =  347  
+ABC: Path  9 --    3767 : 4    3 sky130_fd_sc_hd__and4b_1              A =  10.01  Df =2418.0 -141.2 ps  S =  87.6 ps  Cin =  1.6 ff  Cout =   5.9 ff  Cmax = 155.7 ff  G =  356  
+ABC: Path 10 --    3913 : 2    3 sky130_fd_sc_hd__or2_2                A =   6.26  Df =2595.2  -39.7 ps  S =  74.0 ps  Cin =  1.5 ff  Cout =   9.6 ff  Cmax = 299.4 ff  G =  636  
+ABC: Path 11 --    3914 : 4    2 sky130_fd_sc_hd__a31oi_1              A =   6.26  Df =2783.3 -134.3 ps  S = 202.3 ps  Cin =  2.3 ff  Cout =   6.5 ff  Cmax =  65.9 ff  G =  268  
+ABC: Path 12 --    3915 : 2    2 sky130_fd_sc_hd__xnor2_1              A =   8.76  Df =2964.8 -145.4 ps  S = 130.7 ps  Cin =  4.5 ff  Cout =   3.4 ff  Cmax =  69.6 ff  G =   70  
+ABC: Path 13 --    3939 : 4    1 sky130_fd_sc_hd__or4b_2               A =  10.01  Df =3621.3 -666.1 ps  S =  96.2 ps  Cin =  1.5 ff  Cout =   2.4 ff  Cmax = 265.5 ff  G =  158  
+ABC: Path 14 --    3957 : 4    1 sky130_fd_sc_hd__nor4_1               A =   6.26  Df =3887.4 -595.6 ps  S = 205.0 ps  Cin =  2.4 ff  Cout =   2.4 ff  Cmax =  36.6 ff  G =   97  
+ABC: Path 15 --    3969 : 4    1 sky130_fd_sc_hd__nand4_1              A =   6.26  Df =3986.1 -468.2 ps  S =  81.9 ps  Cin =  2.3 ff  Cout =   2.5 ff  Cmax = 124.5 ff  G =  100  
+ABC: Path 16 --    3970 : 4    1 sky130_fd_sc_hd__nor4_1               A =   6.26  Df =4215.0 -297.5 ps  S = 295.0 ps  Cin =  2.4 ff  Cout =   4.8 ff  Cmax =  36.6 ff  G =  197  
+ABC: Path 17 --    3971 : 3    1 sky130_fd_sc_hd__mux2i_1              A =  10.01  Df =4406.6 -322.7 ps  S = 108.6 ps  Cin =  3.0 ff  Cout =   2.5 ff  Cmax =  68.7 ff  G =   77  
+ABC: Path 18 --    3983 : 4    2 sky130_fd_sc_hd__o211ai_1             A =   7.51  Df =4595.0 -323.3 ps  S = 163.1 ps  Cin =  2.3 ff  Cout =   3.7 ff  Cmax =  74.2 ff  G =  153  
+ABC: Path 19 --    3984 : 1   10 sky130_fd_sc_hd__clkbuf_1             A =   3.75  Df =4837.1 -388.4 ps  S = 238.8 ps  Cin =  2.1 ff  Cout =  19.7 ff  Cmax = 130.0 ff  G =  904  
+ABC: Path 20 --    3999 : 2    1 sky130_fd_sc_hd__lpflow_inputiso0n_1  A =   6.26  Df =4995.0 -390.0 ps  S =  45.4 ps  Cin =  1.5 ff  Cout =   2.2 ff  Cmax = 158.4 ff  G =  141  
+ABC: Path 21 --    4000 : 1    7 sky130_fd_sc_hd__lpflow_clkbufkapwr_1 A =   3.75  Df =5190.5 -446.6 ps  S = 210.5 ps  Cin =  2.1 ff  Cout =  17.2 ff  Cmax = 130.9 ff  G =  782  
+ABC: Path 22 --    4001 : 5    1 sky130_fd_sc_hd__a221oi_1             A =   8.76  Df =5262.5  -23.0 ps  S = 217.9 ps  Cin =  2.3 ff  Cout =   2.5 ff  Cmax =  54.9 ff  G =  103  
+ABC: Path 23 --    4005 : 4    1 sky130_fd_sc_hd__a211oi_1             A =   7.51  Df =6157.4 -642.5 ps  S =1059.5 ps  Cin =  2.4 ff  Cout =  33.4 ff  Cmax =  47.6 ff  G = 1399  
+ABC: Start-point = pi588 (\CPU.instr [3]).  End-point = po102 ($auto$rtlil.cc:2432:MuxGate$20152).
+ABC: + print_stats -m 
+ABC: netlist                       : i/o = 1557/ 1634  lat =    0  nd =  6825  edge =  18200  area =43105.99  delay =26.00  lev = 26
+ABC: + write_blif /tmp/yosys-abc-km4XRB/output.blif 
+
+61.1.2. Re-integrating ABC results.
+ABC RESULTS:   sky130_fd_sc_hd__a2111oi_0 cells:        3
+ABC RESULTS:   sky130_fd_sc_hd__a211o_1 cells:        4
+ABC RESULTS:   sky130_fd_sc_hd__a211oi_1 cells:       24
+ABC RESULTS:   sky130_fd_sc_hd__a21boi_0 cells:       10
+ABC RESULTS:   sky130_fd_sc_hd__a21o_1 cells:       20
+ABC RESULTS:   sky130_fd_sc_hd__a21oi_1 cells:      948
+ABC RESULTS:   sky130_fd_sc_hd__a221o_1 cells:        3
+ABC RESULTS:   sky130_fd_sc_hd__a221oi_1 cells:       24
+ABC RESULTS:   sky130_fd_sc_hd__a222oi_1 cells:        8
+ABC RESULTS:   sky130_fd_sc_hd__a22o_1 cells:       44
+ABC RESULTS:   sky130_fd_sc_hd__a22oi_1 cells:      139
+ABC RESULTS:   sky130_fd_sc_hd__a2bb2oi_1 cells:        5
+ABC RESULTS:   sky130_fd_sc_hd__a311oi_1 cells:        3
+ABC RESULTS:   sky130_fd_sc_hd__a31o_2 cells:        2
+ABC RESULTS:   sky130_fd_sc_hd__a31oi_1 cells:       20
+ABC RESULTS:   sky130_fd_sc_hd__a32o_1 cells:        4
+ABC RESULTS:   sky130_fd_sc_hd__a32oi_1 cells:        3
+ABC RESULTS:   sky130_fd_sc_hd__a41oi_1 cells:        1
+ABC RESULTS:   sky130_fd_sc_hd__and2_0 cells:        2
+ABC RESULTS:   sky130_fd_sc_hd__and3_1 cells:       21
+ABC RESULTS:   sky130_fd_sc_hd__and4_1 cells:        2
+ABC RESULTS:   sky130_fd_sc_hd__and4b_1 cells:        5
+ABC RESULTS:   sky130_fd_sc_hd__buf_1 cells:        3
+ABC RESULTS:   sky130_fd_sc_hd__buf_2 cells:       27
+ABC RESULTS:   sky130_fd_sc_hd__clkbuf_1 cells:      361
+ABC RESULTS:   sky130_fd_sc_hd__clkinv_1 cells:        1
+ABC RESULTS:   sky130_fd_sc_hd__inv_1 cells:       66
+ABC RESULTS:   sky130_fd_sc_hd__inv_2 cells:       80
+ABC RESULTS:   sky130_fd_sc_hd__lpflow_clkbufkapwr_1 cells:      467
+ABC RESULTS:   sky130_fd_sc_hd__lpflow_clkinvkapwr_1 cells:        5
+ABC RESULTS:   sky130_fd_sc_hd__lpflow_inputiso0n_1 cells:       26
+ABC RESULTS:   sky130_fd_sc_hd__lpflow_isobufsrc_1 cells:       72
+ABC RESULTS:   sky130_fd_sc_hd__maj3_1 cells:       28
+ABC RESULTS:   sky130_fd_sc_hd__mux2_2 cells:       40
+ABC RESULTS:   sky130_fd_sc_hd__mux2i_1 cells:       72
+ABC RESULTS:   sky130_fd_sc_hd__mux4_2 cells:      533
+ABC RESULTS:   sky130_fd_sc_hd__nand2_1 cells:      864
+ABC RESULTS:   sky130_fd_sc_hd__nand2b_1 cells:       32
+ABC RESULTS:   sky130_fd_sc_hd__nand3_1 cells:       59
+ABC RESULTS:   sky130_fd_sc_hd__nand3b_1 cells:        5
+ABC RESULTS:   sky130_fd_sc_hd__nand4_1 cells:       11
+ABC RESULTS:   sky130_fd_sc_hd__nand4b_1 cells:        3
+ABC RESULTS:   sky130_fd_sc_hd__nor2_1 cells:     1221
+ABC RESULTS:   sky130_fd_sc_hd__nor2b_1 cells:       17
+ABC RESULTS:   sky130_fd_sc_hd__nor3_1 cells:       53
+ABC RESULTS:   sky130_fd_sc_hd__nor3b_1 cells:        9
+ABC RESULTS:   sky130_fd_sc_hd__nor4_1 cells:       19
+ABC RESULTS:   sky130_fd_sc_hd__nor4bb_1 cells:        3
+ABC RESULTS:   sky130_fd_sc_hd__o2111a_1 cells:        2
+ABC RESULTS:   sky130_fd_sc_hd__o2111ai_1 cells:        6
+ABC RESULTS:   sky130_fd_sc_hd__o211a_1 cells:        2
+ABC RESULTS:   sky130_fd_sc_hd__o211ai_1 cells:       41
+ABC RESULTS:   sky130_fd_sc_hd__o21a_1 cells:       18
+ABC RESULTS:   sky130_fd_sc_hd__o21ai_0 cells:      515
+ABC RESULTS:   sky130_fd_sc_hd__o21ai_1 cells:      464
+ABC RESULTS:   sky130_fd_sc_hd__o21bai_1 cells:        3
+ABC RESULTS:   sky130_fd_sc_hd__o221a_2 cells:        4
+ABC RESULTS:   sky130_fd_sc_hd__o221ai_1 cells:        4
+ABC RESULTS:   sky130_fd_sc_hd__o22a_1 cells:        4
+ABC RESULTS:   sky130_fd_sc_hd__o22ai_1 cells:       59
+ABC RESULTS:   sky130_fd_sc_hd__o2bb2ai_1 cells:        2
+ABC RESULTS:   sky130_fd_sc_hd__o311ai_0 cells:        5
+ABC RESULTS:   sky130_fd_sc_hd__o31a_1 cells:        1
+ABC RESULTS:   sky130_fd_sc_hd__o31ai_1 cells:       20
+ABC RESULTS:   sky130_fd_sc_hd__o32ai_1 cells:       35
+ABC RESULTS:   sky130_fd_sc_hd__o41a_1 cells:        1
+ABC RESULTS:   sky130_fd_sc_hd__or2_2 cells:       26
+ABC RESULTS:   sky130_fd_sc_hd__or3_1 cells:       10
+ABC RESULTS:   sky130_fd_sc_hd__or3b_2 cells:        1
+ABC RESULTS:   sky130_fd_sc_hd__or4_1 cells:        2
+ABC RESULTS:   sky130_fd_sc_hd__or4b_2 cells:        1
+ABC RESULTS:   sky130_fd_sc_hd__xnor2_1 cells:      145
+ABC RESULTS:   sky130_fd_sc_hd__xor2_1 cells:       82
+ABC RESULTS:        internal signals:     5193
+ABC RESULTS:           input signals:     1557
+ABC RESULTS:          output signals:     1634
+Removing temp directory.
+
+62. Executing SETUNDEF pass (replace undef values with defined constants).
+
+63. Executing HILOMAP pass (mapping to constant drivers).
+
+64. Executing SPLITNETS pass (splitting up multi-bit signals).
+
+65. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \SOC_flash..
+Removed 46 unused cells and 8746 unused wires.
+
+66. Executing INSBUF pass (insert buffer cells for connected wires).
+
+67. Executing CHECK pass (checking for obvious problems).
+Checking module SOC_flash...
+Found and reported 0 problems.
+
+68. Printing statistics.
+
+=== SOC_flash ===
+
+   Number of wires:               8384
+   Number of wire bits:           8384
+   Number of public wires:        1560
+   Number of public wire bits:    1560
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:               8380
+     sky130_fd_sc_hd__a2111oi_0      3
+     sky130_fd_sc_hd__a211o_1        4
+     sky130_fd_sc_hd__a211oi_1      24
+     sky130_fd_sc_hd__a21boi_0      10
+     sky130_fd_sc_hd__a21o_1        20
+     sky130_fd_sc_hd__a21oi_1      948
+     sky130_fd_sc_hd__a221o_1        3
+     sky130_fd_sc_hd__a221oi_1      24
+     sky130_fd_sc_hd__a222oi_1       8
+     sky130_fd_sc_hd__a22o_1        44
+     sky130_fd_sc_hd__a22oi_1      139
+     sky130_fd_sc_hd__a2bb2oi_1      5
+     sky130_fd_sc_hd__a311oi_1       3
+     sky130_fd_sc_hd__a31o_2         2
+     sky130_fd_sc_hd__a31oi_1       20
+     sky130_fd_sc_hd__a32o_1         4
+     sky130_fd_sc_hd__a32oi_1        3
+     sky130_fd_sc_hd__a41oi_1        1
+     sky130_fd_sc_hd__and2_0         2
+     sky130_fd_sc_hd__and3_1        21
+     sky130_fd_sc_hd__and4_1         2
+     sky130_fd_sc_hd__and4b_1        5
+     sky130_fd_sc_hd__buf_1          3
+     sky130_fd_sc_hd__buf_2         27
+     sky130_fd_sc_hd__clkbuf_1     361
+     sky130_fd_sc_hd__clkinv_1       1
+     sky130_fd_sc_hd__dfrtp_1       36
+     sky130_fd_sc_hd__dfxtp_1     1478
+     sky130_fd_sc_hd__dlxtn_1       41
+     sky130_fd_sc_hd__inv_1         66
+     sky130_fd_sc_hd__inv_2         80
+     sky130_fd_sc_hd__lpflow_clkbufkapwr_1    467
+     sky130_fd_sc_hd__lpflow_clkinvkapwr_1      5
+     sky130_fd_sc_hd__lpflow_inputiso0n_1     26
+     sky130_fd_sc_hd__lpflow_isobufsrc_1     72
+     sky130_fd_sc_hd__maj3_1        28
+     sky130_fd_sc_hd__mux2_2        40
+     sky130_fd_sc_hd__mux2i_1       72
+     sky130_fd_sc_hd__mux4_2       533
+     sky130_fd_sc_hd__nand2_1      864
+     sky130_fd_sc_hd__nand2b_1      32
+     sky130_fd_sc_hd__nand3_1       59
+     sky130_fd_sc_hd__nand3b_1       5
+     sky130_fd_sc_hd__nand4_1       11
+     sky130_fd_sc_hd__nand4b_1       3
+     sky130_fd_sc_hd__nor2_1      1221
+     sky130_fd_sc_hd__nor2b_1       17
+     sky130_fd_sc_hd__nor3_1        53
+     sky130_fd_sc_hd__nor3b_1        9
+     sky130_fd_sc_hd__nor4_1        19
+     sky130_fd_sc_hd__nor4bb_1       3
+     sky130_fd_sc_hd__o2111a_1       2
+     sky130_fd_sc_hd__o2111ai_1      6
+     sky130_fd_sc_hd__o211a_1        2
+     sky130_fd_sc_hd__o211ai_1      41
+     sky130_fd_sc_hd__o21a_1        18
+     sky130_fd_sc_hd__o21ai_0      515
+     sky130_fd_sc_hd__o21ai_1      464
+     sky130_fd_sc_hd__o21bai_1       3
+     sky130_fd_sc_hd__o221a_2        4
+     sky130_fd_sc_hd__o221ai_1       4
+     sky130_fd_sc_hd__o22a_1         4
+     sky130_fd_sc_hd__o22ai_1       59
+     sky130_fd_sc_hd__o2bb2ai_1      2
+     sky130_fd_sc_hd__o311ai_0       5
+     sky130_fd_sc_hd__o31a_1         1
+     sky130_fd_sc_hd__o31ai_1       20
+     sky130_fd_sc_hd__o32ai_1       35
+     sky130_fd_sc_hd__o41a_1         1
+     sky130_fd_sc_hd__or2_2         26
+     sky130_fd_sc_hd__or3_1         10
+     sky130_fd_sc_hd__or3b_2         1
+     sky130_fd_sc_hd__or4_1          2
+     sky130_fd_sc_hd__or4b_2         1
+     sky130_fd_sc_hd__xnor2_1      145
+     sky130_fd_sc_hd__xor2_1        82
+
+   Chip area for module '\SOC_flash': 74229.942400
+
+69. Executing Verilog backend.
+Dumping module `\SOC_flash'.
+
+70. Executing JSON backend.
+
+Warnings: 154 unique messages, 362 total
+End of script. Logfile hash: 9c809002a6, CPU: user 4.49s system 0.05s, MEM: 70.35 MB peak
+Yosys 0.9+4288 (git sha1 b2e97174, x86_64-conda_cos6-linux-gnu-gcc 1.24.0.133_b0863d8_dirty -fvisibility-inlines-hidden -fmessage-length=0 -march=nocona -mtune=haswell -ftree-vectorize -fPIC -fstack-protector-strong -fno-plt -O2 -ffunction-sections -fdebug-prefix-map=/home/runner/work/conda-eda/conda-eda/workdir/conda-env/conda-bld/yosys_1630451134687/work=/usr/local/src/conda/yosys-0.9_5586_gb2e97174 -fdebug-prefix-map=/home/leodtr/Programs/miniconda3/envs/fpga=/usr/local/src/conda-prefix -fPIC -Os -fno-merge-constants)
+Time spent: 64% 2x abc (7 sec), 7% 44x opt_expr (0 sec), ...

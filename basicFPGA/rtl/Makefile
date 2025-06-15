@@ -20,7 +20,7 @@ OBJS+= cores/uart/perip_uart.v
 OBJS+= cores/uart/uart.v
 OBJS+= cores/mult/perip_mult.v
 OBJS+= cores/mult/mult.v
-OBJS+= cores/spi_flash/MappedSPIFlash.v
+OBJS+= cores/spi_flash/MappedSPIFlash_V3.v
 OBJS+= cores/spi_ram/MappedSPIRAM.v
 
 SIM_OBJS = cores/sim_spi_flash/spiflash.v
