@@ -1,0 +1,55 @@
+[*]
+[*] GTKWave Analyzer v3.3.104 (w)1999-2020 BSI
+[*] Sun Jun 15 20:27:06 2025
+[*]
+[dumpfile] "/home/leodtr/Universidad/TATD2025/repositiorio/femtoRVRAM/sim/results/presynth_result.vcd"
+[dumpfile_mtime] "Sun Jun 15 20:19:58 2025"
+[dumpfile_size] 25054244
+[savefile] "/home/leodtr/Universidad/TATD2025/repositiorio/femtoRVRAM/sim/results/presynth.gtkw"
+[timestart] 0
+[size] 1920 1052
+[pos] -1 -1
+*-24.000000 3690000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] bench.
+[treeopen] bench.uut.
+[treeopen] bench.uut.per_uart.
+[sst_width] 212
+[signals_width] 316
+[sst_expanded] 1
+[sst_vpaned_height] 306
+@22
+bench.uut.CPU.PC[23:0]
+@c00022
+[color] 2
+bench.uut.CPU.state[3:0]
+@28
+[color] 2
+(0)bench.uut.CPU.state[3:0]
+[color] 2
+(1)bench.uut.CPU.state[3:0]
+[color] 2
+(2)bench.uut.CPU.state[3:0]
+[color] 2
+(3)bench.uut.CPU.state[3:0]
+@1401200
+-group_end
+@c00028
+[color] 5
+bench.uut.cs[6:0]
+@28
+(0)bench.uut.cs[6:0]
+(1)bench.uut.cs[6:0]
+(2)bench.uut.cs[6:0]
+(3)bench.uut.cs[6:0]
+(4)bench.uut.cs[6:0]
+(5)bench.uut.cs[6:0]
+(6)bench.uut.cs[6:0]
+@1401208
+-group_end
+@820
+[color] 1
+bench.uut.per_uart.d_in_uart[7:0]
+@22
+bench.uut.mem_address[31:0]
+[pattern_trace] 1
+[pattern_trace] 0

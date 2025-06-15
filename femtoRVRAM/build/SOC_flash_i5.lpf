@@ -1,0 +1,33 @@
+BLOCK RESETPATHS;
+BLOCK ASYNCPATHS;
+LOCATE COMP    "clk" SITE "P3";
+IOBUF PORT     "clk" IO_TYPE=LVCMOS33;
+FREQUENCY PORT "clk" 25.0 MHz;
+
+LOCATE COMP    "resetn" SITE "K18";
+IOBUF PORT     "resetn" PULLMODE=UP IO_TYPE=LVCMOS33 DRIVE=4;
+
+LOCATE COMP    "spi_clk_flash" SITE "F3";
+IOBUF PORT     "spi_clk_flash" IO_TYPE=LVCMOS33;
+LOCATE COMP    "spi_cs_n_flash" SITE "H3";
+IOBUF PORT     "spi_cs_n_flash" IO_TYPE=LVCMOS33;
+LOCATE COMP    "spi_miso_flash" SITE "H4";
+IOBUF PORT     "spi_miso_flash" IO_TYPE=LVCMOS33;
+LOCATE COMP    "spi_mosi_flash" SITE "G3";
+IOBUF PORT     "spi_mosi_flash" IO_TYPE=LVCMOS33;
+
+LOCATE COMP    "spi_clk_ram" SITE "E1";
+IOBUF PORT     "spi_clk_ram" IO_TYPE=LVCMOS33;
+LOCATE COMP    "spi_cs_n_ram" SITE "E4";
+IOBUF PORT     "spi_cs_n_ram" IO_TYPE=LVCMOS33;
+LOCATE COMP    "spi_miso_ram" SITE "F1";
+IOBUF PORT     "spi_miso_ram" IO_TYPE=LVCMOS33;
+LOCATE COMP    "spi_mosi_ram" SITE "F2";
+IOBUF PORT     "spi_mosi_ram" IO_TYPE=LVCMOS33;
+
+LOCATE COMP    "RXD" SITE "H18";
+IOBUF PORT     "RXD" IO_TYPE=LVCMOS33;
+LOCATE COMP    "TXD" SITE "J17";
+IOBUF PORT     "TXD" IO_TYPE=LVCMOS33;
+LOCATE COMP    "LEDS[0]" SITE "U16";
+IOBUF PORT     "LEDS[0]" IO_TYPE=LVCMOS33;
