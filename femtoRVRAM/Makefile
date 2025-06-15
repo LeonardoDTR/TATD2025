@@ -31,11 +31,11 @@ BUILD_DIR = build
 
 clean:
 	chmod -R u+w synthesis/
-	rm -rf *svg *.json *.bit \
+	rm -rf *.svg *.json \
 	firmware/results/* firmware/objects/*.o \
 	sim/results/*.vcd sim/results/*.vpp \
 	synthesis/results/* synthesis/*.stat synthesis/*.rpt synthesis/*.dot synthesis/*.json synthesis/*.sdc synthesis/*.log \
-	build/*.json build/*.rpt
+	build/*.json build/*.rpt build/*.bit
 
 ##############
 #  firmware  #    export PATH=$PATH:/home/leodtr/Programs/riscv/bin

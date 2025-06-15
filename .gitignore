@@ -1,18 +1,22 @@
-# Ignorar archivos de carpeta rtl
-impl/
-obj_dir/
-*.rpt
-*.svg
-*.out
-*.vcd
-*.json
-*.bit
+.svg
+.json
 
-# Ignorar archivos de carpeta Firmware
-*.elf
-*.bin
-*.map
-*.d
-*.hex
-*.o
-*.lst
+femtoRVRAM/firmware/results/*
+!femtoRVRAM/firmware/results/.gitkeep
+femtoRVRAM/firmware/objects/*.o
+
+femtoRVRAM/sim/results/*.vcd 
+femtoRVRAM/sim/results/*.vpp
+
+femtoRVRAM/synthesis/results/*
+!femtoRVRAM/synthesis/results/.gitkeep
+femtoRVRAM/synthesis/*.stat 
+femtoRVRAM/synthesis/*.rpt 
+femtoRVRAM/synthesis/*.dot 
+femtoRVRAM/synthesis/*.json 
+femtoRVRAM/synthesis/*.sdc 
+femtoRVRAM/synthesis/*.log
+
+femtoRVRAM/build/*.json 
+femtoRVRAM/build/*.rpt 
+femtoRVRAM/build/*.bit
