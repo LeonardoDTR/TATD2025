@@ -1,18 +1,18 @@
 [*]
 [*] GTKWave Analyzer v3.3.104 (w)1999-2020 BSI
-[*] Wed Jul  2 13:25:02 2025
+[*] Wed Jul  2 13:47:13 2025
 [*]
 [dumpfile] "/home/leodtr/Universidad/TATD2025/repositiorio/femtoRVRAM/sim/results/postsynthSky_result.vcd"
-[dumpfile_mtime] "Wed Jul  2 13:25:02 2025"
-[dumpfile_size] 707940352
-[savefile] "/home/leodtr/Universidad/TATD2025/repositiorio/femtoRVRAM/sim/results/postsynth.gtkw"
-[timestart] 109920000
+[dumpfile_mtime] "Wed Jul  2 13:46:54 2025"
+[dumpfile_size] 210213544
+[savefile] "/home/leodtr/Universidad/TATD2025/repositiorio/femtoRVRAM/sim/results/postsynthSky.gtkw"
+[timestart] 52500000
 [size] 1920 1052
 [pos] -1 -1
-*-22.000000 114790000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+*-24.000000 115160000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
 [treeopen] bench.
 [sst_width] 301
-[signals_width] 317
+[signals_width] 357
 [sst_expanded] 1
 [sst_vpaned_height] 353
 @c00022
@@ -124,10 +124,45 @@ bench.uut.\mem_address[31]
 -group_end
 @28
 bench.uut.spi_clk_ram
-@29
-bench.uut.spi_mosi_ram
-@28
 bench.uut.spi_miso_ram
 bench.uut.spi_cs_n_ram
+@c00022
+#{bench.uut.\mapped_spi_ram.cmd_addr[30:0]} bench.uut.\mapped_spi_ram.cmd_addr[30] bench.uut.\mapped_spi_ram.cmd_addr[29] bench.uut.\mapped_spi_ram.cmd_addr[28] bench.uut.\mapped_spi_ram.cmd_addr[27] bench.uut.\mapped_spi_ram.cmd_addr[26] bench.uut.\mapped_spi_ram.cmd_addr[25] bench.uut.\mapped_spi_ram.cmd_addr[24] bench.uut.\mapped_spi_ram.cmd_addr[23] bench.uut.\mapped_spi_ram.cmd_addr[22] bench.uut.\mapped_spi_ram.cmd_addr[21] bench.uut.\mapped_spi_ram.cmd_addr[20] bench.uut.\mapped_spi_ram.cmd_addr[19] bench.uut.\mapped_spi_ram.cmd_addr[18] bench.uut.\mapped_spi_ram.cmd_addr[17] bench.uut.\mapped_spi_ram.cmd_addr[16] bench.uut.\mapped_spi_ram.cmd_addr[15] bench.uut.\mapped_spi_ram.cmd_addr[14] bench.uut.\mapped_spi_ram.cmd_addr[13] bench.uut.\mapped_spi_ram.cmd_addr[12] bench.uut.\mapped_spi_ram.cmd_addr[11] bench.uut.\mapped_spi_ram.cmd_addr[10] bench.uut.\mapped_spi_ram.cmd_addr[9] bench.uut.\mapped_spi_ram.cmd_addr[8] bench.uut.\mapped_spi_ram.cmd_addr[7] bench.uut.\mapped_spi_ram.cmd_addr[6] bench.uut.\mapped_spi_ram.cmd_addr[5] bench.uut.\mapped_spi_ram.cmd_addr[4] bench.uut.\mapped_spi_ram.cmd_addr[3] bench.uut.\mapped_spi_ram.cmd_addr[2] bench.uut.\mapped_spi_ram.cmd_addr[1] bench.uut.\mapped_spi_ram.cmd_addr[0]
+@28
+bench.uut.\mapped_spi_ram.cmd_addr[0]
+bench.uut.\mapped_spi_ram.cmd_addr[1]
+bench.uut.\mapped_spi_ram.cmd_addr[2]
+bench.uut.\mapped_spi_ram.cmd_addr[3]
+bench.uut.\mapped_spi_ram.cmd_addr[4]
+bench.uut.\mapped_spi_ram.cmd_addr[5]
+bench.uut.\mapped_spi_ram.cmd_addr[6]
+bench.uut.\mapped_spi_ram.cmd_addr[7]
+bench.uut.\mapped_spi_ram.cmd_addr[8]
+bench.uut.\mapped_spi_ram.cmd_addr[9]
+bench.uut.\mapped_spi_ram.cmd_addr[10]
+bench.uut.\mapped_spi_ram.cmd_addr[11]
+bench.uut.\mapped_spi_ram.cmd_addr[12]
+bench.uut.\mapped_spi_ram.cmd_addr[13]
+bench.uut.\mapped_spi_ram.cmd_addr[14]
+bench.uut.\mapped_spi_ram.cmd_addr[15]
+bench.uut.\mapped_spi_ram.cmd_addr[16]
+bench.uut.\mapped_spi_ram.cmd_addr[17]
+bench.uut.\mapped_spi_ram.cmd_addr[18]
+bench.uut.\mapped_spi_ram.cmd_addr[19]
+bench.uut.\mapped_spi_ram.cmd_addr[20]
+bench.uut.\mapped_spi_ram.cmd_addr[21]
+bench.uut.\mapped_spi_ram.cmd_addr[22]
+bench.uut.\mapped_spi_ram.cmd_addr[23]
+bench.uut.\mapped_spi_ram.cmd_addr[24]
+bench.uut.\mapped_spi_ram.cmd_addr[25]
+bench.uut.\mapped_spi_ram.cmd_addr[26]
+bench.uut.\mapped_spi_ram.cmd_addr[27]
+bench.uut.\mapped_spi_ram.cmd_addr[28]
+bench.uut.\mapped_spi_ram.cmd_addr[29]
+bench.uut.\mapped_spi_ram.cmd_addr[30]
+@1401200
+-group_end
+@28
+bench.uut.spi_mosi_ram
 [pattern_trace] 1
 [pattern_trace] 0

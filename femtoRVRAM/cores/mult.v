@@ -32,14 +32,14 @@ end
 always @(posedge clk or posedge reset)
 begin
 	if (reset) begin
-		done   <= 0;
-		result <= 0;
+		done   	= 0;
+		result  = 0;
 		state   = START;
 	end else begin
 		case(state)
 			START: begin				
 				count  =  0;
-				done   <= 0;
+				done   = 0;
 				result =  0;
 				if(init)
 					state = START1;
@@ -48,9 +48,9 @@ begin
 			end
     
 			START1:begin
-				A      <= op_A;
-				B      <= op_B;
-				done   <= 0;
+				A      = op_A;
+				B      = op_B;
+				done   = 0;
 				result =  0;
 				state  =  CHECK;
 			end
@@ -73,7 +73,7 @@ begin
 			end
      
 			ADD: begin
-				result <= result + A;
+				result  = result + A;
 				done    = 0;			 
 				state   = SHIFT;
 			end

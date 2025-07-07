@@ -1,19 +1,19 @@
 [*]
 [*] GTKWave Analyzer v3.3.104 (w)1999-2020 BSI
-[*] Sun Jun 15 20:27:06 2025
+[*] Wed Jul  2 13:46:32 2025
 [*]
 [dumpfile] "/home/leodtr/Universidad/TATD2025/repositiorio/femtoRVRAM/sim/results/presynth_result.vcd"
-[dumpfile_mtime] "Sun Jun 15 20:19:58 2025"
-[dumpfile_size] 25054244
+[dumpfile_mtime] "Wed Jul  2 13:11:12 2025"
+[dumpfile_size] 25061555
 [savefile] "/home/leodtr/Universidad/TATD2025/repositiorio/femtoRVRAM/sim/results/presynth.gtkw"
-[timestart] 0
+[timestart] 500000
 [size] 1920 1052
 [pos] -1 -1
-*-24.000000 3690000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+*-26.000000 115950000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
 [treeopen] bench.
 [treeopen] bench.uut.
 [treeopen] bench.uut.per_uart.
-[sst_width] 212
+[sst_width] 236
 [signals_width] 316
 [sst_expanded] 1
 [sst_vpaned_height] 306
@@ -44,12 +44,91 @@ bench.uut.cs[6:0]
 (4)bench.uut.cs[6:0]
 (5)bench.uut.cs[6:0]
 (6)bench.uut.cs[6:0]
-@1401208
+@1401200
 -group_end
 @820
 [color] 1
 bench.uut.per_uart.d_in_uart[7:0]
 @22
 bench.uut.mem_address[31:0]
+@28
+bench.uut.mapped_spi_ram.clk
+bench.uut.mapped_spi_ram.MISO
+bench.uut.mapped_spi_ram.CS_N
+bench.uut.mapped_spi_ram.MOSI
+@c00022
+bench.uut.mapped_spi_ram.cmd_addr[31:0]
+@28
+(0)bench.uut.mapped_spi_ram.cmd_addr[31:0]
+(1)bench.uut.mapped_spi_ram.cmd_addr[31:0]
+(2)bench.uut.mapped_spi_ram.cmd_addr[31:0]
+(3)bench.uut.mapped_spi_ram.cmd_addr[31:0]
+(4)bench.uut.mapped_spi_ram.cmd_addr[31:0]
+(5)bench.uut.mapped_spi_ram.cmd_addr[31:0]
+(6)bench.uut.mapped_spi_ram.cmd_addr[31:0]
+(7)bench.uut.mapped_spi_ram.cmd_addr[31:0]
+(8)bench.uut.mapped_spi_ram.cmd_addr[31:0]
+(9)bench.uut.mapped_spi_ram.cmd_addr[31:0]
+(10)bench.uut.mapped_spi_ram.cmd_addr[31:0]
+(11)bench.uut.mapped_spi_ram.cmd_addr[31:0]
+(12)bench.uut.mapped_spi_ram.cmd_addr[31:0]
+(13)bench.uut.mapped_spi_ram.cmd_addr[31:0]
+(14)bench.uut.mapped_spi_ram.cmd_addr[31:0]
+(15)bench.uut.mapped_spi_ram.cmd_addr[31:0]
+(16)bench.uut.mapped_spi_ram.cmd_addr[31:0]
+(17)bench.uut.mapped_spi_ram.cmd_addr[31:0]
+(18)bench.uut.mapped_spi_ram.cmd_addr[31:0]
+(19)bench.uut.mapped_spi_ram.cmd_addr[31:0]
+(20)bench.uut.mapped_spi_ram.cmd_addr[31:0]
+(21)bench.uut.mapped_spi_ram.cmd_addr[31:0]
+(22)bench.uut.mapped_spi_ram.cmd_addr[31:0]
+(23)bench.uut.mapped_spi_ram.cmd_addr[31:0]
+(24)bench.uut.mapped_spi_ram.cmd_addr[31:0]
+(25)bench.uut.mapped_spi_ram.cmd_addr[31:0]
+(26)bench.uut.mapped_spi_ram.cmd_addr[31:0]
+(27)bench.uut.mapped_spi_ram.cmd_addr[31:0]
+(28)bench.uut.mapped_spi_ram.cmd_addr[31:0]
+(29)bench.uut.mapped_spi_ram.cmd_addr[31:0]
+(30)bench.uut.mapped_spi_ram.cmd_addr[31:0]
+(31)bench.uut.mapped_spi_ram.cmd_addr[31:0]
+@1401200
+-group_end
+@c00022
+bench.uut.mem_wdata[31:0]
+@28
+(0)bench.uut.mem_wdata[31:0]
+(1)bench.uut.mem_wdata[31:0]
+(2)bench.uut.mem_wdata[31:0]
+(3)bench.uut.mem_wdata[31:0]
+(4)bench.uut.mem_wdata[31:0]
+(5)bench.uut.mem_wdata[31:0]
+(6)bench.uut.mem_wdata[31:0]
+(7)bench.uut.mem_wdata[31:0]
+(8)bench.uut.mem_wdata[31:0]
+(9)bench.uut.mem_wdata[31:0]
+(10)bench.uut.mem_wdata[31:0]
+(11)bench.uut.mem_wdata[31:0]
+(12)bench.uut.mem_wdata[31:0]
+(13)bench.uut.mem_wdata[31:0]
+(14)bench.uut.mem_wdata[31:0]
+(15)bench.uut.mem_wdata[31:0]
+(16)bench.uut.mem_wdata[31:0]
+(17)bench.uut.mem_wdata[31:0]
+(18)bench.uut.mem_wdata[31:0]
+(19)bench.uut.mem_wdata[31:0]
+(20)bench.uut.mem_wdata[31:0]
+(21)bench.uut.mem_wdata[31:0]
+(22)bench.uut.mem_wdata[31:0]
+(23)bench.uut.mem_wdata[31:0]
+(24)bench.uut.mem_wdata[31:0]
+(25)bench.uut.mem_wdata[31:0]
+(26)bench.uut.mem_wdata[31:0]
+(27)bench.uut.mem_wdata[31:0]
+(28)bench.uut.mem_wdata[31:0]
+(29)bench.uut.mem_wdata[31:0]
+(30)bench.uut.mem_wdata[31:0]
+(31)bench.uut.mem_wdata[31:0]
+@1401200
+-group_end
 [pattern_trace] 1
 [pattern_trace] 0

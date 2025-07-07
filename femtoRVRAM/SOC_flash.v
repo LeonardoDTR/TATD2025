@@ -20,7 +20,7 @@ module SOC_flash (
    (* keep *) wire [31:0] mem_address;
    reg  [31:0] mem_rdata;
    wire        mem_rstrb;
-   wire [31:0] mem_wdata;
+   (* keep *) wire [31:0] mem_wdata;
    wire [3:0]  mem_wmask;
 
    wire rd = mem_rstrb;
@@ -77,8 +77,8 @@ module SOC_flash (
    
 
    peripheral_uart #(
-      .clk_freq(25000000),          // 27000000 for gowin
-      .baud(115200)                 // 57600 for gowin
+      .clk_freq(25000000),
+      .baud(115200)
    )  per_uart(
          .clk(clk), 
          .rst(!resetn),

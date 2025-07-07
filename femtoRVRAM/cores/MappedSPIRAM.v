@@ -100,7 +100,7 @@ always @(negedge clk) begin
           snd_bitcount <= 6'd24;
           rcv_bitcount <= 6'd32;
           cmd_addr     <= {8'h03,word_address[15:0],8'h00};
-          state         = SEND;
+          state        <= SEND;
         end
         else if (wr) begin
           CS_N         <= 1'b0;
@@ -109,10 +109,10 @@ always @(negedge clk) begin
           snd_bitcount <= 6'd32;
           rcv_bitcount <= 6'd0;
           cmd_addr     <= {8'h02,word_address[15:0],wdata[7:0]};
-          state         = SEND;
+          state        <= SEND;
         end
         else begin
-          state         = WAIT_INST;
+          state        <= WAIT_INST;
         end
       end
 
@@ -132,18 +132,18 @@ always @(negedge clk) begin
       RECEIVE: begin
         if(CLK) begin
           if(rcv_bitcount == 0) begin
-            state         = START;
+            state         <= START;
           end
           else begin
             rcv_bitcount <= rcv_bitcount - 6'd1;
             rcv_data     <= {rcv_data[30:0],MISO};
-          state         = RECEIVE;  
+          state         <= RECEIVE;  
           end
         end
       end
 
        default: 
-         state = START;
+         state <= START;
     
     endcase
   end

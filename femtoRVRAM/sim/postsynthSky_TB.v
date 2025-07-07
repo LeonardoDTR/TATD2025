@@ -49,34 +49,35 @@ parameter c_BIT_PERIOD     = 8680;
   endtask // UART_WRITE_BYTE
   
   
-   SOC_flash uut(
-     .clk(CLK),
-     .resetn(RESET),
-     .spi_mosi_flash(spi_mosi), 
-     .spi_miso_flash(spi_miso), 
-     .spi_cs_n_flash(spi_cs),
-     .spi_clk_flash(spi_clk),
-     .spi_mosi_ram(spi_mosi_ram),
-     .spi_miso_ram(spi_miso_ram),
-     .spi_cs_n_ram(spi_cs_ram),
-     .spi_clk_ram(spi_clk_ram),
-     .LEDS(LEDS),
-     .RXD(RXD),
-     .TXD(TXD)
-   );
-
- spiflash flash0(
-	.csb(spi_cs),
-	.clk(spi_clk),
-	.io0(spi_mosi), // MOSI
-	.io1(spi_miso) // MISO
+SOC_flash uut(
+  .clk(CLK),
+  .resetn(RESET),
+  .spi_mosi_flash(spi_mosi), 
+  .spi_miso_flash(spi_miso), 
+  .spi_cs_n_flash(spi_cs),
+  .spi_clk_flash(spi_clk),
+  .spi_mosi_ram(spi_mosi_ram),
+  .spi_miso_ram(spi_miso_ram),
+  .spi_cs_n_ram(spi_cs_ram),
+  .spi_clk_ram(spi_clk_ram),
+  .LEDS(LEDS),
+  .RXD(RXD),
+  .TXD(TXD)
 );
 
+spiflash flash0(
+  .csb(spi_cs),
+  .clk(spi_clk),
+  .io0(spi_mosi), // MOSI
+  .io1(spi_miso) // MISO
+);
+
+
 spiram flashram0(
-    .CS(spi_cs_ram),     // Chip Select (activo en bajo)
-    .SCK(spi_clk_ram),    // SPI Clock
-    .SI(spi_mosi_ram),     // Serial Input (MOSI)
-    .SO(spi_miso_ram)     // Serial Output (MISO)
+  .CS(spi_cs_ram),     // Chip Select (activo en bajo)
+  .SCK(spi_clk_ram),    // SPI Clock
+  .SI(spi_mosi_ram),     // Serial Input (MOSI)
+  .SO(spi_miso_ram)     // Serial Output (MISO)
 );
 
 
@@ -96,10 +97,11 @@ always #(tck/2) CLK <= ~CLK;
    
        integer idx; 
    initial begin
+  
+    $dumpfile("sim/results/postsynthSky_result.vcd");
+    $dumpvars(-1,bench);
 
 `ifdef BENCH
-    $dumpfile("sim/results/presynth_result.vcd");
-    $dumpvars(-1,bench);
     for(idx = 16390; idx < 16410; idx = idx +1)  $dumpvars(0, bench.flashram0.mem[idx]);
 `endif
 
@@ -125,7 +127,7 @@ always #(tck/2) CLK <= ~CLK;
 
     
     @(posedge CLK);
-    #(tck*50000) $finish;
+    #(tck*350) $finish;
  end
  
  

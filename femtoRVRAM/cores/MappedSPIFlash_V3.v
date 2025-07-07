@@ -87,7 +87,7 @@ always @(negedge clk) begin
         rbusy        <= 1'b0;
         snd_bitcount <= 6'd0;
         rcv_bitcount <= 6'd0;
-        state        <= WAIT_STRB;
+        state        = WAIT_STRB;
 
       end
 
@@ -115,7 +115,7 @@ always @(negedge clk) begin
             else begin
             snd_bitcount <= snd_bitcount - 6'd1;
             cmd_addr     <= {cmd_addr[30:0],1'b1};
-            state        <= SEND;
+            state        = SEND;
             end
         end
       end
