@@ -75,7 +75,7 @@ end
 
 always @(negedge clk) begin
     if (!reset) begin
-      state     = START;
+      state    <= START;
       rbusy    <= 1'b0;
       wbusy    <= 1'b0;
       rcv_data <= 0;
@@ -119,7 +119,7 @@ always @(negedge clk) begin
       SEND: begin
         if(CLK) begin
             if(snd_bitcount == 1) begin
-                state         = RECEIVE;
+                state        <= RECEIVE;
             end
             else begin
             snd_bitcount <= snd_bitcount - 6'd1;

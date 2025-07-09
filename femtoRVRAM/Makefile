@@ -87,11 +87,10 @@ sim_postsynthSky:
 	vvp sim/results/postsynthSky_result.vpp
 	gtkwave sim/results/postsynthSky_result.vcd sim/results/postsynthSky.gtkw &
 
-sim_postsynth_OpenLane:
-	iverilog -DFUNCTIONAL -DUNIT_DELAY=#1  -o sim/results/postsynth_OpenLane_result.vpp sim/postsynth_TB.v femtoRV.v $(SIM_CORES) $(SIM_LIB_SKY)
-	vvp sim/results/postsynth_OpenLane_result.vpp
-	gtkwave sim/results/postsynth_result.vcd &
-
+sim_postsynthOpenLane:
+	iverilog -DFUNCTIONAL -DUNIT_DELAY=#1  -o sim/results/postsynthOpenLane_result.vpp sim/postsynthOpenLane_TB.v femtoRV.v $(SIM_CORES) $(SIM_LIB_SKY)
+	vvp sim/results/postsynthOpenLane_result.vpp
+	gtkwave sim/results/postsynthOpenLane_result.vcd sim/results/postsynthOpenLane.gtkw &
 
 ###################
 #  COLORLIGHT I5  #
